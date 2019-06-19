@@ -13,7 +13,7 @@
 ## 3. 环境搭建
 
 1. 通过 https://www.arduino.cc/en/Main/Software 下载 Arduino IDE 开发环境，建议使用最新版本。
-2. 启动 Arduino，并打开“首选项”窗口。在附加开发板管理器网址中添加`http://download.thingsturn.com/arduino/stable/package_w600_index.json`
+2. 启动 Arduino，并打开“首选项”窗口。在附加开发板管理器网址中添加`http://arduino.w600.fun/package_w600_index.json`
 ![](doc/img/1556334078542.png)
 3. 打开菜单【工具】-》【开发板】-》【开发板管理器】
 
@@ -52,4 +52,4 @@
 
 ## 4 其他
 
-有任何疑问和建议，可咨询 support@thingsturn.com 或加QQ群 86032006 沟通。
+有任何疑问和建议，可在问答社区 https://ask.w600.fun 提出问题。
