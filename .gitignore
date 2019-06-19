@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+.directory
+manifest.mf
+.vscode
+*.pyc
+*.gch
+*.o

@@ -1,0 +1,12 @@
+#
+# Datatypes (KEYWORD1)
+#
+DNSClient	KEYWORD1
+
+#
+# Methods and functions (KEYWORD2)
+#
+begin	KEYWORD2
+getHostByName	KEYWORD2
+BuildRequest	KEYWORD2
+ProcessResponse	KEYWORD2

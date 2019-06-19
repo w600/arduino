@@ -1,0 +1,91 @@
+#
+# Do not create pull-requests for this file only, CI will not accept them.
+# You *must* edit/modify/run boards.txt.py to regenerate boards.txt.
+# All modified files after running with option "--allgen" must be included in the pull-request.
+#
+
+menu.BoardModel=Model
+menu.UploadSpeed=Upload Speed
+menu.demo=Demo
+menu.demo.console=Console Demo
+menu.UploadFiles=Upload Files
+
+
+##############################################################
+generic.name=Generic W600 board
+generic.build.mcu=w600
+generic.build.f_cpu=80000000L
+generic.build.board=W600_EV
+generic.build.core=w600
+generic.build.variant=generic
+generic.upload.tool=wmtools
+generic.upload.protocol=arduino
+generic.menu.UploadFiles.OO= .IMG
+generic.menu.UploadFiles.OO.upload.file=IMG
+generic.menu.UploadFiles.OS= .FLS
+generic.menu.UploadFiles.OS.upload.file=FLS
+generic.menu.UploadSpeed.2Mbps=2000000
+generic.menu.UploadSpeed.2Mbps.upload.speed=2000000
+generic.menu.UploadSpeed.1Mbps=1000000
+generic.menu.UploadSpeed.1Mbps.upload.speed=1000000
+generic.menu.UploadSpeed.961200=921600
+generic.menu.UploadSpeed.961200.upload.speed=921600
+generic.menu.UploadSpeed.460800=460800
+generic.menu.UploadSpeed.460800.upload.speed=460800
+generic.menu.UploadSpeed.115200=115200
+generic.menu.UploadSpeed.115200.upload.speed=115200
+
+##############################################################
+tb_01.name=TB-01 board
+tb_01.build.mcu=w600
+tb_01.build.f_cpu=80000000L
+tb_01.build.board=W600_EV
+tb_01.build.core=w600
+tb_01.build.variant=tb_01
+tb_01.upload.tool=wmtools
+tb_01.upload.protocol=arduino
+tb_01.menu.UploadFiles.OO= .IMG
+tb_01.menu.UploadFiles.OO.upload.file=IMG
+tb_01.menu.UploadFiles.OS= .FLS
+tb_01.menu.UploadFiles.OS.upload.file=FLS
+tb_01.menu.UploadSpeed.2Mbps=2000000
+tb_01.menu.UploadSpeed.2Mbps.upload.speed=2000000
+tb_01.menu.UploadSpeed.1Mbps=1000000
+tb_01.menu.UploadSpeed.1Mbps.upload.speed=1000000
+tb_01.menu.UploadSpeed.961200=921600
+tb_01.menu.UploadSpeed.961200.upload.speed=921600
+tb_01.menu.UploadSpeed.460800=460800
+tb_01.menu.UploadSpeed.460800.upload.speed=460800
+tb_01.menu.UploadSpeed.115200=115200
+tb_01.menu.UploadSpeed.115200.upload.speed=115200
+
+
+
+
+
+
+
+
+##############################################################
+wio-w600.name=WIO W600
+wio-w600.build.mcu=w600
+wio-w600.build.f_cpu=80000000L
+wio-w600.build.board=WIO_W600
+wio-w600.build.core=w600
+wio-w600.build.variant=wio-w600
+wio-w600.upload.tool=wmtools
+wio-w600.upload.protocol=arduino
+wio-w600.menu.UploadFiles.OO= .IMG
+wio-w600.menu.UploadFiles.OO.upload.file=IMG
+wio-w600.menu.UploadFiles.OS= .FLS
+wio-w600.menu.UploadFiles.OS.upload.file=FLS
+wio-w600.menu.UploadSpeed.2Mbps=2000000
+wio-w600.menu.UploadSpeed.2Mbps.upload.speed=2000000
+wio-w600.menu.UploadSpeed.1Mbps=1000000
+wio-w600.menu.UploadSpeed.1Mbps.upload.speed=1000000
+wio-w600.menu.UploadSpeed.961200=921600
+wio-w600.menu.UploadSpeed.961200.upload.speed=921600
+wio-w600.menu.UploadSpeed.460800=460800
+wio-w600.menu.UploadSpeed.460800.upload.speed=460800
+wio-w600.menu.UploadSpeed.115200=115200
+wio-w600.menu.UploadSpeed.115200.upload.speed=115200

@@ -1,0 +1,76 @@
+#
+# W600-Arduino platform
+# ------------------------------
+#
+# For more info:
+# https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5---3rd-party-Hardware-specification
+#
+
+name=w600 Modules
+version=0.2.4
+
+compiler.path={runtime.tools.gcc-arm-none-eabi.path}/bin/
+compiler.sdk.path={runtime.platform.path}/tools/sdk
+compiler.lib.path={compiler.sdk.path}/lib/
+compiler.inc.path={compiler.sdk.path}/include
+secboot.img.path={runtime.platform.path}/bootloaders/secboot/secboot.img
+runtime.tools.wmtools.path={runtime.hardware.path}/wmtools/
+
+
+compiler.com.flags=-mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ggdb3 -D{build.board}
+compiler.c.flags={compiler.com.flags} -I. -std=gnu11
+compiler.cpp.flags={compiler.com.flags} -I. -I./cores/w600 -std=gnu++14 -fabi-version=0 
+compiler.S.flags={compiler.com.flags} -x assembler-with-cpp
+compiler.ar.flags=cru
+compiler.ld.flags={compiler.com.flags} -T{compiler.sdk.path}/ld/link_w600.ld -Xlinker --gc-sections --specs=nosys.specs -Wl,--start-group -lgcc -lc -lm -Wl,--end-group
+compiler.includes=-I{compiler.inc.path} -I{compiler.inc.path}/{build.cloud_include} -I{compiler.inc.path}/os -I{compiler.inc.path}/driver -I{compiler.inc.path}/wifi -I{compiler.inc.path}/app -I{compiler.inc.path}/net -I{compiler.inc.path}/platform -I{compiler.inc.path}/lwip2.0.3/include -D_SYS_ERRNO_H_ -DGCC_COMPILE=1
+
+compiler.c.cmd=arm-none-eabi-gcc
+compiler.cpp.cmd=arm-none-eabi-g++
+compiler.S.cmd=arm-none-eabi-gcc
+compiler.ar.cmd=arm-none-eabi-ar
+compiler.elf.cmd=arm-none-eabi-g++
+compiler.obj.cmd=arm-none-eabi-objcopy
+compiler.wmtool.cmd=wmtool.bat
+compiler.wmtool.cmd.windows=wmtool.bat
+
+sdk.libs = -L{compiler.lib.path} -Wl,--whole-archive {compiler.lib.path}oneshot.a {compiler.lib.path}wmcmd.a {compiler.lib.path}wmcommon.a {compiler.lib.path}wmdhcpserver.a {compiler.lib.path}wmdnsserver.a {compiler.lib.path}wmdriver.a {compiler.lib.path}wmhttpclient.a {compiler.lib.path}wmlwip.a {compiler.lib.path}wmmain.a {compiler.lib.path}wmota.a {compiler.lib.path}wmntp.a {compiler.lib.path}wmping.a {compiler.lib.path}wmrtos.a {compiler.lib.path}wmssl.a {compiler.lib.path}wmweb.a {compiler.lib.path}wmwebsocket.a {compiler.lib.path}wmsslserver.a {compiler.lib.path}libairkiss_log.a {compiler.lib.path}wlan.a {compiler.lib.path}usermain.a -Wl,-no-whole-archive
+
+## Build the app.ld linker file
+#recipe.hooks.linking.prelink.l.pattern=
+
+## Compiler c files
+recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.c.flags} {compiler.includes} {includes} -c "{source_file}" -o "{object_file}"
+
+## Compiler c++ files
+recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} {compiler.includes} {includes} -c "{source_file}" -o "{object_file}"
+
+## Compiler S files
+#recipe.S.o.pattern=
+
+## Create archives
+recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} "{build.path}/arduino.ar" "{object_file}"
+
+## Combine gc-sections, archives, and objects
+#$(ELF) $(ELFFLAGS) $(LDFLAGS) -o $(GOAL).elf -Wl,-Map,"$(GOAL).map" $(OBJ_FILES) -Wl,--start-group $(AR_TAGETS) -Wl,--end-group
+recipe.c.combine.pattern="{compiler.path}{compiler.elf.cmd}" {compiler.ld.flags} -o "{build.path}/{build.project_name}.elf" "-Wl,-Map,{build.path}/{build.project_name}.map" {object_files} -Wl,--start-group "{build.path}/arduino.ar" -Wl,--start-group {sdk.libs} -Wl,--end-group
+
+## Create hex
+recipe.objcopy.hex.pattern="{runtime.tools.wmtools.path}/{compiler.wmtool.cmd}" "{runtime.tools.wmtools.path}" "{compiler.path}{compiler.obj.cmd}" "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.bin" "{secboot.img.path}"
+
+
+##################################################
+compiler.size.cmd=arm-none-eabi-size
+recipe.size.pattern="{compiler.path}{compiler.size.cmd}" -A "{build.path}/{build.project_name}.elf"
+recipe.size.regex=\.text\s+([0-9]+).*
+
+
+
+tools.wmtools.cmd=upload.bat
+tools.wmtools.cmd.windows=upload.bat
+tools.wmtools.path={runtime.tools.wmtools.path}
+tools.wmtools.upload.protocol=arduino
+tools.wmtools.upload.params.verbose=-vv
+tools.wmtools.upload.params.quiet=
+tools.wmtools.upload.pattern="{path}/{cmd}" "{path}" "{serial.port}" "{upload.speed}" "{build.path}/{build.project_name}" "{upload.file}"
+##tools.wmtools.upload.pattern="{path}/{cmd}" "{path}" "{serial.port}" "{upload.speed}" "{build.path}/{build.project_name}" "{upload.file}"
