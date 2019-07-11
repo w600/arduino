@@ -3,8 +3,8 @@
 #ifdef WIO_W600
 int power_output_startup()
 {
-    pinMode(3, OUTPUT);
-    digitalWrite(3, HIGH);
+    pinMode(6, OUTPUT);
+    digitalWrite(6, HIGH);
 }
 #endif
 

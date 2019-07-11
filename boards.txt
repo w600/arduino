@@ -8,8 +8,9 @@ menu.BoardModel=Model
 menu.UploadSpeed=Upload Speed
 menu.demo=Demo
 menu.demo.console=Console Demo
+menu.Cloud=Cloud Library
+menu.BoardVersion=BoardVersion
 menu.UploadFiles=Upload Files
-
 
 ##############################################################
 generic.name=Generic W600 board
@@ -34,6 +35,18 @@ generic.menu.UploadSpeed.460800=460800
 generic.menu.UploadSpeed.460800.upload.speed=460800
 generic.menu.UploadSpeed.115200=115200
 generic.menu.UploadSpeed.115200.upload.speed=115200
+generic.menu.Cloud.none=none
+generic.menu.Cloud.none.build.cloud_include=
+generic.menu.Cloud.none.build.cloud_lib=
+generic.menu.Cloud.none.build.demo_lib=wmdemo.a
+generic.menu.Cloud.GizCloud=GizCloud
+generic.menu.Cloud.GizCloud.build.cloud_include=
+generic.menu.Cloud.GizCloud.build.cloud_lib=-lwmgagentcloud -lwmcJSON -lwmmqtt
+generic.menu.Cloud.GizCloud.build.demo_lib=
+generic.menu.BoardVersion.V20=V2.0
+generic.menu.BoardVersion.V20.board.version=-DWM_W600_ARDUINO_EVB_V_2_0
+generic.menu.BoardVersion.V10=V1.0
+generic.menu.BoardVersion.V10.board.version=-DWM_W600_ARDUINO_EVB_V_1_0
 
 ##############################################################
 tb_01.name=TB-01 board
@@ -58,13 +71,6 @@ tb_01.menu.UploadSpeed.460800=460800
 tb_01.menu.UploadSpeed.460800.upload.speed=460800
 tb_01.menu.UploadSpeed.115200=115200
 tb_01.menu.UploadSpeed.115200.upload.speed=115200
-
-
-
-
-
-
-
 
 ##############################################################
 wio-w600.name=WIO W600

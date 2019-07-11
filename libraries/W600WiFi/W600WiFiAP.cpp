@@ -28,7 +28,7 @@ extern "C" {
 #define enable 1
 #endif
 
-static unsigned int _local_ip = 0x0101A8C0;    // 192.168.1.1
+static unsigned int _local_ip = 0x012BA8C0;    // 192.168.43.1
 static char * _local_ip_str[20] = {0};
 static unsigned int _gateway = 0;
 static char * _gateway_str[20] = {0};
@@ -163,7 +163,8 @@ bool _start_softap(const char *ssid, const char *passphrase,
             memcpy(_passphrase, passphrase, strlen(passphrase));
 		_total_sta_num = 0;
         _start_os_timer_for_sta_mgmt();
-        WiFiMode = WIFI_AP;
+        if (WIFI_AP_STA != WiFiMode)
+        	WiFiMode = WIFI_AP;
         return true;
     }
     printf("[%s %d] <AP> create soft AP error!\n",
@@ -175,14 +176,16 @@ bool _start_softap(const char *ssid, const char *passphrase,
 bool _cfg_softAP(const char *ssid, const char *passphrase,
         int channel, int ssid_hidden, int max_connection)
 {
-    _set_work_mode_softap();
-    
+	if (WIFI_AP_STA != WiFiMode)
+    	_set_work_mode_softap();
+
     tls_wifi_set_oneshot_flag(disable);
     
     _set_broadcast_flag();
-    
-    tls_wifi_disconnect();
-    
+
+    if (WIFI_AP_STA != WiFiMode)
+    	tls_wifi_disconnect();
+
     return _start_softap(ssid, passphrase,
                 channel, ssid_hidden, max_connection);
 }
@@ -296,9 +299,12 @@ bool WiFiAPClass::softAPdisconnect(bool wifioff)
 
 	_stop_os_timer_for_sta_mgmt();
 	tls_wifi_softap_destroy();
-	tls_param_set(TLS_PARAM_ID_WPROTOCOL, (void*) &wireless_protocol, TRUE);
-    WiFiMode = WIFI_OFF;
-	
+	if (WIFI_AP_STA != WiFiMode)
+	{
+		tls_param_set(TLS_PARAM_ID_WPROTOCOL, (void*) &wireless_protocol, TRUE);
+		WiFiMode = WIFI_OFF;
+	}
+
     return true;
 }
 
@@ -316,8 +322,11 @@ bool WiFiAPClass::softAPdestroy()
 	
 	_stop_os_timer_for_sta_mgmt();
 	tls_wifi_softap_destroy();
-	tls_param_set(TLS_PARAM_ID_WPROTOCOL, (void*) &wireless_protocol, TRUE);
-    WiFiMode = WIFI_OFF;
+	if (WIFI_AP_STA != WiFiMode)
+	{
+		tls_param_set(TLS_PARAM_ID_WPROTOCOL, (void*) &wireless_protocol, TRUE);
+		WiFiMode = WIFI_OFF;
+	}
 	
     return true;
 }

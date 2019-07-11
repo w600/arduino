@@ -10,7 +10,7 @@ uint32_t check_ulPin(uint32_t ulPin)
 {
     uint32_t w60x_pin = DIGITAL_PIN_MAX;
 
-    if (0 <= ulPin && ulPin <= 17)
+    if (0 <= ulPin && ulPin <= 32)
     {
         w60x_pin = get_w60x_pin_via_digitalPin(ulPin);
     } else if ( WM_IO_PB_06 == ulPin
@@ -43,7 +43,13 @@ void pinMode(uint32_t ulPin, uint32_t ulMode)
             	: WM_GPIO_DIR_OUTPUT, 
             	WM_GPIO_ATTR_PULLHIGH);
     } else {
-        printf("{%d} M NOT Support the function in W600_EV BOARD_V1.0\n", w60x_pin);
+        #if defined(WM_W600_ARDUINO_EVB_V_1_0)
+            printf("{%d} M NOT Support the function in W600_EV BOARD_V1.0\n", w60x_pin);
+        #elif defined(WM_W600_ARDUINO_EVB_V_2_0)
+            printf("{%d} M NOT Support the function in W600_EVB_V2.0\n", w60x_pin);
+        #else
+            printf("{%d} M NOT Support the function in the Arduino DevBoard\n", w60x_pin);
+        #endif
     }
 }
 
@@ -54,7 +60,13 @@ void digitalWrite(uint32_t ulPin, uint32_t ulVal)
     {
 	    tls_gpio_write(w60x_pin, ulVal);
     } else {
-        printf("{%d} W NOT Support the function in W600_EV BOARD_V1.0\n", w60x_pin);
+        #if defined(WM_W600_ARDUINO_EVB_V_1_0)
+            printf("{%d} W NOT Support the function in W600_EV BOARD_V1.0\n", w60x_pin);
+        #elif defined(WM_W600_ARDUINO_EVB_V_2_0)
+            printf("{%d} W NOT Support the function in W600_EVB_V2.0\n", w60x_pin);
+        #else
+            printf("{%d} W NOT Support the function in the Arduino DevBoard\n", w60x_pin);
+        #endif
     }
 }
 
@@ -65,7 +77,13 @@ int digitalRead(uint32_t ulPin)
     {
 	    return tls_gpio_read(w60x_pin);
     } else {
-        printf("{%d} R NOT Support the function in W600_EV BOARD_V1.0\n", w60x_pin);
+        #if defined(WM_W600_ARDUINO_EVB_V_1_0)
+            printf("{%d} R NOT Support the function in W600_EV BOARD_V1.0\n", w60x_pin);
+        #elif defined(WM_W600_ARDUINO_EVB_V_2_0)
+            printf("{%d} R NOT Support the function in W600_EVB_V2.0\n", w60x_pin);
+        #else
+            printf("{%d} R NOT Support the function in the Arduino DevBoard\n", w60x_pin);
+        #endif
         return -1;
     }
 }

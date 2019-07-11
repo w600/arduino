@@ -84,7 +84,9 @@ int WiFiSTAClass::begin(const char *ssid, const char * passphrase,
         return -2;
     
     tls_wifi_disconnect();
-    tls_wifi_softap_destroy();
+
+	if (WIFI_AP_STA != WiFiMode)
+    	tls_wifi_softap_destroy();
 
     memset(_passphrase, 0, sizeof(_passphrase));
     if (NULL != passphrase)
@@ -103,7 +105,8 @@ int WiFiSTAClass::begin(const char *ssid, const char * passphrase,
 	if (WM_WIFI_ERR_SSID == ret)
 		wstatus = WL_NO_SSID_AVAIL;
     //printf("[%s %s %d] ret: %d\n", __FILE__, __func__, __LINE__, ret);
-    WiFiMode = WIFI_STA;
+	if (WIFI_AP_STA != WiFiMode)
+    	WiFiMode = WIFI_STA;
     return status();
 }
 
@@ -174,7 +177,8 @@ bool WiFiSTAClass::reconnect()
 bool WiFiSTAClass::disconnect(bool wifioff)
 {
     tls_wifi_disconnect();
-    WiFiMode = WIFI_OFF;
+	if (WIFI_AP_STA != WiFiMode)
+	    WiFiMode = WIFI_OFF;
     return true;
 }
 

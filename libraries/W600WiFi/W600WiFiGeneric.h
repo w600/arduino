@@ -20,7 +20,18 @@ class WiFiGenericClass
 public:
     //int32_t channel(void);
     //bool setSleepMode();
-    
+
+    /**
+     * @brief         This function is used to Set the WiFi's work mode.\
+     *
+     * @param[in]     enum of WiFiMode: WIFI_OFF, WIFI_STA, WIFI_AP or WIFI_AP_STA
+     *
+     * @return        true - success, false - failure.
+     * 
+     * @note 
+     */
+    bool mode(WiFiMode_t mode);
+
     /**
      * @brief         This function is used to Get the WiFi's work mode.\
      * @return      enum of WiFiMode: WIFI_OFF, WIFI_STA or WIFI_AP

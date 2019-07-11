@@ -68,9 +68,9 @@ extern "C" {
 #define GPIOPB18    PIN_B18
 
 
-#define USER_BTN    PIN_B7
-#define USER        PIN_B7
-#define SW2         PIN_B7
+#define USER_BTN    PIN_A1
+#define USER        PIN_A1
+#define SW2         PIN_A1
 
 
 #define PWM1        PIN_B18

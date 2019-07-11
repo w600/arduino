@@ -16,8 +16,7 @@ compiler.inc.path={compiler.sdk.path}/include
 secboot.img.path={runtime.platform.path}/bootloaders/secboot/secboot.img
 runtime.tools.wmtools.path={runtime.hardware.path}/wmtools/
 
-
-compiler.com.flags=-mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ggdb3 -D{build.board}
+compiler.com.flags=-mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ggdb3 -D{build.board} {board.version}
 compiler.c.flags={compiler.com.flags} -I. -std=gnu11
 compiler.cpp.flags={compiler.com.flags} -I. -I./cores/w600 -std=gnu++14 -fabi-version=0 
 compiler.S.flags={compiler.com.flags} -x assembler-with-cpp
@@ -34,7 +33,7 @@ compiler.obj.cmd=arm-none-eabi-objcopy
 compiler.wmtool.cmd=wmtool.bat
 compiler.wmtool.cmd.windows=wmtool.bat
 
-sdk.libs = -L{compiler.lib.path} -Wl,--whole-archive {compiler.lib.path}oneshot.a {compiler.lib.path}wmcmd.a {compiler.lib.path}wmcommon.a {compiler.lib.path}wmdhcpserver.a {compiler.lib.path}wmdnsserver.a {compiler.lib.path}wmdriver.a {compiler.lib.path}wmhttpclient.a {compiler.lib.path}wmlwip.a {compiler.lib.path}wmmain.a {compiler.lib.path}wmota.a {compiler.lib.path}wmntp.a {compiler.lib.path}wmping.a {compiler.lib.path}wmrtos.a {compiler.lib.path}wmssl.a {compiler.lib.path}wmweb.a {compiler.lib.path}wmwebsocket.a {compiler.lib.path}wmsslserver.a {compiler.lib.path}libairkiss_log.a {compiler.lib.path}wlan.a {compiler.lib.path}usermain.a -Wl,-no-whole-archive
+sdk.libs = -L{compiler.lib.path} -Wl,--whole-archive {compiler.lib.path}oneshot.a {compiler.lib.path}wmcmd.a {compiler.lib.path}wmcommon.a {compiler.lib.path}wmdhcpserver.a {compiler.lib.path}wmdnsserver.a {compiler.lib.path}wmdriver.a {compiler.lib.path}wmhttpclient.a {compiler.lib.path}wmlwip.a {compiler.lib.path}wmmain.a {compiler.lib.path}wmota.a {compiler.lib.path}wmntp.a {compiler.lib.path}wmping.a {compiler.lib.path}wmrtos.a {compiler.lib.path}wmssl.a {compiler.lib.path}wmweb.a {compiler.lib.path}wmwebsocket.a {compiler.lib.path}wmsslserver.a {compiler.lib.path}libairkiss_log.a {compiler.lib.path}wlan.a {compiler.lib.path}usermain.a {build.cloud_lib} -Wl,-no-whole-archive
 
 ## Build the app.ld linker file
 #recipe.hooks.linking.prelink.l.pattern=

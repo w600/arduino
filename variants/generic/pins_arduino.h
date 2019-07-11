@@ -140,50 +140,76 @@
 #define PWM4    PB_15
 #define PWM5    PB_14
 
-static int get_w60x_pin_via_digitalPin(uint32_t ulPin)
+#if defined(WM_W600_ARDUINO_EVB_V_1_0)
+static int get_w60x_pin_via_digitalPin_v_1_0(uint32_t ulPin)
 {
     uint32_t w60x_pin = DIGITAL_PIN_MAX;
     switch(ulPin)
     {
-        case 0:
-            return PIN_B6;                      /* 22 */
-        case 1:
-            return PIN_B7;                      /* 23 */
-        case 2:                     /* NC */
-            break;
-        case 3:
-            return PIN_A1;                      /* 1 */
-        case 4:
-            return PIN_A4;                      /* 4 */
-        case 5:
-            return PIN_A5;                      /* 5 */
-        case 6:                     /* NC */
-            break;
-        case 7:                     /* NC */
-            break;
-        case 8:
-            break;
-        case 9:
-            break;
-        case 10:
-            return WM_IO_PB_15;     /* SPI_CS */    /* 31 */
-        case 11:
-            return WM_IO_PB_18;     /* SPI_DO */    /* 34 */
-        case 12:
-            return WM_IO_PB_17;     /* SPI_DI */    /* 33 */
-        case 13:
-            return WM_IO_PB_16;     /* SPI_CK */    /* 32 */
-        case 14:                    /* GND */
-            break;
-        case 15:                    /* NC */
-            break;
-        case 16:
-            return WM_IO_PB_14;     /* I2C_SDA */   /* 30 */
-        case 17:
-            return WM_IO_PB_13;     /* I2C_SCL */   /* 29 */
+        case 0: return PIN_B6;                      /* 22 */
+        case 1: return PIN_B7;                      /* 23 */
+        case 2: break;                    /* NC */
+        case 3: return PIN_A1;                      /* 1 */
+        case 4: return PIN_A4;                      /* 4 */
+        case 5: return PIN_A5;                      /* 5 */
+        case 6: break;                    /* NC */
+        case 7: break;                    /* NC */
+        case 8: break;
+        case 9: break;
+        case 10: return WM_IO_PB_15;     /* SPI_CS */    /* 31 */
+        case 11: return WM_IO_PB_18;     /* SPI_DO */    /* 34 */
+        case 12: return WM_IO_PB_17;     /* SPI_DI */    /* 33 */
+        case 13: return WM_IO_PB_16;     /* SPI_CK */    /* 32 */
+        case 14: break;                   /* GND */
+        case 15: break;                   /* NC */
+        case 16: return WM_IO_PB_14;     /* I2C_SDA */   /* 30 */
+        case 17: return WM_IO_PB_13;     /* I2C_SCL */   /* 29 */
+    }
+    return w60x_pin;
+}
+#endif
+#if defined(WM_W600_ARDUINO_EVB_V_2_0)
+static int get_w60x_pin_via_digitalPin_v_2_0(uint32_t ulPin)
+{
+    uint32_t w60x_pin = DIGITAL_PIN_MAX;
+    switch(ulPin)
+    {
+        case 0: return PIN_A5;
+        case 1: return PIN_A4;
+        case 2: return PIN_B12;
+        case 3: return PIN_B6;
+        case 4: return PIN_A1;
+        case 5: return PIN_B7;
+        case 6: return PIN_B11;
+        case 7: return PIN_B10;
+        case 8: return PIN_B9;
+        case 9: return PIN_B8;
+        case 10: return WM_IO_PB_15;
+        case 11: return WM_IO_PB_18;
+        case 12: return WM_IO_PB_17;
+        case 13: return WM_IO_PB_16;
+        case 14: break;
+        case 15: break;
+        case 16: return WM_IO_PB_14;
+        case 17: return WM_IO_PB_13;
     }
     return w60x_pin;
 }
 
+#endif
+
+#if defined(WM_W600_ARDUINO_EVB_V_1_0)
+    #ifndef get_w60x_pin_via_digitalPin
+        //#warning "Use WinnerMicro Arduino Development Board with V1.0"
+        #define get_w60x_pin_via_digitalPin get_w60x_pin_via_digitalPin_v_1_0
+    #endif
+#elif defined(WM_W600_ARDUINO_EVB_V_2_0)
+    #ifndef get_w60x_pin_via_digitalPin
+        //#warning "Use WinnerMicro Arduino Development Board with V2.0"
+        #define get_w60x_pin_via_digitalPin get_w60x_pin_via_digitalPin_v_2_0
+    #endif
+#else
+    #error  "Not Support the version on the WinnerMicro Arduino Development Board"
+#endif
 
 #endif

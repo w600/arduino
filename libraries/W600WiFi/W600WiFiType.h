@@ -9,7 +9,8 @@ typedef enum
 {
     WIFI_OFF = 0,
     WIFI_STA = 1,
-    WIFI_AP = 2
+    WIFI_AP = 2,
+    WIFI_AP_STA = 3
 } WiFiMode_t;
 
 #ifdef __cplusplus

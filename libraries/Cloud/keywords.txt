@@ -1,0 +1,10 @@
+#
+# Datatypes (KEYWORD1)
+#
+CloudClass	KEYWORD1
+myCloud	KEYWORD1
+
+#
+# Methods and functions (KEYWORD2)
+#
+CloudInit	KEYWORD2
