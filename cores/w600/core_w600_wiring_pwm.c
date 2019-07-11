@@ -63,6 +63,9 @@ extern void __analogWrite(uint8_t _pin, int val)
     switch (_pin)
     {
     case WM_IO_PB_18:
+#if defined(WM_W600_ARDUINO_EVB_V_2_0)
+    case 11:
+#endif
         if (val > 0)
         {
             wm_pwm1_config(WM_IO_PB_18);
@@ -105,6 +108,9 @@ extern void __analogWrite(uint8_t _pin, int val)
         }
         break;
     case WM_IO_PB_15:
+#if defined(WM_W600_ARDUINO_EVB_V_2_0)
+    case 10:
+#endif
         if (val > 0)
         {
             wm_pwm4_config(WM_IO_PB_15);
@@ -132,6 +138,36 @@ extern void __analogWrite(uint8_t _pin, int val)
             tls_gpio_write(WM_IO_PB_14, 0);
         }
         break;
+#if defined(WM_W600_ARDUINO_EVB_V_2_0)
+    case 9: // WM_IO_PB_8
+        if (val > 0)
+        {
+            wm_pwm5_config(WM_IO_PB_08);
+            tls_pwm_init(4, analogFreq, val, 0);
+            tls_pwm_start(4);
+        }
+        else
+        {
+            tls_pwm_stop(4);
+            tls_gpio_cfg(WM_IO_PB_08, WM_GPIO_DIR_OUTPUT, WM_GPIO_ATTR_PULLLOW);
+            tls_gpio_write(WM_IO_PB_08, 0);
+        }
+        break;
+    case 3: // WM_IO_PB_6
+        if (val > 0)
+        {
+            wm_pwm4_config(WM_IO_PB_06);
+            tls_pwm_init(3, analogFreq, val, 0);
+            tls_pwm_start(3);
+        }
+        else
+        {
+            tls_pwm_stop(3);
+            tls_gpio_cfg(WM_IO_PB_06, WM_GPIO_DIR_OUTPUT, WM_GPIO_ATTR_PULLLOW);
+            tls_gpio_write(WM_IO_PB_06, 0);
+        }
+        break;
+#endif
     default:
         break;
     }
