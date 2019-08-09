@@ -28,7 +28,7 @@ extern "C" {
 #define enable 1
 #endif
 
-static unsigned int _local_ip = 0x0101A8C0;    // 192.168.1.1
+static unsigned int _local_ip = 0x012BA8C0;    // 192.168.43.1
 static char * _local_ip_str[20] = {0};
 static unsigned int _gateway = 0;
 static char * _gateway_str[20] = {0};
@@ -38,7 +38,7 @@ static char _ssid[33] = {0};
 static char _passphrase[66] = {0};
 
 static tls_os_timer_t * _sta_monitor_timer = NULL;
-static u32 _total_sta_num = 0;
+static uint32_t _total_sta_num = 0;
 static unsigned char _sap_mac[64] = {0};
 
 extern WiFiMode_t WiFiMode;
@@ -46,7 +46,7 @@ extern WiFiMode_t WiFiMode;
 
 bool _set_work_mode_softap()
 {
-    u8 wi_protocol = 0;
+    uint8_t wi_protocol = 0;
     tls_param_get(TLS_PARAM_ID_WPROTOCOL, (void *)&wi_protocol, true);
     if (TLS_PARAM_IEEE80211_SOFTAP != wi_protocol)
     {
@@ -58,7 +58,7 @@ bool _set_work_mode_softap()
 
 bool _set_broadcast_flag()
 {
-    u8 ssid_set = 0;
+    uint8_t ssid_set = 0;
     tls_param_get(TLS_PARAM_ID_BRDSSID, (void *)&ssid_set, false);
     if (0 == ssid_set)
     {
@@ -70,8 +70,8 @@ bool _set_broadcast_flag()
 
 void _query_sta_info(void *ptmr, void *parg)
 {
-    unsigned char *stabuf = NULL;
-    unsigned int stanum = 0;
+    uint8_t *stabuf = NULL;
+    uint32_t stanum = 0;
 
     stabuf = (unsigned char *)tls_mem_alloc(1024);
     if (stabuf)
@@ -163,7 +163,8 @@ bool _start_softap(const char *ssid, const char *passphrase,
             memcpy(_passphrase, passphrase, strlen(passphrase));
 		_total_sta_num = 0;
         _start_os_timer_for_sta_mgmt();
-        WiFiMode = WIFI_AP;
+        if (WIFI_AP_STA != WiFiMode)
+        	WiFiMode = WIFI_AP;
         return true;
     }
     printf("[%s %d] <AP> create soft AP error!\n",
@@ -175,14 +176,16 @@ bool _start_softap(const char *ssid, const char *passphrase,
 bool _cfg_softAP(const char *ssid, const char *passphrase,
         int channel, int ssid_hidden, int max_connection)
 {
-    _set_work_mode_softap();
-    
+	if (WIFI_AP_STA != WiFiMode)
+    	_set_work_mode_softap();
+
     tls_wifi_set_oneshot_flag(disable);
     
     _set_broadcast_flag();
-    
-    tls_wifi_disconnect();
-    
+
+    if (WIFI_AP_STA != WiFiMode)
+    	tls_wifi_disconnect();
+
     return _start_softap(ssid, passphrase,
                 channel, ssid_hidden, max_connection);
 }
@@ -292,13 +295,16 @@ bool WiFiAPClass::softAPConfig(
  */ 
 bool WiFiAPClass::softAPdisconnect(bool wifioff)
 {
-	u8 wireless_protocol = IEEE80211_MODE_INFRA;
+	uint8_t wireless_protocol = IEEE80211_MODE_INFRA;
 
 	_stop_os_timer_for_sta_mgmt();
 	tls_wifi_softap_destroy();
-	tls_param_set(TLS_PARAM_ID_WPROTOCOL, (void*) &wireless_protocol, TRUE);
-    WiFiMode = WIFI_OFF;
-	
+	if (WIFI_AP_STA != WiFiMode)
+	{
+		tls_param_set(TLS_PARAM_ID_WPROTOCOL, (void*) &wireless_protocol, TRUE);
+		WiFiMode = WIFI_OFF;
+	}
+
     return true;
 }
 
@@ -312,12 +318,15 @@ bool WiFiAPClass::softAPdisconnect(bool wifioff)
  */ 
 bool WiFiAPClass::softAPdestroy()
 {
-	u8 wireless_protocol = IEEE80211_MODE_INFRA;	
+	uint8_t wireless_protocol = IEEE80211_MODE_INFRA;	
 	
 	_stop_os_timer_for_sta_mgmt();
 	tls_wifi_softap_destroy();
-	tls_param_set(TLS_PARAM_ID_WPROTOCOL, (void*) &wireless_protocol, TRUE);
-    WiFiMode = WIFI_OFF;
+	if (WIFI_AP_STA != WiFiMode)
+	{
+		tls_param_set(TLS_PARAM_ID_WPROTOCOL, (void*) &wireless_protocol, TRUE);
+		WiFiMode = WIFI_OFF;
+	}
 	
     return true;
 }
@@ -332,8 +341,8 @@ bool WiFiAPClass::softAPdestroy()
  */ 
 uint8_t WiFiAPClass::softAPgetStationNum()
 {
-    unsigned char *stabuf = NULL;
-    unsigned int stanum = 0;
+    uint8_t *stabuf = NULL;
+    uint32_t stanum = 0;
     stabuf = (unsigned char *)tls_mem_alloc(1024);
     if (stabuf)
     {
@@ -359,7 +368,7 @@ char * WiFiAPClass::softAPIP()
     return (char *)_local_ip_str;
 }
 
-extern "C" u8 *hostapd_get_mac(void);
+extern "C" uint8_t *hostapd_get_mac(void);
 /**
  * @brief         This function is used to get AP's MAC address.
  * @param[in] mac Specify the mac buffer.
@@ -370,7 +379,7 @@ extern "C" u8 *hostapd_get_mac(void);
  */ 
 uint8_t * WiFiAPClass::softAPmacAddress(uint8_t *mac)
 {
-	u8 *apmac = NULL;
+	uint8_t *apmac = NULL;
 	
 	apmac = hostapd_get_mac();
 	memcpy(mac, apmac, 6);

@@ -141,11 +141,11 @@ typedef union {
 #endif /* USE_AES */
 
 #if 0
-void * aes_encrypt_init(const u8 *key, size_t len);
-void aes_encrypt(void *ctx, const u8 *plain, u8 *crypt);
+void * aes_encrypt_init(const uint8_t *key, size_t len);
+void aes_encrypt(void *ctx, const uint8_t *plain, uint8_t *crypt);
 void aes_encrypt_deinit(void *ctx);
-void * aes_decrypt_init(const u8 *key, size_t len);
-void aes_decrypt(void *ctx, const u8 *crypt, u8 *plain);
+void * aes_decrypt_init(const uint8_t *key, size_t len);
+void aes_decrypt(void *ctx, const uint8_t *crypt, uint8_t *plain);
 void aes_decrypt_deinit(void *ctx);
 #endif
 
@@ -176,9 +176,9 @@ PSPUBLIC void psAesDecryptBlock(const unsigned char *ct, unsigned char *pt,
 
 
 
-int  aes_128_cbc_encrypt(const u8 *key, const u8 *iv, u8 *data,
+int  aes_128_cbc_encrypt(const uint8_t *key, const uint8_t *iv, uint8_t *data,
 				     size_t data_len);
-int  aes_128_cbc_decrypt(const u8 *key, const u8 *iv, u8 *data,
+int  aes_128_cbc_decrypt(const uint8_t *key, const uint8_t *iv, uint8_t *data,
 				     size_t data_len);
 #endif
 

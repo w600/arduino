@@ -369,7 +369,7 @@ void             tcp_poll    (struct tcp_pcb *pcb, tcp_poll_fn poll, u8_t interv
 #define          tcp_mss(pcb)             ((pcb)->mss)
 #endif /* LWIP_TCP_TIMESTAMPS */
 #if SNDBUF_SHARE
-extern s32 sndbuf_len;
+extern int32_t sndbuf_len;
 #define          tcp_sndbuf(pcb)          (TCPWND16(sndbuf_len))
 #else
 #define          tcp_sndbuf(pcb)          (TCPWND16((pcb)->snd_buf))

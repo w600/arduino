@@ -23,7 +23,7 @@
 
 /**   DEBUG USE MAC FILTER START   */
 #define CONFIG_ONESHOT_MAC_FILTER               0
-extern int tls_filter_module_srcmac(u8 *mac);
+extern int tls_filter_module_srcmac(uint8_t *mac);
 
 
 /** after onshot configuration, add random time to connect Wi-Fi */
@@ -101,7 +101,7 @@ typedef enum{
  *
  * @note           None
  */
-u8 tls_wifi_dataframe_recv(struct ieee80211_hdr *hdr, u32 data_len);
+uint8_t tls_wifi_dataframe_recv(struct ieee80211_hdr *hdr, uint32_t data_len);
 
 #if TLS_CONFIG_AIRKISS_MODE_ONESHOT
 /**
@@ -125,7 +125,7 @@ void oneshot_airkiss_send_reply(void);
  *
  * @note           None
  */
-void tls_airkiss_recv(u8 *data, u16 data_len);
+void tls_airkiss_recv(uint8_t *data, uint16_t data_len);
 /**
  * @brief          This function is used to start airkiss
  *
@@ -204,7 +204,7 @@ void tls_oneshot_switch_channel_tim_temp_stop(void);
  *
  * @note           None
  */
-int tls_oneshot_is_ssid_bssid_match(u8 *ssid, u8 ssid_len, u8 *bssid);
+int tls_oneshot_is_ssid_bssid_match(uint8_t *ssid, uint8_t ssid_len, uint8_t *bssid);
 
 /**
  * @brief          Find channel according to ssid
@@ -217,12 +217,12 @@ int tls_oneshot_is_ssid_bssid_match(u8 *ssid, u8 ssid_len, u8 *bssid);
  *
  * @note           None
  */
-void tls_oneshot_find_chlist(u8 *ssid, u8 ssid_len, u16 *chlist);
+void tls_oneshot_find_chlist(uint8_t *ssid, uint8_t ssid_len, uint16_t *chlist);
 
 /**
  * @}
  */
-void wm_oneshot_netif_status_event(u8 status );
+void wm_oneshot_netif_status_event(uint8_t status );
 
 /**
  * @brief		   This function is used to set oneshot config mode.
@@ -236,7 +236,7 @@ void wm_oneshot_netif_status_event(u8 status );
  *
  * @note		        None
  */
-void tls_wifi_set_oneshot_config_mode(u8 flag);
+void tls_wifi_set_oneshot_config_mode(uint8_t flag);
 
 /**
  * @brief		   This function is used to get oneshot config mode.
@@ -251,7 +251,7 @@ void tls_wifi_set_oneshot_config_mode(u8 flag);
  *
  * @note		   None
  */
-u8 tls_wifi_get_oneshot_config_mode(void);
+uint8_t tls_wifi_get_oneshot_config_mode(void);
 
 #if TLS_CONFIG_WEB_SERVER_MODE
 /**

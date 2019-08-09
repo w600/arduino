@@ -70,7 +70,7 @@ typedef struct tls_irq_handler
     void (*handler) (void *);
     void *data;
 //  const char  *name;
-    u32 counter;
+    uint32_t counter;
 } tls_irq_handler_t;
 
 /**
@@ -115,7 +115,7 @@ void tls_irq_init(void);
  *
  * @note           None
  */
-void tls_irq_register_handler(u8 vec_no, intr_handler_func handler, void *data);
+void tls_irq_register_handler(uint8_t vec_no, intr_handler_func handler, void *data);
 
 
 /**
@@ -127,7 +127,7 @@ void tls_irq_register_handler(u8 vec_no, intr_handler_func handler, void *data);
  *
  * @note           None
  */
-void tls_irq_enable(u8 vec_no);
+void tls_irq_enable(uint8_t vec_no);
 
 /**
  * @brief          This function is used to disable interrupt.
@@ -138,7 +138,7 @@ void tls_irq_enable(u8 vec_no);
  *
  * @note           None
  */
-void tls_irq_disable(u8 vec_no);
+void tls_irq_disable(uint8_t vec_no);
 
 
 /**
@@ -150,7 +150,7 @@ void tls_irq_disable(u8 vec_no);
  *
  * @note           None
  */
-u8 tls_get_isr_count(void);
+uint8_t tls_get_isr_count(void);
 
 /**
  * @}

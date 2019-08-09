@@ -342,7 +342,7 @@ void WiFiScanClass::_scanDone()
     if (!_scanResult)
         return ;
 
-    err = tls_wifi_get_scan_rslt((u8*)_scanResult, buf_len);
+    err = tls_wifi_get_scan_rslt((uint8_t*)_scanResult, buf_len);
     if (err)
     {
         tls_mem_free(_scanResult);

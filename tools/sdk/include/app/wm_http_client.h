@@ -147,9 +147,9 @@ typedef UINT32          HTTP_CLIENT_SESSION_FLAGS;
 
 /* HTTP Type Definitions */
 /** http seesion handle */
-typedef u32 tls_http_session_handle_t;
+typedef uint32_t tls_http_session_handle_t;
 /** http seesion flags */
-typedef u32 tls_http_session_flags_t;
+typedef uint32_t tls_http_session_flags_t;
 
 /** HTTP Supported authentication methods */
 typedef enum _HTTP_AUTH_SCHEMA

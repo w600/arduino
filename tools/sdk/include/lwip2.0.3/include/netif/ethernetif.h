@@ -53,6 +53,6 @@
 
 err_t ethernetif_init(struct netif *netif);
 
-int ethernetif_input(const u8 *bssid, u8 *buf, u32 buf_len);
+int ethernetif_input(const uint8_t *bssid, uint8_t *buf, uint32_t buf_len);
 
 #endif /* ETHERNETIF_H_INCLUDED */

@@ -29,7 +29,7 @@ enum tls_timer_unit{
 /** timer configuration */
 struct tls_timer_cfg {
     enum tls_timer_unit unit;           /**< timer accuracy */
-    u32  timeout;                       /**< timeout period */
+    uint32_t  timeout;                       /**< timeout period */
     bool is_repeat;                     /**< cycle timer */
     tls_timer_irq_callback callback;    /**< timeout callback function */
     void *arg;                          /**< parameter fot the timeout callback function */
@@ -69,7 +69,7 @@ struct tls_timer_cfg {
  * so do not operate the critical data in the callback fuuction.
  * Sending messages to other tasks to handle is recommended.
  */
-u8 tls_timer_create(struct tls_timer_cfg *cfg);
+uint8_t tls_timer_create(struct tls_timer_cfg *cfg);
 
 /**
  * @brief          This function is used to start a timer
@@ -80,7 +80,7 @@ u8 tls_timer_create(struct tls_timer_cfg *cfg);
  *
  * @note           None
  */
-void tls_timer_start(u8 timer_id);
+void tls_timer_start(uint8_t timer_id);
 
 /**
  * @brief          This function is used to stop a timer
@@ -91,7 +91,7 @@ void tls_timer_start(u8 timer_id);
  *
  * @note           None
  */
-void tls_timer_stop(u8 timer_id);
+void tls_timer_stop(uint8_t timer_id);
 
 /**
  * @brief           This function is used to change a timer wait time
@@ -104,7 +104,7 @@ void tls_timer_stop(u8 timer_id);
  *
  * @note            If the timer does not start, this function will start the timer
  */
-void tls_timer_change(u8 timer_id, u32 newtime);
+void tls_timer_change(uint8_t timer_id, uint32_t newtime);
 
 /**
  * @brief          This function is used to delete a timer
@@ -115,7 +115,7 @@ void tls_timer_change(u8 timer_id, u32 newtime);
  *
  * @note           None
  */
-void tls_timer_destroy(u8 timer_id);
+void tls_timer_destroy(uint8_t timer_id);
 
 /**
  * @brief          This function is create a delay to elapse

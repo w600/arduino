@@ -50,7 +50,7 @@ void tls_watchdog_clr(void);
  *
  * @note           None
  */
-void tls_watchdog_init(u32 usec);
+void tls_watchdog_init(uint32_t usec);
 
 /**
  * @brief          This function is used to reset the system.

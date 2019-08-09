@@ -64,7 +64,7 @@ void tls_gpio_cfg(enum tls_io_name gpio_pin, enum tls_gpio_dir dir, enum tls_gpi
  *
  * @note           None
  */
-u8 tls_gpio_read(enum tls_io_name gpio_pin);
+uint8_t tls_gpio_read(enum tls_io_name gpio_pin);
 
 
 /**
@@ -79,7 +79,7 @@ u8 tls_gpio_read(enum tls_io_name gpio_pin);
  *
  * @note           None
  */
-void tls_gpio_write(enum tls_io_name gpio_pin, u8 value);
+void tls_gpio_write(enum tls_io_name gpio_pin, uint8_t value);
 
 
 /**
@@ -117,7 +117,7 @@ void tls_gpio_irq_disable(enum tls_io_name gpio_pin);
  *
  * @note           None
  */
-u8 tls_get_gpio_irq_status(enum tls_io_name gpio_pin);
+uint8_t tls_get_gpio_irq_status(enum tls_io_name gpio_pin);
 
 
 /**

@@ -42,7 +42,7 @@
  * total size : 0x61800 - 0x67FFFF   (26KB)
  ******************************************************************************/
 /* HSPI txbuf zone */
-#define HSPI_TXBUF_BASE_ADDR        ((u32)(SLAVE_HSPI_SDIO_ADDR))
+#define HSPI_TXBUF_BASE_ADDR        ((uint32_t)(SLAVE_HSPI_SDIO_ADDR))
 
 #if HSPI_TX_MEM_MALLOC
 #define HSPI_TXBUF_TOTAL_SIZE        0
@@ -50,13 +50,13 @@
 #define HSPI_TXBUF_TOTAL_SIZE        (HSPI_TXBUF_SIZE * HSPI_TXBUF_NUM)
 #endif
 /** HSPI tx desc zone */
-#define HSPI_TX_DESC_BASE_ADDR      ((u32)(HSPI_TXBUF_BASE_ADDR + HSPI_TXBUF_TOTAL_SIZE))
+#define HSPI_TX_DESC_BASE_ADDR      ((uint32_t)(HSPI_TXBUF_BASE_ADDR + HSPI_TXBUF_TOTAL_SIZE))
 #define HSPI_TX_DESC_TOTAL_SIZE     (HSPI_TX_DESC_SIZE * HSPI_TX_DESC_NUM)	//28*3=84
 /** HSPI rxbuf zone */
-#define HSPI_RXBUF_BASE_ADDR        ((u32)(HSPI_TX_DESC_BASE_ADDR + HSPI_TX_DESC_TOTAL_SIZE))
+#define HSPI_RXBUF_BASE_ADDR        ((uint32_t)(HSPI_TX_DESC_BASE_ADDR + HSPI_TX_DESC_TOTAL_SIZE))
 #define HSPI_RXBUF_TOTAL_SIZE       (HSPI_RXBUF_NUM * HSPI_RXBUF_SIZE)	//4500
 /** HSPI rx desc zone */
-#define HSPI_RX_DESC_BASE_ADDR      ((u32)(HSPI_RXBUF_BASE_ADDR + HSPI_RXBUF_TOTAL_SIZE))
+#define HSPI_RX_DESC_BASE_ADDR      ((uint32_t)(HSPI_RXBUF_BASE_ADDR + HSPI_RXBUF_TOTAL_SIZE))
 #define HSPI_RX_DESC_TOTAL_SIZE     (HSPI_RX_DESC_SIZE * HSPI_RX_DESC_NUM)	//36
 
 #if 0
@@ -111,26 +111,26 @@
 
 /** Definition of send data  descriptor structure */
 struct tls_hspi_tx_desc {
-    volatile u32 valid_ctrl;
-    u32 buf_info;
-    u32 buf_addr[3];
-    u32 next_desc_addr;
+    volatile uint32_t valid_ctrl;
+    uint32_t buf_info;
+    uint32_t buf_addr[3];
+    uint32_t next_desc_addr;
 #if HSPI_TX_MEM_MALLOC
-    u32 txbuf_addr;    /**< txbuf addr, pbuf and buf_addr[0] are different */
+    uint32_t txbuf_addr;    /**< txbuf addr, pbuf and buf_addr[0] are different */
 #endif
 };
 
 /** Definition of receive data  descriptor structure */
 struct tls_hspi_rx_desc {
-    u32 valid_ctrl;
-    u32 buf_addr;
-    u32 next_desc_addr;
+    uint32_t valid_ctrl;
+    uint32_t buf_addr;
+    uint32_t next_desc_addr;
 };
 
 
 /** struct tls_slave_hspi */
 struct tls_slave_hspi {
-    u8 ifusermode;
+    uint8_t ifusermode;
 
     s16 (*rx_cmd_callback)(char *buf);
 
@@ -143,7 +143,7 @@ struct tls_slave_hspi {
     struct tls_hspi_rx_desc   *curr_rx_desc;    /**< Downlink data management */
 
 #if HSPI_TX_MEM_MALLOC
-	u8 txdoneflag;		                        /**< tx done falg*/
+	uint8_t txdoneflag;		                        /**< tx done falg*/
 #endif
 };
 
@@ -190,7 +190,7 @@ int tls_slave_spi_init(void);
  *		        If the user wants to use the SPI interface as other use, need to enable the user mode.
  *		        This function must be called before the register function.
  */
-void tls_set_hspi_user_mode(u8 ifenable);
+void tls_set_hspi_user_mode(uint8_t ifenable);
 
 
 /**

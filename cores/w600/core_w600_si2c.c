@@ -49,7 +49,8 @@ void twi_stop(void){
   */
 static bool twi_write_stop(void){
     
-  tls_i2c_stop();
+  twi_stop();
+  tls_os_time_delay(1);
   return true;
 }
 

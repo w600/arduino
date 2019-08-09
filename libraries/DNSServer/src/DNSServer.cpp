@@ -67,7 +67,7 @@ bool DNSServer::start(const uint16_t &port,
         printf("[%s %d] <DNSServer> SoftAP is down\n",
             __func__, __LINE__); 
     } else {
-        if (WM_SUCCESS == tls_dnss_start((u8*)_domainName))
+        if (WM_SUCCESS == tls_dnss_start((uint8_t*)_domainName))
         {
             return true;
         } else {

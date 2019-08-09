@@ -10,7 +10,7 @@ uint32_t check_ulPin(uint32_t ulPin)
 {
     uint32_t w60x_pin = DIGITAL_PIN_MAX;
 
-    if (0 <= ulPin && ulPin <= 17)
+    if (0 <= ulPin && ulPin <= 32)
     {
         w60x_pin = get_w60x_pin_via_digitalPin(ulPin);
     } else if ( WM_IO_PB_06 == ulPin

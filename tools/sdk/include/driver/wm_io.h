@@ -177,7 +177,7 @@ enum tls_io_name {
  *
  * @note           	None
  */
-void tls_io_cfg_set(enum tls_io_name name, u8 option);
+void tls_io_cfg_set(enum tls_io_name name, uint8_t option);
 
 
 /**

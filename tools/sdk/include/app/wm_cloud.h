@@ -33,9 +33,9 @@ typedef struct _SOCKET{
 										开发者初始化时不必填写 */
 	struct sockaddr * sock_addr;/**< socket地址，udp时，表示本地地址，
 										tcp时，表示对端地址 */
-	u8 sock_type; 				/**< socket类型定义，目前仅低三个bit有效，
+	uint8_t sock_type; 				/**< socket类型定义，目前仅低三个bit有效，
 										具体查看SOCKET_xxx定义 */
-	u8 connected;  				/**< socket连接标志，仅tcp client有效，
+	uint8_t connected;  				/**< socket连接标志，仅tcp client有效，
 										为1表示连接成功 */
 	void * user_param;			/**< 开发者自定义信息，用来区分是否为开发者
 										自定义socket */
@@ -48,7 +48,7 @@ typedef struct _SOCKET{
 typedef struct CReadData{
 	SOCKET *socket;  			/**< socket相关信息 */
 	char * read_data;			/**< 接收的数据 */
-	u32     data_len;  			/**< 接收数据长度 */
+	uint32_t     data_len;  			/**< 接收数据长度 */
 	struct sockaddr_in sin_recv;/**< 对端socket地址，仅udp时有效 */
 }CloudReadData;
 
@@ -236,20 +236,20 @@ typedef struct _Cloud_Init_arg{
 /** ABLECLOUD云端通信数据结构 */
 typedef struct _CloudData
 {
-    u8 msg_id;    /**< 消息ID，响应消息同云端下发的消息邋ID，主动上传任意 */
-    u8 msg_code;  /**< 消息Code，响应消息同云端下发的消息code，
+    uint8_t msg_id;    /**< 消息ID，响应消息同云端下发的消息邋ID，主动上传任意 */
+    uint8_t msg_code;  /**< 消息Code，响应消息同云端下发的消息code，
     				   主动上传需要大于200 */
-    u8 *data;    /**< 数据 */
+    uint8_t *data;    /**< 数据 */
     uint32 datalen;    /**< 数据长度 */
 } CloudData,*PCloudData, CloudCallbackData, *PCloudCallbackData;
 
 /** 初始化云参数定义 */
 typedef struct _Cloud_Init_arg
 {
-	u32 major_domain;    	/**< 主域ID */
-	u16 sub_domain;    		/**< 子域ID */
-	u8 private_key[112];    /**< 产品私钥 */
-	u32 product_version;    /**< 产品的版本信息，用于OTA */
+	uint32_t major_domain;    	/**< 主域ID */
+	uint16_t sub_domain;    		/**< 子域ID */
+	uint8_t private_key[112];    /**< 产品私钥 */
+	uint32_t product_version;    /**< 产品的版本信息，用于OTA */
 } CloudInitArg, *PCloudInitArg;
 #endif
 #if TLS_CONFIG_CLOUD_ELIAN
@@ -274,7 +274,7 @@ typedef struct _CloudData
 {
     const uint8_t* data;    /**< 数据 */
     size_t datalen;    		/**< 数据长度 */
-    u8 datatype;
+    uint8_t datatype;
 } CloudData,*PCloudData, CloudCallbackData, *PCloudCallbackData;
 
 /** 初始化云参数定义 */
@@ -287,8 +287,8 @@ typedef struct _Cloud_Init_arg
 
 /** 设备在云端注册后得到的关于设备的信息 */
 typedef struct _Cloud_Dev_info{
-	u8* device_id;    	 /**< 设备ID */
-	u8* access_token;    /**< 设备token，和设备ID一起构成设备访问云的凭证 */
+	uint8_t* device_id;    	 /**< 设备ID */
+	uint8_t* access_token;    /**< 设备token，和设备ID一起构成设备访问云的凭证 */
 }CloudDeviceInfo, *PCloudDeviceInfo;
 
 
@@ -363,7 +363,7 @@ int tls_cloud_init(PCloudInitArg arg);
  *
  * @note           None
  */
-void tls_cloud_finish(u8 block);
+void tls_cloud_finish(uint8_t block);
 
 /**
  * @brief          设备向云上传数据，包括对控制命令的响应，上传状态以及设

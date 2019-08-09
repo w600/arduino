@@ -92,9 +92,9 @@
  */
 struct tls_uart_baud_rate
 {
-    u32 baud_rate;
-    u16 ubdiv;
-    u16 ubdiv_frac;
+    uint32_t baud_rate;
+    uint16_t ubdiv;
+    uint16_t ubdiv_frac;
 };
 
 
@@ -184,17 +184,17 @@ typedef enum TLS_UART_MODE
  */
 struct tls_uart_icount
 {
-    u32 cts;
-    u32 dsr;
-    u32 rng;
-    u32 dcd;
-    u32 rx;
-    u32 tx;
-    u32 frame;
-    u32 overrun;
-    u32 parity;
-    u32 brk;
-    u32 buf_overrun;
+    uint32_t cts;
+    uint32_t dsr;
+    uint32_t rng;
+    uint32_t dcd;
+    uint32_t rx;
+    uint32_t tx;
+    uint32_t frame;
+    uint32_t overrun;
+    uint32_t parity;
+    uint32_t brk;
+    uint32_t buf_overrun;
 };
 
 
@@ -204,7 +204,7 @@ struct tls_uart_icount
  */
 typedef struct tls_uart_options
 {
-    u32 baudrate;    /**< Set baud rate of the UART */
+    uint32_t baudrate;    /**< Set baud rate of the UART */
 
     TLS_UART_CHSIZE_T charlength;   /**< Number of bits to transmit as a character (5 to 8). */
 
@@ -222,9 +222,9 @@ typedef struct tls_uart_options
  */
 typedef struct tls_uart_circ_buf
 {
-    u8 *buf;
-    u32 head;
-    u32 tail;
+    uint8_t *buf;
+    uint32_t head;
+    uint32_t tail;
 } tls_uart_circ_buf_t;
 
 /**
@@ -232,19 +232,19 @@ typedef struct tls_uart_circ_buf
  */
 typedef struct TLS_UART_REGS
 {
-    u32 UR_LC;                       /**< line control register */
-    u32 UR_FC;                       /**<  flow control register */
-    u32 UR_DMAC;                  /**< dma control register */
-    u32 UR_FIFOC;                  /**< fifo control register */
-    u32 UR_BD;                       /**< baud rate register */
-    u32 UR_INTM;                   /**< interrupt mask register */
-    u32 UR_INTS;                    /**< interrupt source register */
-    u32 UR_FIFOS;                  /**< fifo status register */
-    u32 UR_TXW;                    /**< tx windows register */
-    u32 UR_RES0;
-    u32 UR_RES1;
-    u32 UR_RES2;
-    u32 UR_RXW;                     /**< rx windows register */
+    uint32_t UR_LC;                       /**< line control register */
+    uint32_t UR_FC;                       /**<  flow control register */
+    uint32_t UR_DMAC;                  /**< dma control register */
+    uint32_t UR_FIFOC;                  /**< fifo control register */
+    uint32_t UR_BD;                       /**< baud rate register */
+    uint32_t UR_INTM;                   /**< interrupt mask register */
+    uint32_t UR_INTS;                    /**< interrupt source register */
+    uint32_t UR_FIFOS;                  /**< fifo status register */
+    uint32_t UR_TXW;                    /**< tx windows register */
+    uint32_t UR_RES0;
+    uint32_t UR_RES1;
+    uint32_t UR_RES2;
+    uint32_t UR_RXW;                     /**< rx windows register */
 } TLS_UART_REGS_T;
 
 
@@ -253,11 +253,11 @@ typedef struct TLS_UART_REGS
  */
 typedef struct tls_uart_port
 {
-    u32 uart_no;                    /**< uart number: 0 or 1 */
+    uint32_t uart_no;                    /**< uart number: 0 or 1 */
 
-    u32 uart_irq_no;             /**< uart interrupt number */
+    uint32_t uart_irq_no;             /**< uart interrupt number */
 
-    u32 plus_char_cnt;
+    uint32_t plus_char_cnt;
 
     TLS_UART_MODE_T uart_mode;      /**< uart work mode: interrupt mode or poll mode */
 
@@ -267,7 +267,7 @@ typedef struct tls_uart_port
 
     enum TLS_UART_RX_FLOW_CTRL_FLAG rxstatus;
 
-    u32 tx_fifofull;                    /**< uart tx fifo trigger level */
+    uint32_t tx_fifofull;                    /**< uart tx fifo trigger level */
 
     TLS_UART_REGS_T volatile *regs;     /**< uart registers struct pointer */
 
@@ -281,17 +281,17 @@ typedef struct tls_uart_port
 
     struct dl_list tx_msg_to_be_freed_list;
 
-    u8 hw_stopped;
+    uint8_t hw_stopped;
 
     tls_os_sem_t *tx_sem;
 
     char *buf_ptr;
 
-    u16 buf_len;
+    uint16_t buf_len;
 
-    s16(*rx_callback) (u16 len);
+    int16_t (*rx_callback) (uint16_t len);
 
-    s16(*tx_callback) (struct tls_uart_port * port);
+    int16_t (*tx_callback) (struct tls_uart_port * port);
 
     bool tx_dma_on;
 } tls_uart_port_t;
@@ -303,8 +303,8 @@ typedef struct tls_uart_tx_msg
 {
     struct dl_list list;
     char *buf;
-    u16 buflen;
-    u16 offset;
+    uint16_t buflen;
+    uint16_t offset;
     void (*finish_callback) (void *arg);
     void *callback_arg;
 } tls_uart_tx_msg_t;
@@ -340,7 +340,7 @@ typedef struct tls_uart_tx_msg
  *
  * @note           When the system is initialized, the function has been called, so users can not call the function.
  */
-int tls_uart_port_init(u16 uart_no, tls_uart_options_t * opts, u8 modeChoose);
+int tls_uart_port_init(uint16_t uart_no, tls_uart_options_t * opts, uint8_t modeChoose);
 
 
 /**
@@ -353,7 +353,7 @@ int tls_uart_port_init(u16 uart_no, tls_uart_options_t * opts, u8 modeChoose);
  *
  * @note           None
  */
-void tls_uart_rx_callback_register(u16 uart_no, s16(*rx_callback) (u16 len));
+void tls_uart_rx_callback_register(uint16_t uart_no, int16_t (*rx_callback) (uint16_t len));
 
 
 /**
@@ -367,7 +367,7 @@ void tls_uart_rx_callback_register(u16 uart_no, s16(*rx_callback) (u16 len));
  *
  * @note           None
  */
-int tls_uart_read(u16 uart_no, u8 * buf, u16 readsize);
+int tls_uart_read(uint16_t uart_no, uint8_t * buf, uint16_t readsize);
 
 
 /**
@@ -382,7 +382,7 @@ int tls_uart_read(u16 uart_no, u8 * buf, u16 readsize);
  *
  * @note           None
  */
-int tls_uart_write(u16 uart_no, char *buf, u16 writesize);
+int tls_uart_write(uint16_t uart_no, char *buf, uint16_t writesize);
 
 
 /**
@@ -397,7 +397,7 @@ int tls_uart_write(u16 uart_no, char *buf, u16 writesize);
  *
  * @note           Only uart1 support DMA transfer.
  */
-int tls_uart_dma_write(char *buf, u16 writesize, void (*cmpl_callback) (void *p), u16 uart_no);
+int tls_uart_dma_write(char *buf, uint16_t writesize, void (*cmpl_callback) (void *p), uint16_t uart_no);
 
 
 /**
@@ -411,7 +411,7 @@ int tls_uart_dma_write(char *buf, u16 writesize, void (*cmpl_callback) (void *p)
  *
  * @note           None
  */
-int tls_uart_set_parity(u16 uart_no, TLS_UART_PMODE_T paritytype);
+int tls_uart_set_parity(uint16_t uart_no, TLS_UART_PMODE_T paritytype);
 
 
 /**
@@ -425,7 +425,7 @@ int tls_uart_set_parity(u16 uart_no, TLS_UART_PMODE_T paritytype);
  *
  * @note           None
  */
-int tls_uart_set_baud_rate(u16 uart_no, u32 baudrate);
+int tls_uart_set_baud_rate(uint16_t uart_no, uint32_t baudrate);
 
 /**
  * @brief          This function is used to set uart stop bits.
@@ -438,7 +438,7 @@ int tls_uart_set_baud_rate(u16 uart_no, u32 baudrate);
  *
  * @note           None
  */
-int tls_uart_set_stop_bits(u16 uart_no, TLS_UART_STOPBITS_T stopbits);
+int tls_uart_set_stop_bits(uint16_t uart_no, TLS_UART_STOPBITS_T stopbits);
 
 /**
  * @}

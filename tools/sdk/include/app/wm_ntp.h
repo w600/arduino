@@ -42,7 +42,7 @@
  *
  * @note           None
  */
-u32 tls_ntp_client(void);
+uint32_t tls_ntp_client(void);
 
 /**
  * @brief          This function is used to set ntp servers.

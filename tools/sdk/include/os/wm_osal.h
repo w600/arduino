@@ -193,10 +193,10 @@ tls_os_status_t tls_os_task_create(tls_os_task_t *task,
       const char* name,
       void (*entry)(void* param),
       void* param,
-      u8 *stk_start,
-      u32 stk_size,
-      u32 prio,
-      u32 flag);
+      uint8_t *stk_start,
+      uint32_t stk_size,
+      uint32_t prio,
+      uint32_t flag);
 
 /**
  * @brief          This function allows you to delete a task.  The calling
@@ -213,7 +213,7 @@ tls_os_status_t tls_os_task_create(tls_os_task_t *task,
  *
  * @note           Generally, you do not need to call this function in your application.
  */
-tls_os_status_t tls_os_task_del(u8 prio, void (*freefun)(void));
+tls_os_status_t tls_os_task_del(uint8_t prio, void (*freefun)(void));
 
 
 /**
@@ -241,7 +241,7 @@ tls_os_status_t tls_os_task_del(u8 prio, void (*freefun)(void));
 	               	  hold the priority number to use to reduce priority
 	               	  inversion.
  */
-tls_os_status_t tls_os_mutex_create(u8 prio, tls_os_mutex_t **mutex);
+tls_os_status_t tls_os_mutex_create(uint8_t prio, tls_os_mutex_t **mutex);
 
 /**
  * @brief          This function deletes a mutual exclusion semaphore and
@@ -295,7 +295,7 @@ tls_os_status_t tls_os_mutex_create(u8 prio, tls_os_mutex_t **mutex);
  				   	  that owns the mutex
  */
  tls_os_status_t tls_os_mutex_acquire(tls_os_mutex_t *mutex,
-        u32 wait_time);
+        uint32_t wait_time);
 
 /**
  * @brief          This function releases a mutual exclusion semaphore
@@ -328,7 +328,7 @@ tls_os_status_t tls_os_mutex_create(u8 prio, tls_os_mutex_t **mutex);
  *
  * @note           None
  */
-tls_os_status_t tls_os_sem_create(tls_os_sem_t **sem, u32 cnt);
+tls_os_status_t tls_os_sem_create(tls_os_sem_t **sem, uint32_t cnt);
 
 
 /**
@@ -364,7 +364,7 @@ tls_os_status_t tls_os_sem_delete(tls_os_sem_t *sem);
  * @note           None
  */
  tls_os_status_t tls_os_sem_acquire(tls_os_sem_t *sem,
-        u32 wait_time);
+        uint32_t wait_time);
 
 /**
  * @brief          This function signals a semaphore
@@ -395,7 +395,7 @@ tls_os_status_t tls_os_sem_delete(tls_os_sem_t *sem);
  *
  * @note           None
  */
- tls_os_status_t tls_os_sem_set(tls_os_sem_t *sem, u16 cnt);
+ tls_os_status_t tls_os_sem_set(tls_os_sem_t *sem, uint16_t cnt);
 
 
 /**
@@ -411,7 +411,7 @@ tls_os_status_t tls_os_sem_delete(tls_os_sem_t *sem);
  *
  * @note           None
  */
- tls_os_status_t tls_os_queue_create(tls_os_queue_t **queue, u32 queue_size);
+ tls_os_status_t tls_os_queue_create(tls_os_queue_t **queue, uint32_t queue_size);
 
 /**
  * @brief          This function deletes a message queue and readies all
@@ -442,7 +442,7 @@ tls_os_status_t tls_os_sem_delete(tls_os_sem_t *sem);
  */
  tls_os_status_t tls_os_queue_send(tls_os_queue_t *queue,
         void *msg,
-        u32 msg_size);
+        uint32_t msg_size);
 
 /**
  * @brief          This function is used to flush the contents of the message
@@ -478,8 +478,8 @@ tls_os_status_t tls_os_queue_flush(tls_os_queue_t *queue);
  * @note           None
  */
  tls_os_status_t tls_os_queue_receive(tls_os_queue_t *queue,void **msg,
-        u32 msg_size,
-        u32 wait_time);
+        uint32_t msg_size,
+        uint32_t wait_time);
 
 /**
  * @brief          This function creates a message mailbox if free event
@@ -494,7 +494,7 @@ tls_os_status_t tls_os_queue_flush(tls_os_queue_t *queue);
  *
  * @note           None
  */
- tls_os_status_t tls_os_mailbox_create(tls_os_mailbox_t **mailbox, u32 mailbox_size);
+ tls_os_status_t tls_os_mailbox_create(tls_os_mailbox_t **mailbox, uint32_t mailbox_size);
 
 /**
  * @brief          This function deletes a mailbox and readies all of the tasks
@@ -548,7 +548,7 @@ tls_os_status_t tls_os_queue_flush(tls_os_queue_t *queue);
  */
  tls_os_status_t tls_os_mailbox_receive(tls_os_mailbox_t *mailbox,
         void **msg,
-        u32 wait_time);
+        uint32_t wait_time);
 
 /**
  * @brief          This function is used by your application to obtain the
@@ -561,7 +561,7 @@ tls_os_status_t tls_os_queue_flush(tls_os_queue_t *queue);
  *
  * @note           None
  */
- u32 tls_os_get_time(void);
+ uint32_t tls_os_get_time(void);
 
 /**
  * @brief          This function is used to disable interrupts by preserving
@@ -573,7 +573,7 @@ tls_os_status_t tls_os_queue_flush(tls_os_queue_t *queue);
  *
  * @note           None
  */
- u32 tls_os_set_critical(void);
+ uint32_t tls_os_set_critical(void);
 
 /**
  * @brief          This function is used to enable interrupts by preserving
@@ -585,7 +585,7 @@ tls_os_status_t tls_os_queue_flush(tls_os_queue_t *queue);
  *
  * @note           None
  */
- void tls_os_release_critical(u32 cpu_sr);
+ void tls_os_release_critical(uint32_t cpu_sr);
 
 
 /**
@@ -618,9 +618,9 @@ tls_os_status_t tls_os_queue_flush(tls_os_queue_t *queue);
  tls_os_status_t tls_os_timer_create(tls_os_timer_t **timer,
         TLS_OS_TIMER_CALLBACK callback,
         void *callback_arg,
-        u32 period,
+        uint32_t period,
         bool repeat,
-        u8 *name);
+        uint8_t *name);
 
 /**
  * @brief          This function is called by your application code to start
@@ -645,7 +645,7 @@ tls_os_status_t tls_os_queue_flush(tls_os_queue_t *queue);
 *			ticks			is the wait time
 ************************************************************************************************************************
 */
- void tls_os_timer_change(tls_os_timer_t *timer, u32 ticks);
+ void tls_os_timer_change(tls_os_timer_t *timer, uint32_t ticks);
 
 /**
  * @brief          This function is called by your application code to stop
@@ -689,7 +689,7 @@ int tls_os_timer_delete(tls_os_timer_t *timer);
  *
  * @note           None
  */
- void tls_os_time_delay(u32 ticks);
+ void tls_os_time_delay(uint32_t ticks);
 
 
 /**

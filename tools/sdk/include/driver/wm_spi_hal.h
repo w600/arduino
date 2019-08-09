@@ -17,12 +17,12 @@
 #include "wm_cpu.h"
 
 
-static __inline void spi_set_mode(u8 mode);
+static __inline void spi_set_mode(uint8_t mode);
 
 
-static __inline void spi_set_mode(u8 mode)
+static __inline void spi_set_mode(uint8_t mode)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_SPICFG_REG);
 	
@@ -54,9 +54,9 @@ static __inline void spi_set_mode(u8 mode)
 	tls_reg_write32(HR_SPI_SPICFG_REG, reg_val);
 }
 
-static __inline void spi_set_endian(u8 endian)
+static __inline void spi_set_endian(uint8_t endian)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_SPICFG_REG);
 
@@ -71,9 +71,9 @@ static __inline void spi_set_endian(u8 endian)
 	tls_reg_write32(HR_SPI_SPICFG_REG, reg_val);
 }
 
-static __inline void spi_set_chipselect_mode(u8 cs_active)
+static __inline void spi_set_chipselect_mode(uint8_t cs_active)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_CHCFG_REG);
 
@@ -90,7 +90,7 @@ static __inline void spi_set_chipselect_mode(u8 cs_active)
 
 static __inline void spi_clear_fifo(void)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_CHCFG_REG);
 	
@@ -99,9 +99,9 @@ static __inline void spi_clear_fifo(void)
 	tls_reg_write32(HR_SPI_CHCFG_REG, reg_val);
 }
 
-static __inline void spi_set_rx_channel(u8 on_off)
+static __inline void spi_set_rx_channel(uint8_t on_off)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_CHCFG_REG);
 
@@ -116,9 +116,9 @@ static __inline void spi_set_rx_channel(u8 on_off)
 	tls_reg_write32(HR_SPI_CHCFG_REG, reg_val);
 }
 
-static __inline void spi_set_tx_channel(u8 on_off)
+static __inline void spi_set_tx_channel(uint8_t on_off)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_CHCFG_REG);
 
@@ -133,9 +133,9 @@ static __inline void spi_set_tx_channel(u8 on_off)
 	tls_reg_write32(HR_SPI_CHCFG_REG, reg_val);
 }
 
-static __inline void spi_set_sclk_length(u16 sclk_num, u8 invalid_rx_sclk_num)
+static __inline void spi_set_sclk_length(uint16_t sclk_num, uint8_t invalid_rx_sclk_num)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_CHCFG_REG);
 
@@ -145,9 +145,9 @@ static __inline void spi_set_sclk_length(u16 sclk_num, u8 invalid_rx_sclk_num)
 	tls_reg_write32(HR_SPI_CHCFG_REG, reg_val);
 }
 
-static __inline void spi_force_cs_out(u8 enable)
+static __inline void spi_force_cs_out(uint8_t enable)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_CHCFG_REG);
 
@@ -162,7 +162,7 @@ static __inline void spi_force_cs_out(u8 enable)
 
 static __inline void spi_sclk_start(void)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_CHCFG_REG);
 
@@ -171,9 +171,9 @@ static __inline void spi_sclk_start(void)
 	tls_reg_write32(HR_SPI_CHCFG_REG, reg_val);
 }
 
-static __inline void spi_set_sclk(u32 fclk)
+static __inline void spi_set_sclk(uint32_t fclk)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 	tls_sys_clk sysclk;
 
 	tls_sys_clk_get(&sysclk);			
@@ -186,9 +186,9 @@ static __inline void spi_set_sclk(u32 fclk)
 	tls_reg_write32(HR_SPI_CLKCFG_REG, reg_val);
 }
 
-static __inline void spi_set_tx_trigger_level(u8 level)
+static __inline void spi_set_tx_trigger_level(uint8_t level)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_MODECFG_REG);
 
@@ -198,9 +198,9 @@ static __inline void spi_set_tx_trigger_level(u8 level)
 	tls_reg_write32(HR_SPI_MODECFG_REG, reg_val);
 }
 
-static __inline void spi_set_rx_trigger_level(u8 level)
+static __inline void spi_set_rx_trigger_level(uint8_t level)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_MODECFG_REG);
 
@@ -210,9 +210,9 @@ static __inline void spi_set_rx_trigger_level(u8 level)
 	tls_reg_write32(HR_SPI_MODECFG_REG, reg_val);
 }
 
-static __inline void spi_set_timeout(u32 timeout, u8 enable)
+static __inline void spi_set_timeout(uint32_t timeout, uint8_t enable)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = SPI_TIME_OUT(timeout);
 	reg_val |= enable ? SPI_TIMER_EN : 0;
@@ -220,9 +220,9 @@ static __inline void spi_set_timeout(u32 timeout, u8 enable)
 	tls_reg_write32(HR_SPI_TIMEOUT_REG, reg_val);
 }
 
-static __inline void spi_get_status(u8 *busy, u8 *rx_fifo_level, u8 *tx_fifo_level)
+static __inline void spi_get_status(uint8_t *busy, uint8_t *rx_fifo_level, uint8_t *tx_fifo_level)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_STATUS_REG);
 
@@ -231,18 +231,18 @@ static __inline void spi_get_status(u8 *busy, u8 *rx_fifo_level, u8 *tx_fifo_lev
 	if (tx_fifo_level) {*tx_fifo_level = 32 - SPI_GET_TX_FIFO_CNT(reg_val);}
 }
 
-static __inline u32 spi_int_mask(void)
+static __inline uint32_t spi_int_mask(void)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_INT_MASK_REG);
 
 	return reg_val & SPI_INT_MASK_ALL;
 }
 
-static __inline void spi_mask_int(u32 mask)
+static __inline void spi_mask_int(uint32_t mask)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_INT_MASK_REG);
 
@@ -251,9 +251,9 @@ static __inline void spi_mask_int(u32 mask)
 	tls_reg_write32(HR_SPI_INT_MASK_REG, reg_val);
 }
 
-static __inline void spi_unmask_int(u32 mask)
+static __inline void spi_unmask_int(uint32_t mask)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_INT_MASK_REG);
 
@@ -262,18 +262,18 @@ static __inline void spi_unmask_int(u32 mask)
 	tls_reg_write32(HR_SPI_INT_MASK_REG, reg_val);
 } 
 
-static __inline u32 spi_get_int_status(void)
+static __inline uint32_t spi_get_int_status(void)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_INT_STATUS_REG);
 
 	return reg_val;
 }
 
-static __inline void spi_clear_int_status(u32 int_srcs)
+static __inline void spi_clear_int_status(uint32_t int_srcs)
 {
-	u32 reg_val;
+	uint32_t reg_val;
 
 	reg_val = tls_reg_read32(HR_SPI_INT_STATUS_REG);
 
@@ -283,12 +283,12 @@ static __inline void spi_clear_int_status(u32 int_srcs)
 	tls_reg_write32(HR_SPI_INT_STATUS_REG, reg_val);
 }
 
-static __inline void spi_data_put(u32 data)
+static __inline void spi_data_put(uint32_t data)
 {
 	tls_reg_write32(HR_SPI_TXDATA_REG, data);
 }
 
-static __inline u32 spi_data_get(void)
+static __inline uint32_t spi_data_get(void)
 {
 	return tls_reg_read32(HR_SPI_RXDATA_REG);
 }

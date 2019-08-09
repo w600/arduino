@@ -21,10 +21,10 @@
 #define SPI_TX_DMA_MASK	0x01
 #define SPI_RX_DMA_MASK	0x02
 
-#define SPI_DMA_CMD_ADDR 		((u32)(MASTER_SPI_DMA_ADDR))
+#define SPI_DMA_CMD_ADDR 		((uint32_t)(MASTER_SPI_DMA_ADDR))
 #define SPI_DMA_CMD_MAX_SIZE       (0x20)
 
-#define SPI_DMA_BUF_ADDR		((u32)(SPI_DMA_CMD_ADDR + SPI_DMA_CMD_MAX_SIZE))
+#define SPI_DMA_BUF_ADDR		((uint32_t)(SPI_DMA_CMD_ADDR + SPI_DMA_CMD_MAX_SIZE))
 #define SPI_DMA_BUF_MAX_SIZE	8160
 
 #define SPI_DMA_MAX_TRANS_SIZE	4092
@@ -94,8 +94,8 @@ struct tls_spi_transfer
 
     const void *tx_buf;    /**< data to be written, or NULL. */
     void *rx_buf;              /**< data to be read, or NULL. */
-    u32 len;                    /**< size of rx and tx buffers (in bytes). */
-    u32 delay_usecs;       /**< microseconds to delay after this transfer. */
+    uint32_t len;                    /**< size of rx and tx buffers (in bytes). */
+    uint32_t delay_usecs;       /**< microseconds to delay after this transfer. */
 };
 
 
@@ -115,7 +115,7 @@ struct tls_spi_message
     struct dl_list transfers;   /**< list of transfer segments in this transaction. */
     void (*complete) (void *);  /**< called to report transaction completions. */
     void *context;              /**< the argument to complete() when it's called. */
-    u32 status;                 /**< transaction message status. */
+    uint32_t status;                 /**< transaction message status. */
 };
 
 /**
@@ -130,13 +130,13 @@ struct tls_spi_message
  */
 struct tls_spi_port
 {
-    u32 speed_hz;               /**< clock rate to be used. */
-    u8 cs_active;               /**< chipselect mode, maybe active low or active
+    uint32_t speed_hz;               /**< clock rate to be used. */
+    uint8_t cs_active;               /**< chipselect mode, maybe active low or active
                                    high. */
-    u8 mode;                    /**< SPI transfer mode: mode_0(CPHA=0, CHOL=0),
+    uint8_t mode;                    /**< SPI transfer mode: mode_0(CPHA=0, CHOL=0),
                                    mode_1(CPHA=0, CHOL=1), mode_2(CPHA=1,
                                    CHOL=0), mode_3(CPHA=1, CHOL=1). */
-    u8 reconfig;
+    uint8_t reconfig;
 
     struct dl_list wait_queue;  /**< wait list of transaction messages. */
     tls_os_queue_t *lock;
@@ -145,15 +145,15 @@ struct tls_spi_port
                                    transaction message queued. */
     struct tls_spi_message *current_message;    /**< current transaction message
                                                    in-progressing. */
-    u32 current_remaining_transfer; /**< remaining transfer segments count in
+    uint32_t current_remaining_transfer; /**< remaining transfer segments count in
                                        current transaction message. */
 
     struct tls_spi_transfer *current_transfer;  /**< current transfer segment
                                                    in-progressing. */
-    u32 current_remaining_bytes;    /**< remaining data length in current
+    uint32_t current_remaining_bytes;    /**< remaining data length in current
                                        transfer segment. */
 
-    u8 transtype;               /**< transfer type  */
+    uint8_t transtype;               /**< transfer type  */
 };
 
 /**
@@ -204,7 +204,7 @@ int tls_spi_init(void);
  *
  * @note           None
  */
-int tls_spi_setup(u8 mode, u8 cs_active, u32 fclk);
+int tls_spi_setup(uint8_t mode, uint8_t cs_active, uint32_t fclk);
 
 /**
  * @brief          This function is used to synchronous write data by SPI.
@@ -219,7 +219,7 @@ int tls_spi_setup(u8 mode, u8 cs_active, u32 fclk);
  *
  * @note           None
  */
-int tls_spi_write(const u8 * buf, u32 len);
+int tls_spi_write(const uint8_t * buf, uint32_t len);
 
 /**
  * @brief          This function is used to synchronously read data from SPI.
@@ -234,7 +234,7 @@ int tls_spi_write(const u8 * buf, u32 len);
  *
  * @note           None
  */
-int tls_spi_read(u8 * buf, u32 len);
+int tls_spi_read(uint8_t * buf, uint32_t len);
 
 /**
  * @brief          This function is used to synchronously write command and then read data from SPI.
@@ -251,7 +251,7 @@ int tls_spi_read(u8 * buf, u32 len);
  *
  * @note           None
  */
-int tls_spi_read_with_cmd(const u8 * txbuf, u32 n_tx, u8 * rxbuf, u32 n_rx);
+int tls_spi_read_with_cmd(const uint8_t * txbuf, uint32_t n_tx, uint8_t * rxbuf, uint32_t n_rx);
 
 /**
  * @brief          This function is used to synchronous write 32bit command then write data from SPI.
@@ -268,7 +268,7 @@ int tls_spi_read_with_cmd(const u8 * txbuf, u32 n_tx, u8 * rxbuf, u32 n_rx);
  *
  * @note           None
  */
-int tls_spi_write_with_cmd(const u8 * cmd, u32 n_cmd, const u8 * txbuf, u32 n_tx);
+int tls_spi_write_with_cmd(const uint8_t * cmd, uint32_t n_cmd, const uint8_t * txbuf, uint32_t n_tx);
 
 /**
  * @brief          This function is used to set SPI transfer mode.
@@ -283,7 +283,7 @@ int tls_spi_write_with_cmd(const u8 * cmd, u32 n_cmd, const u8 * txbuf, u32 n_tx
  *
  * @note           None
  */
-void tls_spi_trans_type(u8 type);
+void tls_spi_trans_type(uint8_t type);
 
 /**
  * @}

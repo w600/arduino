@@ -21,7 +21,7 @@
  * @note Encrypted data will be placed into the plain @data area
  *
  */
- int  aes_128_cbc_encrypt (const u8 *key, const u8 *iv, u8 *data, size_t data_len) ;
+ int  aes_128_cbc_encrypt (const uint8_t *key, const uint8_t *iv, uint8_t *data, size_t data_len) ;
 
 /**
  * @brief	Decrypt data by 128 AES crypto
@@ -34,7 +34,7 @@
  * @note plain data will be placed into the encrypted @data area 
  *
  */
-int  aes_128_cbc_decrypt(const u8 *key, const u8 *iv, u8 *data,
+int  aes_128_cbc_decrypt(const uint8_t *key, const uint8_t *iv, uint8_t *data,
 						 size_t data_len);
 
 /**
@@ -48,7 +48,7 @@ int  aes_128_cbc_decrypt(const u8 *key, const u8 *iv, u8 *data,
  * @note this function should be used for Encryption & Decryption both For the Encryption, the plain @data
  *       will be replaced by the encrypted output, and vice versa;
  */
-int rc4(const u8 *key, size_t keylen, u8 *data, size_t data_len);
+int rc4(const uint8_t *key, size_t keylen, uint8_t *data, size_t data_len);
 
 
 /**
@@ -60,7 +60,7 @@ int rc4(const u8 *key, size_t keylen, u8 *data, size_t data_len);
  * @retval -1 Error
  * @note 
  */
-int md5(const u8 *addr, int len, u8 *mac);
+int md5(const uint8_t *addr, int len, uint8_t *mac);
 
 /**
  * @brief	HMAC-MD5 over data buffer (RFC 2104)
@@ -73,7 +73,7 @@ int md5(const u8 *addr, int len, u8 *mac);
  * @retval -1 Error
  * @note 
  */
-int hmac_md5(const u8 *key, size_t key_len, const u8 *data, size_t data_len, u8 *mac);
+int hmac_md5(const uint8_t *key, size_t key_len, const uint8_t *data, size_t data_len, uint8_t *mac);
 
 /**
  * @brief	SHA1 hash for data vector
@@ -85,7 +85,7 @@ int hmac_md5(const u8 *key, size_t key_len, const u8 *data, size_t data_len, u8 
  * @note 
  */
 
-int sha1(const u8 *addr, int len, u8 *mac);
+int sha1(const uint8_t *addr, int len, uint8_t *mac);
 
 #endif
 

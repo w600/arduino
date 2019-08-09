@@ -54,7 +54,7 @@ typedef struct
  * @note
  *   the value must be between 100k and 400k
  */
-void tls_i2c_init(u32 freq);
+void tls_i2c_init(uint32_t freq);
 
 #define  wm_i2c_int_mask(bl)   do { tls_bitband_write(HR_I2C_CTRL, 6, bl);}while(0);
 
@@ -81,7 +81,7 @@ int tls_i2c_wait_ack(void);
  * @retval
  *
  */
-void tls_i2c_write_byte(u8 data, u8 ifstart);
+void tls_i2c_write_byte(uint8_t data, uint8_t ifstart);
 
 /**
  * @brief	Get the data stored in data register of I2C module
@@ -90,7 +90,7 @@ void tls_i2c_write_byte(u8 data, u8 ifstart);
  * @retval
  *	the received data
  */
-u8 tls_i2c_read_byte(u8 ifack, u8 ifstop);
+uint8_t tls_i2c_read_byte(uint8_t ifack, uint8_t ifstop);
 
 /**
  * @brief          This function is used to register i2c transfer done callback function.

@@ -13,30 +13,6 @@
 #ifdef bool
 #undef bool
 #endif
-#ifdef u8
-#undef u8
-#endif
-#ifdef s8
-#undef s8
-#endif
-#ifdef u16
-#undef u16
-#endif
-#ifdef s16
-#undef s16
-#endif
-#ifdef u32
-#undef u32
-#endif
-#ifdef s32
-#undef s32
-#endif
-#ifdef u64
-#undef u64
-#endif
-#ifdef s64
-#undef s64
-#endif
 
 #ifdef u_char
 #undef u_char
@@ -56,30 +32,6 @@ typedef signed char INT8S;
 #ifndef __cplusplus
 typedef unsigned char        bool;
 #endif
-typedef unsigned char        u8;
-typedef signed char          s8;
-typedef unsigned short       u16;
-typedef signed short         s16;
-typedef unsigned int         u32;
-typedef signed int           s32;
-typedef unsigned long long   u64;
-typedef long long                    s64;
-
-#if (GCC_COMPILE==0)
-#ifndef _STDINT_H
-#ifdef int32_t
-#undef int32_t
-#endif
-//typedef int int32_t;
-
-#ifdef uint32_t
-#undef uint32_t
-#endif
-//typedef unsigned int uint32_t;
-#endif
-
-#endif
-
 
 #ifdef ULONG
 #undef ULONG
@@ -91,20 +43,10 @@ typedef unsigned long ULONG;
 #endif
 typedef unsigned char u8_t;
 
-#ifdef uint8_t
-#undef uint8_t
-#endif
-typedef unsigned char uint8_t;
-
 #ifdef u16_t
 #undef u16_t
 #endif
 typedef unsigned short u16_t;
-
-#ifdef uint16_t
-#undef uint16_t
-#endif
-typedef unsigned short uint16_t;
 
 #ifdef u32_t
 #undef u32_t
@@ -126,6 +68,7 @@ typedef signed short s16_t;
 #undef s32_t
 #endif
 typedef signed int s32_t;
+
 #if (GCC_COMPILE==0)
 #ifdef size_t
 #undef size_t
@@ -167,5 +110,11 @@ typedef unsigned int mem_ptr_t;
 #ifndef IGNORE_PARAMETER
 #define IGNORE_PARAMETER(x)     ((x) = (x))
 #endif
+
+#include <stdint.h>
+#include <stdbool.h>
+
+typedef uint8_t boolean;
+typedef uint8_t byte;
 
 #endif

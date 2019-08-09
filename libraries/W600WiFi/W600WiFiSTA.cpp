@@ -84,7 +84,9 @@ int WiFiSTAClass::begin(const char *ssid, const char * passphrase,
         return -2;
     
     tls_wifi_disconnect();
-    tls_wifi_softap_destroy();
+
+	if (WIFI_AP_STA != WiFiMode)
+    	tls_wifi_softap_destroy();
 
     memset(_passphrase, 0, sizeof(_passphrase));
     if (NULL != passphrase)
@@ -98,12 +100,13 @@ int WiFiSTAClass::begin(const char *ssid, const char * passphrase,
 
     setAutoConnect(connect);
 	wstatus = WL_IDLE_STATUS;
-    ret = tls_wifi_connect((u8 *)ssid, (u8)strlen(ssid),
-                (u8 *)passphrase, (u8)strlen(passphrase));
+    ret = tls_wifi_connect((uint8_t *)ssid, (uint8_t)strlen(ssid),
+                (uint8_t *)passphrase, (uint8_t)strlen(passphrase));
 	if (WM_WIFI_ERR_SSID == ret)
 		wstatus = WL_NO_SSID_AVAIL;
     //printf("[%s %s %d] ret: %d\n", __FILE__, __func__, __LINE__, ret);
-    WiFiMode = WIFI_STA;
+	if (WIFI_AP_STA != WiFiMode)
+    	WiFiMode = WIFI_STA;
     return status();
 }
 
@@ -138,8 +141,8 @@ int WiFiSTAClass::begin(char *ssid, char *passphrase,
 int WiFiSTAClass::begin()
 {
 	wstatus = WL_IDLE_STATUS;
-    int ret = tls_wifi_connect((u8 *)_ssid, (u8)strlen((const char *)_ssid),
-                (u8 *)_passphrase, (u8)strlen((const char *)_passphrase));
+    int ret = tls_wifi_connect((uint8_t *)_ssid, (uint8_t)strlen((const char *)_ssid),
+                (uint8_t *)_passphrase, (uint8_t)strlen((const char *)_passphrase));
 	if (WM_WIFI_ERR_SSID == ret)
 		wstatus = WL_NO_SSID_AVAIL;
     return status();
@@ -156,8 +159,8 @@ bool WiFiSTAClass::reconnect()
 {
     disconnect();
 	wstatus = WL_IDLE_STATUS;
-    int ret = tls_wifi_connect((u8 *)_ssid, (u8)strlen((const char *)_ssid),
-        (u8 *)_passphrase, (u8)strlen((const char *)_passphrase));
+    int ret = tls_wifi_connect((uint8_t *)_ssid, (uint8_t)strlen((const char *)_ssid),
+        (uint8_t *)_passphrase, (uint8_t)strlen((const char *)_passphrase));
 	if (WM_WIFI_ERR_SSID == ret)
 		wstatus = WL_NO_SSID_AVAIL;
     return WM_SUCCESS == ret ? true : false;
@@ -174,7 +177,8 @@ bool WiFiSTAClass::reconnect()
 bool WiFiSTAClass::disconnect(bool wifioff)
 {
     tls_wifi_disconnect();
-    WiFiMode = WIFI_OFF;
+	if (WIFI_AP_STA != WiFiMode)
+	    WiFiMode = WIFI_OFF;
     return true;
 }
 
@@ -201,7 +205,7 @@ bool WiFiSTAClass::isConnected()
  */ 
 bool WiFiSTAClass::setAutoConnect(bool autoConnect)
 {
-    tls_wifi_auto_connect_flag(WIFI_AUTO_CNT_FLAG_SET, (u8*)&autoConnect);
+    tls_wifi_auto_connect_flag(WIFI_AUTO_CNT_FLAG_SET, (uint8_t*)&autoConnect);
     return true;
 }
 
@@ -215,7 +219,7 @@ bool WiFiSTAClass::setAutoConnect(bool autoConnect)
 bool WiFiSTAClass::getAutoConnect()
 {
     int auto_connect = WIFI_AUTO_CNT_OFF;
-    tls_wifi_auto_connect_flag(WIFI_AUTO_CNT_FLAG_GET, (u8*)&auto_connect);
+    tls_wifi_auto_connect_flag(WIFI_AUTO_CNT_FLAG_GET, (uint8_t*)&auto_connect);
     return (auto_connect == WIFI_AUTO_CNT_ON);
 }
 
@@ -229,7 +233,7 @@ bool WiFiSTAClass::getAutoConnect()
  */ 
 bool WiFiSTAClass::setAutoReconnect(bool autoReconnect)
 {
-    tls_wifi_auto_connect_flag(WIFI_AUTO_CNT_FLAG_SET, (u8 *)&autoReconnect);
+    tls_wifi_auto_connect_flag(WIFI_AUTO_CNT_FLAG_SET, (uint8_t *)&autoReconnect);
     return true;
 }
 
@@ -242,7 +246,7 @@ bool WiFiSTAClass::setAutoReconnect(bool autoReconnect)
  */ 
 bool WiFiSTAClass::getAutoReconnect()
 {
-    u8 auto_reconnect = 0xff;
+    uint8_t auto_reconnect = 0xff;
     tls_wifi_auto_connect_flag(WIFI_AUTO_CNT_FLAG_GET, &auto_reconnect);
     return (auto_reconnect == WIFI_AUTO_CNT_ON);
 }
@@ -302,7 +306,7 @@ uint8_t * WiFiSTAClass::macAddress(uint8_t *mac)
  */ 
 char * WiFiSTAClass::macAddress()
 {
-    int ret = tls_get_mac_addr((u8 *)_wifi_mac);
+    int ret = tls_get_mac_addr((uint8_t *)_wifi_mac);
     if (TLS_EFUSE_STATUS_OK == ret)
         return (char *)_wifi_mac;
     else

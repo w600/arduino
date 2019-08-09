@@ -78,22 +78,22 @@ struct sys_timeo {
 void sys_timeouts_init(void);
 
 #if LWIP_DEBUG_TIMERNAMES
-void sys_timeout_debug_p(u8 timeo_assigned, u32_t msecs, sys_timeout_handler handler, void *arg, const char* handler_name);
+void sys_timeout_debug_p(uint8_t timeo_assigned, u32_t msecs, sys_timeout_handler handler, void *arg, const char* handler_name);
 #define sys_timeout_p(timeo_assigned, msecs, handler, arg) sys_timeout_debug_p(timeo_assigned, msecs, handler, arg, #handler)
 #define sys_timeout(msecs, handler, arg) sys_timeout_p(0, msecs, handler, arg)
 #else /* LWIP_DEBUG_TIMERNAMES */
-void sys_timeout_p(u8 timeo_assigned, u32_t msecs, sys_timeout_handler handler, void *arg);
+void sys_timeout_p(uint8_t timeo_assigned, u32_t msecs, sys_timeout_handler handler, void *arg);
 #define sys_timeout(msecs, handler, arg) sys_timeout_p(0, msecs, handler, arg)
 #endif /* LWIP_DEBUG_TIMERNAMES */
 
-void sys_untimeout_p(u8 timeo_assigned, sys_timeout_handler handler, void *arg);
+void sys_untimeout_p(uint8_t timeo_assigned, sys_timeout_handler handler, void *arg);
 #define sys_untimeout(handler, arg) sys_untimeout_p(0, handler, arg)
 #if NO_SYS
 void sys_check_timeouts(void);
 void sys_restart_timeouts(void);
 u32_t sys_timeouts_sleeptime(void);
 #else /* NO_SYS */
-void sys_timeouts_mbox_fetch_p(u8 timeo_assigned, sys_mbox_t mbox, void **msg);
+void sys_timeouts_mbox_fetch_p(uint8_t timeo_assigned, sys_mbox_t mbox, void **msg);
 #define sys_timeouts_mbox_fetch(mbox, msg) sys_timeouts_mbox_fetch_p(0, mbox, msg)
 #endif /* NO_SYS */
 

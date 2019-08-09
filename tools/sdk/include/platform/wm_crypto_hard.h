@@ -133,9 +133,9 @@ typedef enum __CRYPTO_CRC_TYPE
  * The struct of the CRC context.
  */
 typedef struct {
-	u32 state; ///<  The initial value input and result value output.
-	u8 type; ///< The type of CRC, refernec the CRYPTO_CRC_TYPE enum.
-	u8 mode; ///< The mode of CRC, bit0 means output reflection and bit1 means input reflection.
+	uint32_t state; ///<  The initial value input and result value output.
+	uint8_t type; ///< The type of CRC, refernec the CRYPTO_CRC_TYPE enum.
+	uint8_t mode; ///< The mode of CRC, bit0 means output reflection and bit1 means input reflection.
 }psCrcContext_t;
 
 #if 1
@@ -144,20 +144,20 @@ struct hsha1_state {
 #ifdef HAVE_NATIVE_INT64
 	uint64		length;
 #else
-	u32		lengthHi;
-	u32		lengthLo;
+	uint32_t		lengthHi;
+	uint32_t		lengthLo;
 #endif /* HAVE_NATIVE_INT64 */
-	u32		state[5], curlen;
+	uint32_t		state[5], curlen;
 	unsigned char	buf[64];
 };
 struct hmd5_state {
 #ifdef HAVE_NATIVE_INT64
     uint64 length;
 #else
-    u32 lengthHi;
-    u32 lengthLo;
+    uint32_t lengthHi;
+    uint32_t lengthLo;
 #endif /* HAVE_NATIVE_INT64 */
-    u32 state[4], curlen;
+    uint32_t state[4], curlen;
     unsigned char buf[64];
 };
 
@@ -166,7 +166,7 @@ typedef union {
 	struct hmd5_state	md5;
 } hsDigestContext_t;
 
-typedef u32			hstm_digit;
+typedef uint32_t			hstm_digit;
 typedef struct  {
 	int16	used, alloc, sign;
 	hstm_digit *dp;
@@ -198,7 +198,7 @@ int tls_crypto_random_stop(void);
  *
  * @note             	None
  */
-int tls_crypto_random_init(u32 seed, CRYPTO_RNG_SWITCH rng_switch);
+int tls_crypto_random_init(uint32_t seed, CRYPTO_RNG_SWITCH rng_switch);
 
 
 /**
@@ -212,7 +212,7 @@ int tls_crypto_random_init(u32 seed, CRYPTO_RNG_SWITCH rng_switch);
  *
  * @note             	None
  */
-int tls_crypto_random_bytes(unsigned char *out, u32 len);
+int tls_crypto_random_bytes(unsigned char *out, uint32_t len);
 
 
 /**
@@ -230,7 +230,7 @@ int tls_crypto_random_bytes(unsigned char *out, u32 len);
  * @note             	The first parameter ctx must be a structure which is allocated externally. 
  *      			And all of Context parameters in the initializing methods should be allocated externally too.
  */
-int tls_crypto_rc4_init(psCipherContext_t * ctx, const unsigned char *key, u32 keylen);
+int tls_crypto_rc4_init(psCipherContext_t * ctx, const unsigned char *key, uint32_t keylen);
 
 /**
  * @brief          	This function encrypts a variable length data stream according to RC4.
@@ -247,7 +247,7 @@ int tls_crypto_rc4_init(psCipherContext_t * ctx, const unsigned char *key, u32 k
  *
  * @note             	None
  */
-int tls_crypto_rc4(psCipherContext_t * ctx, unsigned char *in, unsigned char *out, u32 len);
+int tls_crypto_rc4(psCipherContext_t * ctx, unsigned char *in, unsigned char *out, uint32_t len);
 
 /**
  * @brief          	This function initializes a AES encryption algorithm,  i.e. fills the psCipherContext_t structure pointed to by ctx with necessary data.
@@ -263,7 +263,7 @@ int tls_crypto_rc4(psCipherContext_t * ctx, unsigned char *in, unsigned char *ou
  *
  * @note             	None
  */
-int tls_crypto_aes_init(psCipherContext_t * ctx, const unsigned char *IV, const unsigned char *key, u32 keylen, CRYPTO_MODE cbc);
+int tls_crypto_aes_init(psCipherContext_t * ctx, const unsigned char *IV, const unsigned char *key, uint32_t keylen, CRYPTO_MODE cbc);
 
 /**
  * @brief			This function encrypts or decrypts a variable length data stream according to AES.
@@ -279,7 +279,7 @@ int tls_crypto_aes_init(psCipherContext_t * ctx, const unsigned char *IV, const 
  *
  * @note			None
  */
-int tls_crypto_aes_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, unsigned char *out, u32 len, CRYPTO_WAY dec);
+int tls_crypto_aes_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, unsigned char *out, uint32_t len, CRYPTO_WAY dec);
 
 /**
  * @brief			This function initializes a 3DES encryption algorithm,  i.e. fills the psCipherContext_t structure pointed to by ctx with necessary data. 
@@ -295,7 +295,7 @@ int tls_crypto_aes_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, u
  *
  * @note			None
  */
-int tls_crypto_3des_init(psCipherContext_t * ctx, const unsigned char *IV, const unsigned char *key, u32 keylen, CRYPTO_MODE cbc);
+int tls_crypto_3des_init(psCipherContext_t * ctx, const unsigned char *IV, const unsigned char *key, uint32_t keylen, CRYPTO_MODE cbc);
 
 /**
  * @brief			This function encrypts or decrypts a variable length data stream according to 3DES.
@@ -311,7 +311,7 @@ int tls_crypto_3des_init(psCipherContext_t * ctx, const unsigned char *IV, const
  *
  * @note			None
  */
-int tls_crypto_3des_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, unsigned char *out, u32 len, CRYPTO_WAY dec);
+int tls_crypto_3des_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, unsigned char *out, uint32_t len, CRYPTO_WAY dec);
 
 /**
  * @brief			This function initializes a DES encryption algorithm,  i.e. fills the psCipherContext_t structure pointed to by ctx with necessary data. 
@@ -327,7 +327,7 @@ int tls_crypto_3des_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, 
  *
  * @note			None
  */ 
-int tls_crypto_des_init(psCipherContext_t * ctx, const unsigned char *IV, const unsigned char *key, u32 keylen, CRYPTO_MODE cbc);
+int tls_crypto_des_init(psCipherContext_t * ctx, const unsigned char *IV, const unsigned char *key, uint32_t keylen, CRYPTO_MODE cbc);
 
 /**
  * @brief			This function encrypts or decrypts a variable length data stream according to DES.
@@ -343,7 +343,7 @@ int tls_crypto_des_init(psCipherContext_t * ctx, const unsigned char *IV, const 
  *
  * @note			None
  */ 
-int tls_crypto_des_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, unsigned char *out, u32 len, CRYPTO_WAY dec);
+int tls_crypto_des_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, unsigned char *out, uint32_t len, CRYPTO_WAY dec);
  
 /**
  * @brief			This function initializes a CRC algorithm,  i.e. fills the psCrcContext_t structure pointed to by ctx with necessary data. 
@@ -361,7 +361,7 @@ int tls_crypto_des_encrypt_decrypt(psCipherContext_t * ctx, unsigned char *in, u
  *
  * @note			None
  */  
-int tls_crypto_crc_init(psCrcContext_t * ctx, u32 key, CRYPTO_CRC_TYPE crc_type, u8 mode);
+int tls_crypto_crc_init(psCrcContext_t * ctx, uint32_t key, CRYPTO_CRC_TYPE crc_type, uint8_t mode);
 
 /**
  * @brief			This function updates the CRC value with a variable length bytes.
@@ -376,7 +376,7 @@ int tls_crypto_crc_init(psCrcContext_t * ctx, u32 key, CRYPTO_CRC_TYPE crc_type,
  *
  * @note			None
  */
-int tls_crypto_crc_update(psCrcContext_t * ctx, unsigned char *in, u32 len);
+int tls_crypto_crc_update(psCrcContext_t * ctx, unsigned char *in, uint32_t len);
 
 /**
  * @brief			This function ends a CRC operation and produces a CRC value.
@@ -389,7 +389,7 @@ int tls_crypto_crc_update(psCrcContext_t * ctx, unsigned char *in, u32 len);
  *
  * @note			None
  */
-int tls_crypto_crc_final(psCrcContext_t * ctx, u32 *crc_val);
+int tls_crypto_crc_final(psCrcContext_t * ctx, uint32_t *crc_val);
 
 /**
  * @brief			This function initializes Message-Diggest context for usage in SHA1 algorithm, starts a new SHA1 operation and writes a new Digest Context. 
@@ -417,7 +417,7 @@ void tls_crypto_sha1_init(psDigestContext_t * md);
  *
  * @note			None
  */
-void tls_crypto_sha1_update(psDigestContext_t * md, const unsigned char *buf, u32 len);
+void tls_crypto_sha1_update(psDigestContext_t * md, const unsigned char *buf, uint32_t len);
 
 /**
  * @brief			This function ends a SHA1 operation and produces a Message-Digest.
@@ -464,7 +464,7 @@ void tls_crypto_md5_init(psDigestContext_t * md);
  *
  * @note			None
  */
-void tls_crypto_md5_update(psDigestContext_t * md, const unsigned char *buf, u32 len);
+void tls_crypto_md5_update(psDigestContext_t * md, const unsigned char *buf, uint32_t len);
 
 /**
  * @brief			This function ends a MD5 operation and produces a Message-Digest.

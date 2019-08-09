@@ -34,15 +34,15 @@ int _s1_buf_end = 0;
 #define TEST_DEBUG  0
 
 extern "C" {
-extern void tls_uart_tx_callback_register(u16 uart_no,
-    s16(*tx_callback) (struct tls_uart_port * port));
-extern s16 uart_tx_sent_callback(struct tls_uart_port *port);
-extern struct tls_uart *tls_uart_open(u32 uart_no, TLS_UART_MODE_T uart_mode);
+extern void tls_uart_tx_callback_register(uint16_t uart_no,
+int16_t (*tx_callback) (struct tls_uart_port * port));
+extern int16_t uart_tx_sent_callback(struct tls_uart_port *port);
+extern struct tls_uart *tls_uart_open(uint32_t uart_no, TLS_UART_MODE_T uart_mode);
 }
 
 extern "C" int sendchar(int ch);
 
-extern "C" signed short uart_rx_cb(u16 uart_no, unsigned short len,
+extern "C" signed short uart_rx_cb(uint16_t uart_no, unsigned short len,
     unsigned char * pbuf, int *pend)
 {
     int ret = 0;

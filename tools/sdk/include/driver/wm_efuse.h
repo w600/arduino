@@ -77,7 +77,7 @@ int tls_ft_param_get(unsigned int opnum, void *data, unsigned int rdlen);
 * @retval	 	TLS_EFUSE_STATUS_OK			get success
 * @retval		TLS_EFUSE_STATUS_EIO			get failed
 */
-int tls_get_mac_addr(u8 *mac);
+int tls_get_mac_addr(uint8_t *mac);
 
 /**
 * @brief 	This function is used to set mac addr
@@ -87,7 +87,7 @@ int tls_get_mac_addr(u8 *mac);
 * @retval	 	TLS_EFUSE_STATUS_OK			set success
 * @retval		TLS_EFUSE_STATUS_EIO			set failed
 */
-int tls_set_mac_addr(u8 *mac);
+int tls_set_mac_addr(uint8_t *mac);
 
 /**
 * @brief 	This function is used to get tx gain
@@ -97,7 +97,7 @@ int tls_set_mac_addr(u8 *mac);
 * @retval	 	TLS_EFUSE_STATUS_OK			get success
 * @retval		TLS_EFUSE_STATUS_EIO		get failed
 */
-int tls_get_tx_gain(u8 *txgain);
+int tls_get_tx_gain(uint8_t *txgain);
 
 /**
 * @brief 	This function is used to set tx gain
@@ -107,7 +107,7 @@ int tls_get_tx_gain(u8 *txgain);
 * @retval	 	TLS_EFUSE_STATUS_OK			set success
 * @retval		TLS_EFUSE_STATUS_EIO		set failed
 */
-int tls_set_tx_gain(u8 *txgain);
+int tls_set_tx_gain(uint8_t *txgain);
 
 /**
 * @brief 	This function is used to get tx lod
@@ -117,7 +117,7 @@ int tls_set_tx_gain(u8 *txgain);
 * @retval	 	TLS_EFUSE_STATUS_OK			get success
 * @retval		TLS_EFUSE_STATUS_EIO		get failed
 */
-int tls_get_tx_lo(u8 *txlo);
+int tls_get_tx_lo(uint8_t *txlo);
 
 /**
 * @brief 	This function is used to set tx lod
@@ -128,7 +128,7 @@ int tls_get_tx_lo(u8 *txlo);
 * @retval		TLS_EFUSE_STATUS_EIO		set failed
 */
 
-int tls_set_tx_lo(u8 *txlo);
+int tls_set_tx_lo(uint8_t *txlo);
 
 /**
 * @brief 	This function is used to get tx iq gain
@@ -138,7 +138,7 @@ int tls_set_tx_lo(u8 *txlo);
 * @retval	 	TLS_EFUSE_STATUS_OK			get success
 * @retval		TLS_EFUSE_STATUS_EIO		get failed
 */
-int tls_get_tx_iq_gain(u8 *txGain);
+int tls_get_tx_iq_gain(uint8_t *txGain);
 
 /**
 * @brief 	This function is used to set tx iq gain
@@ -148,7 +148,7 @@ int tls_get_tx_iq_gain(u8 *txGain);
 * @retval	 	TLS_EFUSE_STATUS_OK			set success
 * @retval		TLS_EFUSE_STATUS_EIO		set failed
 */
-int tls_set_tx_iq_gain(u8 *txGain);
+int tls_set_tx_iq_gain(uint8_t *txGain);
 
 /**
 * @brief 	This function is used to get rx iq gain
@@ -158,7 +158,7 @@ int tls_set_tx_iq_gain(u8 *txGain);
 * @retval	 	TLS_EFUSE_STATUS_OK			get success
 * @retval		TLS_EFUSE_STATUS_EIO		get failed
 */
-int tls_get_rx_iq_gain(u8 *rxGain);
+int tls_get_rx_iq_gain(uint8_t *rxGain);
 
 /**
 * @brief 	This function is used to get rx iq gain
@@ -168,7 +168,7 @@ int tls_get_rx_iq_gain(u8 *rxGain);
 * @retval	 	TLS_EFUSE_STATUS_OK			set success
 * @retval		TLS_EFUSE_STATUS_EIO		set failed
 */
-int tls_set_rx_iq_gain(u8 *rxGain);
+int tls_set_rx_iq_gain(uint8_t *rxGain);
 
 /**
 * @brief 	This function is used to get tx iq phase
@@ -178,7 +178,7 @@ int tls_set_rx_iq_gain(u8 *rxGain);
 * @retval	 	TLS_EFUSE_STATUS_OK			get success
 * @retval		TLS_EFUSE_STATUS_EIO		get failed
 */
-int tls_get_tx_iq_phase(u8 *txPhase);
+int tls_get_tx_iq_phase(uint8_t *txPhase);
 
 /**
 * @brief 	This function is used to set tx iq phase
@@ -188,7 +188,7 @@ int tls_get_tx_iq_phase(u8 *txPhase);
 * @retval	 	TLS_EFUSE_STATUS_OK			set success
 * @retval		TLS_EFUSE_STATUS_EIO		set failed
 */
-int tls_set_tx_iq_phase(u8 *txPhase);
+int tls_set_tx_iq_phase(uint8_t *txPhase);
 
 /**
 * @brief 	This function is used to get rx iq phase
@@ -198,7 +198,7 @@ int tls_set_tx_iq_phase(u8 *txPhase);
 * @retval	 	TLS_EFUSE_STATUS_OK			get success
 * @retval		TLS_EFUSE_STATUS_EIO		get failed
 */
-int tls_get_rx_iq_phase(u8 *rxPhase);
+int tls_get_rx_iq_phase(uint8_t *rxPhase);
 
 /**
 * @brief 	This function is used to set rx iq phase
@@ -208,7 +208,7 @@ int tls_get_rx_iq_phase(u8 *rxPhase);
 * @retval	 	TLS_EFUSE_STATUS_OK			set success
 * @retval		TLS_EFUSE_STATUS_EIO		set failed
 */
-int tls_set_rx_iq_phase(u8 *rxPhase);
+int tls_set_rx_iq_phase(uint8_t *rxPhase);
 
 /**
 * @brief 	This function is used to set/get freq err
@@ -218,7 +218,7 @@ int tls_set_rx_iq_phase(u8 *rxPhase);
 * @retval	 	TLS_EFUSE_STATUS_OK			set/get success
 * @retval		TLS_EFUSE_STATUS_EIO		set/get failed
 */
-int tls_freq_err_op(u8 *freqerr, u8 flag);
+int tls_freq_err_op(uint8_t *freqerr, uint8_t flag);
 
 /**
 * @brief 	This function is used to set/get vcg ctrl
@@ -229,7 +229,7 @@ int tls_freq_err_op(u8 *freqerr, u8 flag);
 * @retval	 	TLS_EFUSE_STATUS_OK			set/get success
 * @retval		TLS_EFUSE_STATUS_EIO		set/get failed
 */
-int tls_rf_vcg_ctrl_op(u8 *vcg, u8 flag);
+int tls_rf_vcg_ctrl_op(uint8_t *vcg, uint8_t flag);
 
 /**
 * @brief 	This function is used to get chip ID
@@ -239,7 +239,7 @@ int tls_rf_vcg_ctrl_op(u8 *vcg, u8 flag);
 * @retval	 	TLS_EFUSE_STATUS_OK			get success
 * @retval		TLS_FLS_STATUS_EPERM		flash driver module not beed installed
 */
-int tls_get_chipid(u8 chip_id[16]);
+int tls_get_chipid(uint8_t chip_id[16]);
 
 /**
 * @brief 	This function is used to get chip ID

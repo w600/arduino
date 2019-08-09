@@ -11,7 +11,7 @@
 #include "wm_osal.h"
 #include "stdint.h"
 #include "wm_regs.h"
-#include "Wiring_time.h"
+#include "wiring_time.h"
 
 static inline uint32_t LL_SYSTICK_IsActiveCounterFlag(void)
 {

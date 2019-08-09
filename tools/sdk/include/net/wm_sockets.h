@@ -26,23 +26,23 @@ typedef unsigned int socklen_t;
 /* If your port already typedef's sa_family_t, define SA_FAMILY_T_DEFINED
    to prevent this code from redefining it. */
 #if !defined(sa_family_t) && !defined(SA_FAMILY_T_DEFINED)
-typedef u8 sa_family_t;
+typedef uint8_t sa_family_t;
 #endif
 /* If your port already typedef's in_port_t, define IN_PORT_T_DEFINED
    to prevent this code from redefining it. */
 #if !defined(in_port_t) && !defined(IN_PORT_T_DEFINED)
-typedef u16 in_port_t;
+typedef uint16_t in_port_t;
 #endif
 
 /** Internet address */
 struct in_address{
-  u32 s_addr;    /**< address */
+  uint32_t s_addr;    /**< address */
 };
 
 struct in6_addr {
   union {
-    u32 u32_addr[4];
-    u8  u8_addr[16];
+    uint32_t u32_addr[4];
+    uint8_t  u8_addr[16];
   } un;
 #define s6_addr  un.u8_addr
 };
@@ -50,26 +50,26 @@ struct in6_addr {
 /** Structure describing an Internet (IP) socket address,
     members are in network byte order */
 struct sockaddr_in {
-  u8 sin_len;       /**< Address length */
-  u8 sin_family;    /**< Address family */
-  u16 sin_port;     /**< Port number */
+  uint8_t sin_len;       /**< Address length */
+  uint8_t sin_family;    /**< Address family */
+  uint16_t sin_port;     /**< Port number */
   struct in_address sin_addr;/**< Structure describing an Internet (IP) socket address */
   char sin_zero[8]; /**< Pad to size of `struct sockaddr' */
 };
 
 struct sockaddr_in6 {
-  u8            sin6_len;      /* length of this structure    */
+  uint8_t            sin6_len;      /* length of this structure    */
   sa_family_t     sin6_family;   /* AF_INET6                    */
   in_port_t       sin6_port;     /* Transport layer port #      */
-  u32           sin6_flowinfo; /* IPv6 flow information       */
+  uint32_t           sin6_flowinfo; /* IPv6 flow information       */
   struct in6_addr sin6_addr;     /* IPv6 address                */
-  u32           sin6_scope_id; /* Set of interfaces for scope */
+  uint32_t           sin6_scope_id; /* Set of interfaces for scope */
 };
 
 /** Structure describing a generic socket address */
 struct sockaddr {
-  u8 sa_len;           /**< address length */
-  u8 sa_family;        /**< address family */
+  uint8_t sa_len;           /**< address length */
+  uint8_t sa_family;        /**< address family */
   char sa_data[14];    /**< Address data */
 };
 
@@ -721,7 +721,7 @@ struct hostent* gethostbyname(const char *name);
  *
  * @note           None
  */
-u32 ipaddr_addr(const char *cp);
+uint32_t ipaddr_addr(const char *cp);
 
 /**
  * @brief          Convert numeric IP address into decimal dotted ASCII representation
@@ -766,13 +766,13 @@ char * ipaddr_ntoa(const ip_addr_t *addr);
 #define ntohl(n) 				htonl(n)
 
 /** Get first byte from the 4-byte address */
-#define ip4_addr1(ipaddr) (((u8*)(ipaddr))[0])
+#define ip4_addr1(ipaddr) (((uint8_t*)(ipaddr))[0])
 /** Get second byte from the 4-byte address */
-#define ip4_addr2(ipaddr) (((u8*)(ipaddr))[1])
+#define ip4_addr2(ipaddr) (((uint8_t*)(ipaddr))[1])
 /** Get third byte from the 4-byte address */
-#define ip4_addr3(ipaddr) (((u8*)(ipaddr))[2])
+#define ip4_addr3(ipaddr) (((uint8_t*)(ipaddr))[2])
 /** Get fourth byte from the 4-byte address */
-#define ip4_addr4(ipaddr) (((u8*)(ipaddr))[3])
+#define ip4_addr4(ipaddr) (((uint8_t*)(ipaddr))[3])
 /** Convert numeric IP address into decimal dotted ASCII representation */
 #define inet_ntoa(addr)       ipaddr_ntoa((ip_addr_t*)&(addr))
 

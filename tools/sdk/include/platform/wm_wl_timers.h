@@ -48,7 +48,7 @@ typedef void (* tls_timeout_handler)(void *arg);
  *
  * @note           While waiting for a message using sys_timeouts_mbox_fetch()
  */
-void tls_timeout_p(u8 timeo_assigned, u32 msecs, tls_timeout_handler handler, void *arg);
+void tls_timeout_p(uint8_t timeo_assigned, uint32_t msecs, tls_timeout_handler handler, void *arg);
 
 /**
  * @brief          Go through timeout list (for this task only) and remove the first
@@ -62,7 +62,7 @@ void tls_timeout_p(u8 timeo_assigned, u32 msecs, tls_timeout_handler handler, vo
  *
  * @note           None
  */
-void tls_untimeout_p(u8 timeo_assigned, tls_timeout_handler handler, void *arg);
+void tls_untimeout_p(uint8_t timeo_assigned, tls_timeout_handler handler, void *arg);
 
 /**
  * @brief          Wait (forever) for a message to arrive in an mbox.
@@ -76,7 +76,7 @@ void tls_untimeout_p(u8 timeo_assigned, tls_timeout_handler handler, void *arg);
  *
  * @note           None
  */
-void tls_timeouts_mbox_fetch_p(u8 timeo_assigned, tls_mbox_t mbox, void **msg);
+void tls_timeouts_mbox_fetch_p(uint8_t timeo_assigned, tls_mbox_t mbox, void **msg);
 
 /**
  * @brief          Initialize the timer
@@ -88,7 +88,7 @@ void tls_timeouts_mbox_fetch_p(u8 timeo_assigned, tls_mbox_t mbox, void **msg);
  *
  * @note           None
  */
-s8 tls_wl_timer_init(void);
+int8_t tls_wl_timer_init(void);
 
 /**
  * @}

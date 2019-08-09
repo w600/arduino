@@ -16,28 +16,28 @@
 	ID								|			Data Type
 ***************************************************************************************
 TLS_PARAM_ID_SSID      				|		  	struct tls_param_ssid ssid
-TLS_PARAM_ID_ENCRY      		        	|		  	u8 encry
+TLS_PARAM_ID_ENCRY      		        	|		  	uint8_t encry
 TLS_PARAM_ID_KEY      		          	|		  	struct tls_param_key key
 TLS_PARAM_ID_IP      			          	|		  	struct tls_param_ip ipcfg
-TLS_PARAM_ID_AUTOMODE               		|		  	u8 auto_mode
+TLS_PARAM_ID_AUTOMODE               		|		  	uint8_t auto_mode
 TLS_PARAM_ID_DEFSOCKET              		|		  	N/A
 TLS_PARAM_ID_BSSID                  		|			struct tls_param_bssid bssid
-TLS_PARAM_ID_CHANNEL                		|			u8 channel
-TLS_PARAM_ID_CHANNEL_EN             	|			u8 channel_enable
-TLS_PARAM_ID_COUNTRY_REGION         	|			u8 wireless_region
-TLS_PARAM_ID_WPROTOCOL              	|			u8 wireless_protocol
+TLS_PARAM_ID_CHANNEL                		|			uint8_t channel
+TLS_PARAM_ID_CHANNEL_EN             	|			uint8_t channel_enable
+TLS_PARAM_ID_COUNTRY_REGION         	|			uint8_t wireless_region
+TLS_PARAM_ID_WPROTOCOL              	|			uint8_t wireless_protocol
 TLS_PARAM_ID_ADHOC_AUTOCREATE       |			N/A
-TLS_PARAM_ID_ROAMING                		|			u8 auto_roam
+TLS_PARAM_ID_ROAMING                		|			uint8_t auto_roam
 TLS_PARAM_ID_AUTO_RETRY_CNT         	|			N/A
 TLS_PARAM_ID_WBGR                   		|			struct tls_param_bgr wbgr
 TLS_PARAM_ID_USRINTF                		|			N/A
 TLS_PARAM_ID_AUTO_TRIGGER_LENGTH   |			N/A
 TLS_PARAM_ID_DEBUG_MODE             	|			N/A
 TLS_PARAM_ID_HARDVERSION            	|			struct tls_param_hardware_version hardware_v
-TLS_PARAM_ID_BRDSSID 	              	|			u8 ssid_broadcast_enable
-TLS_PARAM_ID_DNSNAME                		|			u8 local_dnsname[32]
-TLS_PARAM_ID_DEVNAME                		|			u8 local_device_name[32]
-TLS_PARAM_ID_PSM                    		|			u8 auto_powersave
+TLS_PARAM_ID_BRDSSID 	              	|			uint8_t ssid_broadcast_enable
+TLS_PARAM_ID_DNSNAME                		|			uint8_t local_dnsname[32]
+TLS_PARAM_ID_DEVNAME                		|			uint8_t local_device_name[32]
+TLS_PARAM_ID_PSM                    		|			uint8_t auto_powersave
 TLS_PARAM_ID_ORAY_CLIENT            	|			N/A
 TLS_PARAM_ID_UPNP                   		|			N/A
 TLS_PARAM_ID_UART                   		|			struct tls_param_uart uart_cfg
@@ -47,14 +47,14 @@ TLS_PARAM_ID_ESCAPE_CHAR            	|			N/A
 TLS_PARAM_ID_ESCAPE_PERIOD	        	|			N/A
 TLS_PARAM_ID_IO_MODE                		|			N/A
 TLS_PARAM_ID_CMD_MODE               	|			N/A
-TLS_PARAM_ID_PASSWORD	              	|			u8 PassWord[6]
-TLS_PARAM_ID_CHANNEL_LIST           	|			u16 channellist
+TLS_PARAM_ID_PASSWORD	              	|			uint8_t PassWord[6]
+TLS_PARAM_ID_CHANNEL_LIST           	|			uint16_t channellist
 TLS_PARAM_ID_WEBS_CONFIG            	|			struct tls_webs_cfg WebsCfg
-TLS_PARAM_ID_ONESHOT_CFG            	|			u8 oneshotflag
+TLS_PARAM_ID_ONESHOT_CFG            	|			uint8_t oneshotflag
 TLS_PARAM_ID_SHA1                   		|			N/A
 TLS_PARAM_ID_ORIGIN_KEY             		|			N/A
 TLS_PARAM_ID_ORIGIN_SSID            	|			N/A
-TLS_PARAM_ID_AUTO_RECONNECT         	|			u8 auto_reconnect
+TLS_PARAM_ID_AUTO_RECONNECT         	|			uint8_t auto_reconnect
 ***************************************************************************************/
 
 #define TLS_PARAM_STATUS_OK      (0)
@@ -278,133 +278,133 @@ TLS_PARAM_ID_AUTO_RECONNECT         	|			u8 auto_reconnect
 
 /**   Structure of hardware parameter    */
 struct tls_param_hardware_version {
-	u8 mark;
-	u8 main;
-	u8 sub;
-	u8 material;
-	u8 year;
-	u8 week;
-	u8 res[2];
+	uint8_t mark;
+	uint8_t main;
+	uint8_t sub;
+	uint8_t material;
+	uint8_t year;
+	uint8_t week;
+	uint8_t res[2];
 };
 
 /**   Structure of specified BSSID parameter    */
 struct tls_param_bssid {
-	u8 bssid_enable;
-	u8 res;
-	u8 bssid[6];
+	uint8_t bssid_enable;
+	uint8_t res;
+	uint8_t bssid[6];
 };
 
 /**   Structure of SSID parameter    */
 struct tls_param_ssid {
-	u8 ssid[32];
-	u32 ssid_len;
+	uint8_t ssid[32];
+	uint32_t ssid_len;
 };
 
 /**   Structure of TEM parameter    */
 struct tls_param_tem_offset {
-	u8 offset_len;
-	s32 offset;
+	uint8_t offset_len;
+	int32_t offset;
 };
 
 /**   Structure of KEY parameter    */
 struct tls_param_key {
-	u8 psk[64];
-	u8 key_length;
-	u8 key_index;
-	u8 key_format;
-	u8 res;
+	uint8_t psk[64];
+	uint8_t key_length;
+	uint8_t key_index;
+	uint8_t key_format;
+	uint8_t res;
 };
 
 /**   Structure of original KEY parameter    */
 struct tls_param_original_key {
-	u8 psk[64];
-	u32 key_length;
+	uint8_t psk[64];
+	uint32_t key_length;
 };
 
 /**   Structure of SHA1 KEY parameter    */
 struct tls_param_sha1{
-	u8 psk_set;
-	u8 psk[32];
+	uint8_t psk_set;
+	uint8_t psk[32];
 };
 
 /**   Structure of 802.11 bgn rate parameter    */
 struct tls_param_bgr {
-	u8 bg;
-	u8 max_rate;
-	u8 res[2];
+	uint8_t bg;
+	uint8_t max_rate;
+	uint8_t res[2];
 };
 
 /**   Structure of IP parameter    */
 struct tls_param_ip {
-	u8 dhcp_enable;
-	u8 res[3];
-	u8 ip[4];
-	u8 netmask[4];
-	u8 gateway[4];
-	u8 dns1[4];
-	u8 dns2[4];
+	uint8_t dhcp_enable;
+	uint8_t res[3];
+	uint8_t ip[4];
+	uint8_t netmask[4];
+	uint8_t gateway[4];
+	uint8_t dns1[4];
+	uint8_t dns2[4];
 };
 
 /**   Structure of uart parameter    */
 struct tls_param_uart {
-	u32 baudrate;
-	u8 stop_bits;
-	u8 parity;
-	u8 flow;
-	u8 charsize;
+	uint32_t baudrate;
+	uint8_t stop_bits;
+	uint8_t parity;
+	uint8_t flow;
+	uint8_t charsize;
 };
 
 /**   Structure of socket parameter    */
 struct tls_param_socket {
-	u8 protocol;
-	u8 client_or_server;
-	u16 port_num;
-	u8 host[32];
+	uint8_t protocol;
+	uint8_t client_or_server;
+	uint16_t port_num;
+	uint8_t host[32];
 };
 
 struct tls_param_wps {
-	u8 wps_enable;
-	u8 mode;
-	u8 flag;
-	u8 res;
-	u8 pin[8];
+	uint8_t wps_enable;
+	uint8_t mode;
+	uint8_t flag;
+	uint8_t res;
+	uint8_t pin[8];
 };
 
 /**   Structure of oray client */
 struct tls_param_oray_client {
-	u32 oray_client_enable;
-	u8 oray_client_user[32];
-	u8 oray_client_pass[32];
+	uint32_t oray_client_enable;
+	uint8_t oray_client_user[32];
+	uint8_t oray_client_pass[32];
 };
 
 /**   Structure of web server parameter    */
 struct tls_webs_cfg {
-	u8	AutoRun;
-	u8	Reserved;
-	u16 PortNum;
+	uint8_t	AutoRun;
+	uint8_t	Reserved;
+	uint16_t PortNum;
 };
 
 /**   Structure of user default parameter    */
 typedef struct tls_user_param{
 
-	u8 wireless_protocol;
-	u8 auto_mode;
-	u8 dhcp_enable;
-	u8 user_port_mode;
+	uint8_t wireless_protocol;
+	uint8_t auto_mode;
+	uint8_t dhcp_enable;
+	uint8_t user_port_mode;
 
-	u8 ip[4];
-	u8 netmask[4];
-	u8 gateway[4];
-	u8 dns[4];
+	uint8_t ip[4];
+	uint8_t netmask[4];
+	uint8_t gateway[4];
+	uint8_t dns[4];
 
-	u32 baudrate;
+	uint32_t baudrate;
 
-	u8 socket_protocol;
-	u8 socket_client_or_server;
-	u16 socket_port_num;
-	u8 socket_host[32];
-	u8 auto_powersave;
-	u8 PassWord[6];
+	uint8_t socket_protocol;
+	uint8_t socket_client_or_server;
+	uint16_t socket_port_num;
+	uint8_t socket_host[32];
+	uint8_t auto_powersave;
+	uint8_t PassWord[6];
 }ST_Wm_User_Param;
 
 /**
@@ -563,7 +563,7 @@ int tls_param_save_user(struct tls_user_param *user_param);
  *
  * @note           None
  */
-u8 tls_param_get_updp_mode(void);
+uint8_t tls_param_get_updp_mode(void);
 
 /**
  * @brief          This function is used to set updp mode
@@ -574,7 +574,7 @@ u8 tls_param_get_updp_mode(void);
  *
  * @note           None
  */
-void tls_param_set_updp_mode(u8 mode);
+void tls_param_set_updp_mode(uint8_t mode);
 
 /**
  * @brief          This function is used to get program param
@@ -586,7 +586,7 @@ void tls_param_set_updp_mode(u8 mode);
  *
  * @note           None
  */
-int tls_param_get_program_param(u32 *pBase);
+int tls_param_get_program_param(uint32_t *pBase);
 
 /**
  * @brief          This function is used to set program base,image len,and
@@ -601,7 +601,7 @@ int tls_param_get_program_param(u32 *pBase);
  *
  * @note           None
  */
-int tls_param_set_program_param(u32 base, u32 totallen, u32 checksum);
+int tls_param_set_program_param(uint32_t base, uint32_t totallen, uint32_t checksum);
 
 /**
  * @}

@@ -68,17 +68,17 @@ enum tls_pwm_brake_out_level{
 /** pwm initial parameters */
 typedef struct _pwm_init_param{
     enum tls_pwm_out_mode mode;         /**< work mode */
-    u8 channel;                         /**< channel id 0~4 */
-    u16 clkdiv;                         /**< clock divided value */
-    u8 period;                          /**< period value(output frequency F = CLK/CLK_DIV/PERIOD) */
-    u8 duty;                            /**< duty radio (range 0~255, high level or low level by out_inversion decided */
+    uint8_t channel;                         /**< channel id 0~4 */
+    uint16_t clkdiv;                         /**< clock divided value */
+    uint8_t period;                          /**< period value(output frequency F = CLK/CLK_DIV/PERIOD) */
+    uint8_t duty;                            /**< duty radio (range 0~255, high level or low level by out_inversion decided */
     bool dten;                          /**< enable dead zone time (ENABLE or DISABLE) */
-    u8 dtclkdiv;                        /**< dead zone clock divided value (0~3) */
-    u8 dtcnt;                           /**< period number of dead zone time  (0~255) */
+    uint8_t dtclkdiv;                        /**< dead zone clock divided value (0~3) */
+    uint8_t dtcnt;                           /**< period number of dead zone time  (0~255) */
     enum tls_pwm_cnt_type cnt_type;     /**< count type */
     enum tls_pwm_loop_type loop_type;   /**< cycle type */
     bool inverse_en;                    /**< output is inverse */
-    u8 pnum;                            /**< generate interrupt after pnum period */
+    uint8_t pnum;                            /**< generate interrupt after pnum period */
     bool pnum_int;                      /**< period interrupt is enable */
 }pwm_init_param;
 
@@ -124,7 +124,7 @@ void tls_pwm_isr_register(void (*callback)(void));
  *
  * @note           None
  */
-int tls_pwm_duty_config(u8 channel, u8 duty);
+int tls_pwm_duty_config(uint8_t channel, uint8_t duty);
 
 /**
  * @brief          This function is used to set frequency
@@ -138,7 +138,7 @@ int tls_pwm_duty_config(u8 channel, u8 duty);
  *
  * @note           None
  */
-int tls_pwm_freq_config(u8 channel, u16 clkdiv, u8 period);
+int tls_pwm_freq_config(uint8_t channel, uint16_t clkdiv, uint8_t period);
 
 /**
  * @brief          This function is used to set the output mode
@@ -151,7 +151,7 @@ int tls_pwm_freq_config(u8 channel, u16 clkdiv, u8 period);
  *
  * @note           None
  */
-int tls_pwm_out_mode_config(u8 channel, enum tls_pwm_out_mode mode);
+int tls_pwm_out_mode_config(uint8_t channel, enum tls_pwm_out_mode mode);
 
 /**
  * @brief          This function is used to set the counting mode
@@ -164,7 +164,7 @@ int tls_pwm_out_mode_config(u8 channel, enum tls_pwm_out_mode mode);
  *
  * @note           None
  */
-int tls_pwm_cnt_type_config(u8 channel, enum tls_pwm_cnt_type cnt_type);
+int tls_pwm_cnt_type_config(uint8_t channel, enum tls_pwm_cnt_type cnt_type);
 
 /**
  * @brief          This function is used to set whether to loop
@@ -177,7 +177,7 @@ int tls_pwm_cnt_type_config(u8 channel, enum tls_pwm_cnt_type cnt_type);
  *
  * @note           None
  */
-int tls_pwm_loop_mode_config(u8 channel, enum tls_pwm_loop_type loop_mode);
+int tls_pwm_loop_mode_config(uint8_t channel, enum tls_pwm_loop_type loop_mode);
 
 /**
  * @brief          This function is used to set whether to inverse the output
@@ -191,7 +191,7 @@ int tls_pwm_loop_mode_config(u8 channel, enum tls_pwm_loop_type loop_mode);
  *
  * @note           None
  */
-int tls_pwm_out_inverse_cmd(u8 channel, bool en);
+int tls_pwm_out_inverse_cmd(uint8_t channel, bool en);
 
 /**
  * @brief          This function is used to set the number of period to be generated
@@ -204,7 +204,7 @@ int tls_pwm_out_inverse_cmd(u8 channel, bool en);
  *
  * @note           None
  */
-int tls_pwm_stoptime_by_period_config(u8 channel, u8 pnum);
+int tls_pwm_stoptime_by_period_config(uint8_t channel, uint8_t pnum);
 
 /**
  * @brief          This function is used to set output enable
@@ -217,7 +217,7 @@ int tls_pwm_stoptime_by_period_config(u8 channel, u8 pnum);
  *
  * @note           None
  */
-int tls_pwm_output_en_cmd(u8 channel, bool en);
+int tls_pwm_output_en_cmd(uint8_t channel, bool en);
 
 /**
  * @brief          This function is used to set the dead time
@@ -232,7 +232,7 @@ int tls_pwm_output_en_cmd(u8 channel, bool en);
  *
  * @note           None
  */
-int tls_pwm_deadzone_config(u8 channel, bool dten, u8 dtclkdiv, u8 dtcnt);
+int tls_pwm_deadzone_config(uint8_t channel, bool dten, uint8_t dtclkdiv, uint8_t dtcnt);
 
 /**
  * @brief          This function is used to set whether to inverse the capture input
@@ -245,7 +245,7 @@ int tls_pwm_deadzone_config(u8 channel, bool dten, u8 dtclkdiv, u8 dtcnt);
  *
  * @note           None
  */
-int tls_pwm_capture_inverse_cmd(u8 channel, bool en);
+int tls_pwm_capture_inverse_cmd(uint8_t channel, bool en);
 
 /**
  * @brief          This function is used to set break mode
@@ -259,7 +259,7 @@ int tls_pwm_capture_inverse_cmd(u8 channel, bool en);
  *
  * @note           None
  */
-int tls_pwm_brake_mode_config(u8 channel, bool en, enum tls_pwm_brake_out_level brok);
+int tls_pwm_brake_mode_config(uint8_t channel, bool en, enum tls_pwm_brake_out_level brok);
 
 /**
  * @brief          This function is used to enable the capture mode
@@ -271,7 +271,7 @@ int tls_pwm_brake_mode_config(u8 channel, bool en, enum tls_pwm_brake_out_level 
  *
  * @note           None
  */
-int tls_pwm_capture_mode_config(u8 channel);
+int tls_pwm_capture_mode_config(uint8_t channel);
 
 /**
  * @brief          This function is used to set the interrupt about the number of period
@@ -284,7 +284,7 @@ int tls_pwm_capture_mode_config(u8 channel);
  *
  * @note           None
  */
-int tls_pwm_stoptime_irq_cmd(u8 channel, bool en);
+int tls_pwm_stoptime_irq_cmd(uint8_t channel, bool en);
 
 /**
  * @brief          This function is used to set the interrupt about the
@@ -298,7 +298,7 @@ int tls_pwm_stoptime_irq_cmd(u8 channel, bool en);
  *
  * @note           None
  */
-int tls_pwm_capture_irq_type_config(u8 channel, enum tls_pwm_cap_int_type int_type);
+int tls_pwm_capture_irq_type_config(uint8_t channel, enum tls_pwm_cap_int_type int_type);
 
 /**
  * @brief          This function is used to initial pwm(out mode)
@@ -325,7 +325,7 @@ int tls_pwm_out_init(pwm_init_param pwm_param);
  *
  * @note           None
  */
-int tls_pwm_cap_init(u8 channel, u16 clkdiv, bool inverse_en, enum tls_pwm_cap_int_type int_type);
+int tls_pwm_cap_init(uint8_t channel, uint16_t clkdiv, bool inverse_en, enum tls_pwm_cap_int_type int_type);
 
 /**
  * @brief          This function is used to start pwm
@@ -337,7 +337,7 @@ int tls_pwm_cap_init(u8 channel, u16 clkdiv, bool inverse_en, enum tls_pwm_cap_i
  *
  * @note           None
  */
-int tls_pwm_start(u8 channel);
+int tls_pwm_start(uint8_t channel);
 
 /**
  * @brief          This function is used to stop pwm
@@ -349,7 +349,7 @@ int tls_pwm_start(u8 channel);
  *
  * @note           None
  */
-void tls_pwm_freq_set(u8 channel, u32 freq);
+void tls_pwm_freq_set(uint8_t channel, uint32_t freq);
 
 /**
  * @brief          This function is used to set duty radio
@@ -361,7 +361,7 @@ void tls_pwm_freq_set(u8 channel, u32 freq);
  *
  * @note           None
  */
-void tls_pwm_duty_set(u8 channel, u8 duty);
+void tls_pwm_duty_set(uint8_t channel, uint8_t duty);
 
 /**
  * @brief          This function is used to initial pwm
@@ -375,7 +375,7 @@ void tls_pwm_duty_set(u8 channel, u8 duty);
  *
  * @note           None
  */
-int tls_pwm_init(u8 channel,u32 freq, u8 duty, u8 pnum);
+int tls_pwm_init(uint8_t channel,uint32_t freq, uint8_t duty, uint8_t pnum);
 
 /**
  * @brief          This function is used to stop pwm
@@ -387,7 +387,7 @@ int tls_pwm_init(u8 channel,u32 freq, u8 duty, u8 pnum);
  *
  * @note           None
  */
-int tls_pwm_stop(u8 channel);
+int tls_pwm_stop(uint8_t channel);
 
 /**
  * @}

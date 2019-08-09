@@ -24,9 +24,9 @@
 
 
 typedef struct{
-	u32 apbclk;
-	u32 cpuclk;
-	u32 wlanclk;
+	uint32_t apbclk;
+	uint32_t cpuclk;
+	uint32_t wlanclk;
 }tls_sys_clk;
 
 
@@ -41,7 +41,7 @@ typedef struct{
  *
  * @note           None
  */
-void tls_sys_clk_set(u32 clk);
+void tls_sys_clk_set(uint32_t clk);
 
 
 /**

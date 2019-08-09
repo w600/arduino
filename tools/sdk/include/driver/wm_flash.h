@@ -54,21 +54,21 @@ struct fls_list
 struct tls_fls_drv
 {
     struct fls_list drv_list;
-    u32 id;
-    u32 total_size;
-    u32 page_size;
-    u32 program_size;
-    u32 sector_size;
-    u32 clock;
-    u8 mode;
-    u8 cs_active;
-    u8 flags;
-    int (*read) (u32, u8 *, u32);
-    int (*fast_read) (u32, u8 *, u32);
-    int (*page_write) (u32, u8 *);
-    int (*erase) (u32);
+    uint32_t id;
+    uint32_t total_size;
+    uint32_t page_size;
+    uint32_t program_size;
+    uint32_t sector_size;
+    uint32_t clock;
+    uint8_t mode;
+    uint8_t cs_active;
+    uint8_t flags;
+    int (*read) (uint32_t, uint8_t *, uint32_t);
+    int (*fast_read) (uint32_t, uint8_t *, uint32_t);
+    int (*page_write) (uint32_t, uint8_t *);
+    int (*erase) (uint32_t);
     int (*chip_erase) (void);
-    int (*probe)(u32 id);
+    int (*probe)(uint32_t id);
     void (*remove) (void);
 };
 
@@ -128,7 +128,7 @@ int tls_spifls_init(void);
  *
  * @note           None
  */
-int tls_spifls_read(u32 addr, u8 * buf, u32 len);
+int tls_spifls_read(uint32_t addr, uint8_t * buf, uint32_t len);
 
 
 /**
@@ -146,7 +146,7 @@ int tls_spifls_read(u32 addr, u8 * buf, u32 len);
  *
  * @note           None
  */
-int tls_spifls_write(u32 addr, u8 * buf, u32 len);
+int tls_spifls_write(uint32_t addr, uint8_t * buf, uint32_t len);
 
 /**
  * @}

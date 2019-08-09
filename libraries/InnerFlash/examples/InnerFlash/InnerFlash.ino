@@ -25,7 +25,7 @@ void w600_arduino_setup()
 #if W600_INNERFLASH_EXAMPLE
 void innerflash_loop()
 {
-    u8 data[4096];
+    uint8_t data[4096];
     int i = 0;
 
     InnerFlash.flashRead(240*4096, &data[0], 4096);

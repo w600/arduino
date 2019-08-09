@@ -20,7 +20,7 @@
 #define	 VS1053 	4
 #define	 VS1033 	5
 #define	 VS1103 	7
-extern u8 VS10XX_ID;	  		  /** VS10XX id */
+extern uint8_t VS10XX_ID;	  		  /** VS10XX id */
 /**command */
 #define VS_WRITE_COMMAND 	0x02  /** write command */
 #define VS_READ_COMMAND 	0x03  /** read command */
@@ -112,7 +112,7 @@ void codec_data_cs_high(void);
  *
  * @note           None
  */
-u16  VS_RD_Reg(u8 address);
+uint16_t  VS_RD_Reg(uint8_t address);
 
 /**
  * @brief          write command
@@ -124,7 +124,7 @@ u16  VS_RD_Reg(u8 address);
  *
  * @note           None
  */
-void VS_WR_Cmd(u8 address,u16 data);
+void VS_WR_Cmd(uint8_t address,uint16_t data);
 
 /**
  * @brief          write data
@@ -135,7 +135,7 @@ void VS_WR_Cmd(u8 address,u16 data);
  *
  * @note           None
  */
-void VS_WR_Data(u8 data);
+void VS_WR_Data(uint8_t data);
 
 /**
  * @brief          read ram
@@ -147,7 +147,7 @@ void VS_WR_Data(u8 data);
  *
  * @note           None
  */
-u16  VS_RD_Wram(u16 addr);
+uint16_t  VS_RD_Wram(uint16_t addr);
 
 /**
  * @brief          initial VS10XX
@@ -170,7 +170,7 @@ void VS_Init(void);
  *
  * @note           None
  */
-u8   VS_HD_Reset(void);
+uint8_t   VS_HD_Reset(void);
 
 /**
  * @brief          software reset
@@ -193,7 +193,7 @@ void VS_Soft_Reset(void);
  *
  * @note           None
  */
-u16  VS_Ram_Test(void);
+uint16_t  VS_Ram_Test(void);
 
 /**
  * @brief          sine test
@@ -216,7 +216,7 @@ void VS_Sine_Test(void);
  *
  * @note           None
  */
-u16  VS_Get_DecodeTime(void);
+uint16_t  VS_Get_DecodeTime(void);
 
 /**
  * @brief          get bitrate
@@ -228,7 +228,7 @@ u16  VS_Get_DecodeTime(void);
  *
  * @note           None
  */
-u16  VS_Get_HeadInfo(void);
+uint16_t  VS_Get_HeadInfo(void);
 
 /**
  * @brief          set decode time
@@ -262,7 +262,7 @@ void set10XX(void);
  *
  * @note           None
  */
-void VS_Load_Patch(u16 *patch,u16 len);
+void VS_Load_Patch(uint16_t *patch,uint16_t len);
 
 /**
  * @brief          set volumn
@@ -295,7 +295,7 @@ void vs_mute(void);
  *
  * @note           None
  */
-void VS_Rec_Mode(u16 agc);
+void VS_Rec_Mode(uint16_t agc);
 
 /**
  * @brief          get record data

@@ -86,14 +86,14 @@ struct tls_ethif {
 #endif
     ip_addr_t dns1;
     ip_addr_t dns2;
-    u8 status;              //0:net down; 1:net up
+    uint8_t status;              //0:net down; 1:net up
 #if TLS_CONFIG_IPV6
-    u8 ipv6_status[IPV6_ADDR_MAX_NUM];      //0:net down; 1:net up
+    uint8_t ipv6_status[IPV6_ADDR_MAX_NUM];      //0:net down; 1:net up
 #endif
 };
 
 //type defination of netif status changed callback.
-typedef void (*tls_netif_status_event_fn)(u8 status);
+typedef void (*tls_netif_status_event_fn)(uint8_t status);
 
 /**
  * @brief          This function is used to initialize TCP/IP Stack
@@ -170,7 +170,7 @@ err_t tls_netif_set_addr(ip_addr_t *ipaddr,
  *
  * @note           None
  */ 
-void tls_netif_dns_setserver(u8 numdns, ip_addr_t *dnsserver);
+void tls_netif_dns_setserver(uint8_t numdns, ip_addr_t *dnsserver);
 
 /**
  * @brief          This function is used to bring up an interface,available

@@ -41,7 +41,7 @@
  *
  * @note           None
  */
-s8 tls_dnss_start(u8 *dnsname);
+int8_t tls_dnss_start(uint8_t *dnsname);
 
 /**
  * @brief          This function is used to stop DNS service

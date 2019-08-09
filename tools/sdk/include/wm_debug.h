@@ -38,19 +38,19 @@
 
 #define __TLS_DBGPRT_INFO(fmt, ...)				     \
 do {									                     \
-       u32 time = tls_os_get_time();	                 \
+       uint32_t time = tls_os_get_time();	                 \
        printf("[WM_I] <%d.%02d> %s : "fmt, (time/100), (time%100), __func__ , ##__VA_ARGS__); \
 } while (0)
 
 #define __TLS_DBGPRT_WARNING(fmt, ...)				     \
 do {									                     \
-       u32 time = tls_os_get_time();	                 \
+       uint32_t time = tls_os_get_time();	                 \
        printf("[WM_W] <%d.%02d> %s : "fmt, (time/100), (time%100), __func__ , ##__VA_ARGS__); \
 } while (0)
 
 #define __TLS_DBGPRT_ERR(fmt, ...)				     \
 do {									                     \
-       u32 time = tls_os_get_time();	                 \
+       uint32_t time = tls_os_get_time();	                 \
        printf("[WM_E] <%d.%02d> %s : "fmt, (time/100), (time%100), __func__ , ##__VA_ARGS__); \
 } while (0)
 
@@ -110,7 +110,7 @@ do {									                     \
  *
  * @note           None
  */
-void    TLS_DBGPRT_DUMP(char *p, u32 len);
+void    TLS_DBGPRT_DUMP(char *p, uint32_t len);
 #else
 /** Print information of the dump level */
 #define TLS_DBGPRT_DUMP(p, len)

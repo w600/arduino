@@ -55,13 +55,13 @@ extern "C"{
 #define NAPT_TMR_TYPE_ICMP           0x2
 #define NAPT_TMR_TYPE_GRE            0x3
 
-extern bool alg_napt_port_is_used(u16 port);
+extern bool alg_napt_port_is_used(uint16_t port);
 
-extern void alg_napt_event_handle(u32 type);
+extern void alg_napt_event_handle(uint32_t type);
 
 extern int alg_napt_init(void);
 
-extern int alg_input(const u8 *bssid, u8 *pkt_body, u32 pkt_len);
+extern int alg_input(const uint8_t *bssid, uint8_t *pkt_body, uint32_t pkt_len);
 
 #ifdef __cplusplus
 #if __cplusplus

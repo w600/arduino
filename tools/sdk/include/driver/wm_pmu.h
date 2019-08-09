@@ -96,7 +96,7 @@ void tls_pmu_sdio_isr_register(tls_pmu_irq_callback callback, void *arg);
  *
  * @note           	None
  */
-void tls_pmu_clk_select(u8 bypass);
+void tls_pmu_clk_select(uint8_t bypass);
 
 
 /**
@@ -108,7 +108,7 @@ void tls_pmu_clk_select(u8 bypass);
  *
  * @note           	None
  */
-void tls_pmu_timer0_start(u16 second);
+void tls_pmu_timer0_start(uint16_t second);
 
 
 /**
@@ -133,7 +133,7 @@ void tls_pmu_timer0_stop(void);
  *
  * @note           	None
  */
-void tls_pmu_timer1_start(u16 msec);
+void tls_pmu_timer1_start(uint16_t msec);
 
 
 /**

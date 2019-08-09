@@ -196,122 +196,122 @@ enum tls_wifi_op_mode{
 
 /** current bss information */
 struct tls_curr_bss_t{
-	u8 bssid[ETH_ALEN];    /**< BSSID of connected AP */
-	u8 ssid[32];           /**< SSID of connected AP */
-	u8 ssid_len;           /**< SSID length of connected AP */
-	u8 channel;            /**< channel of connected AP */
-	u8 type;               /**< BSS's type of connected AP, value is:
+	uint8_t bssid[ETH_ALEN];    /**< BSSID of connected AP */
+	uint8_t ssid[32];           /**< SSID of connected AP */
+	uint8_t ssid_len;           /**< SSID length of connected AP */
+	uint8_t channel;            /**< channel of connected AP */
+	uint8_t type;               /**< BSS's type of connected AP, value is:
 	                            IEEE80211_MODE_INFRA, IEEE80211_MODE_IBSS,
 	                            IEEE80211_MODE_AP,    IEEE80211_MODE_APSTA */
-	u8 encryptype;         /**< BSS's encryption type of connected AP, value is: IEEE80211_ENCRYT_NONE,
+	uint8_t encryptype;         /**< BSS's encryption type of connected AP, value is: IEEE80211_ENCRYT_NONE,
                                 IEEE80211_ENCRYT_WEP40,     IEEE80211_ENCRYT_WEP104,
                                 IEEE80211_ENCRYT_TKIP_WPA,  IEEE80211_ENCRYT_CCMP_WPA,
                                 IEEE80211_ENCRYT_TKIP_WPA2, IEEE80211_ENCRYT_CCMP_WPA2,
                                 IEEE80211_ENCRYT_AUTO_WPA,  IEEE80211_ENCRYT_AUTO_WPA2 */
-	u8 rssi;               /**< single strength of AP */
+	uint8_t rssi;               /**< single strength of AP */
 };
 
 /** secret key information */
 struct tls_key_info_t{
-	u8 format;     /**< key format, value is: 0-hex, 1-ascii */
-	u8 index;      /**< key index, value is: 1-4 (only wep) */
-	u8 key_len;    /**< key length */
-	u8 key[64];    /**< key content */
+	uint8_t format;     /**< key format, value is: 0-hex, 1-ascii */
+	uint8_t index;      /**< key index, value is: 1-4 (only wep) */
+	uint8_t key_len;    /**< key length */
+	uint8_t key[64];    /**< key content */
 };
 
 /** Wi-Fi configuration of softap */
 struct tls_softap_info_t{
-	u8 ssid[33];    /**< SSID of softap */
-	u8 encrypt;     /**< encryption mode of softap, value is: IEEE80211_ENCRYT_NONE,
+	uint8_t ssid[33];    /**< SSID of softap */
+	uint8_t encrypt;     /**< encryption mode of softap, value is: IEEE80211_ENCRYT_NONE,
 	                     IEEE80211_ENCRYT_WEP40,     IEEE80211_ENCRYT_WEP104,
 	                     IEEE80211_ENCRYT_TKIP_WPA,  IEEE80211_ENCRYT_CCMP_WPA,
 	                     IEEE80211_ENCRYT_TKIP_WPA2, IEEE80211_ENCRYT_CCMP_WPA2,
 	                     IEEE80211_ENCRYT_AUTO_WPA,  IEEE80211_ENCRYT_AUTO_WPA2 */
-	u8 channel;     /**< channel of softap */
+	uint8_t channel;     /**< channel of softap */
 	struct tls_key_info_t keyinfo;  /**< Password (key) of softap */
 };
 
 /** ip address information */
 struct tls_ip_info_t{
-    u8 ip_addr[4];     /**< IP address */
-    u8 netmask[4];     /**< netmask */
-    u8 dnsname[32];    /**< DNS server name */
+    uint8_t ip_addr[4];     /**< IP address */
+    uint8_t netmask[4];     /**< netmask */
+    uint8_t dnsname[32];    /**< DNS server name */
 };
 
 /** Wi-Fi configuration of ibss */
 struct tls_ibss_info_t{
-	u8 ssid[33];    /**< SSID of ibss */
-	u8 encrypt;     /**< encryption mode of ibss, value is: IEEE80211_ENCRYT_NONE,
+	uint8_t ssid[33];    /**< SSID of ibss */
+	uint8_t encrypt;     /**< encryption mode of ibss, value is: IEEE80211_ENCRYT_NONE,
 	                     IEEE80211_ENCRYT_WEP40,     IEEE80211_ENCRYT_WEP104,
 	                     IEEE80211_ENCRYT_TKIP_WPA,  IEEE80211_ENCRYT_CCMP_WPA,
 	                     IEEE80211_ENCRYT_TKIP_WPA2, IEEE80211_ENCRYT_CCMP_WPA2,
 	                     IEEE80211_ENCRYT_AUTO_WPA,  IEEE80211_ENCRYT_AUTO_WPA2 */
-	u8 channel;     /**< channel of ibss */
+	uint8_t channel;     /**< channel of ibss */
 	struct tls_key_info_t keyinfo;    /**< Password (key) of ibss */
 };
 
 /** ip address information of ibss */
 struct tls_ibssip_info_t{
-	u8 ip[4];         /**< IP address */
-	u8 netmask[4];    /**< netmask */
-	u8 gateway[4];    /**< gateway */
-	u8 dns1[4];       /**< DNS1 IP address */
-	u8 dns2[4];       /**< DNS2 IP address */
+	uint8_t ip[4];         /**< IP address */
+	uint8_t netmask[4];    /**< netmask */
+	uint8_t gateway[4];    /**< gateway */
+	uint8_t dns1[4];       /**< DNS1 IP address */
+	uint8_t dns2[4];       /**< DNS2 IP address */
 };
 
 /** bss information */
 struct tls_bss_info_t {
-    u8 bssid[ETH_ALEN];    /**< MAC address of AP */
-    u8 mode;               /**< AP type, value is: 1-ibss, 2-ess */
-    u8 channel;            /**< channel of AP */
-    u8 privacy;            /**< encryption type, @ref enum tls_wifi_auth_mode */
-    u8 ssid_len;           /**< SSID length */
-    u8 rssi;               /**< single strength of AP, real rssi = -(char)(0x100 - rssi) */
-    u8 ssid[32];           /**< SSID of AP */
-    u32 max_data_rate;     /**< maximum rate of AP, the unit is Mbps */
+    uint8_t bssid[ETH_ALEN];    /**< MAC address of AP */
+    uint8_t mode;               /**< AP type, value is: 1-ibss, 2-ess */
+    uint8_t channel;            /**< channel of AP */
+    uint8_t privacy;            /**< encryption type, @ref enum tls_wifi_auth_mode */
+    uint8_t ssid_len;           /**< SSID length */
+    uint8_t rssi;               /**< single strength of AP, real rssi = -(char)(0x100 - rssi) */
+    uint8_t ssid[32];           /**< SSID of AP */
+    uint32_t max_data_rate;     /**< maximum rate of AP, the unit is Mbps */
     bool wps_support;      /**< is support WPS function */
 };
 
 /** scan result */
 struct tls_scan_bss_t {
-    u32     count;                   /**< total count */
-    u32     length;                  /**< bss info total length */
+    uint32_t     count;                   /**< total count */
+    uint32_t     length;                  /**< bss info total length */
     struct tls_bss_info_t bss[1];    /**< list of bss found*/
 };
 
 /** station information */
 struct tls_sta_info_t {
-    u8  mac_addr[ETH_ALEN];    /**< MAC address of station */
+    uint8_t  mac_addr[ETH_ALEN];    /**< MAC address of station */
 };
 
 /** 802.11 packet information from the physical layer */
 struct tls_wifi_ext_t {
-    u8 rssi;    /**< single strength */
+    uint8_t rssi;    /**< single strength */
 };
 
 /** 802.11 mac address */
 struct tls_wifi_hdr_mac_t {
-    u8  da_addr[ETH_ALEN];    /**< MAC address of destination */
-    u8  sa_addr[ETH_ALEN];    /**< MAC address of source */
-    u8  bssid[ETH_ALEN];      /**< MAC address of AP */
+    uint8_t  da_addr[ETH_ALEN];    /**< MAC address of destination */
+    uint8_t  sa_addr[ETH_ALEN];    /**< MAC address of source */
+    uint8_t  bssid[ETH_ALEN];      /**< MAC address of AP */
 };
 
 /** transport rate and gain */
 struct tls_wifi_tx_rate_t {
     enum tls_wifi_tx_rate tx_rate;    /**< Wi-Fi ransport rate */
-    u8 tx_gain;                       /**< Wi-Fi ransport gain, 
+    uint8_t tx_gain;                       /**< Wi-Fi ransport gain, 
                                            The caller can get the maximum gain 
                                            by using the tls_wifi_get_tx_gain_max function. */
 };
 
 /** callback function of receive Wi-Fi data */
-typedef void (*tls_wifi_data_recv_callback)(u8* data, u32 data_len);
+typedef void (*tls_wifi_data_recv_callback)(uint8_t* data, uint32_t data_len);
 
 /** callback function of receive ETHERNET data */
-typedef int (*net_rx_data_cb)(const u8 *bssid, u8 *buf, u32 buf_len);
+typedef int (*net_rx_data_cb)(const uint8_t *bssid, uint8_t *buf, uint32_t buf_len);
 
 /** callback function of receive Wi-Fi data with some information of the physical layer */
-typedef void (*tls_wifi_data_ext_recv_callback)(u8* data, u32 data_len, struct tls_wifi_ext_t *ext);
+typedef void (*tls_wifi_data_ext_recv_callback)(uint8_t* data, uint32_t data_len, struct tls_wifi_ext_t *ext);
 
 /**
  * @defgroup Wi-Fi_APIs Wi-Fi APIs
@@ -342,7 +342,7 @@ typedef void (*tls_wifi_data_ext_recv_callback)(u8* data, u32 data_len, struct t
  *
  * @note           This function used when oneshot start.
  */
-void tls_wifi_set_listen_mode(u8 enable);
+void tls_wifi_set_listen_mode(uint8_t enable);
 
 /**
  * @brief          This function is used to get listen mode
@@ -354,7 +354,7 @@ void tls_wifi_set_listen_mode(u8 enable);
  *
  * @note           None
  */
-u8 tls_wifi_get_listen_mode(void);
+uint8_t tls_wifi_get_listen_mode(void);
 
 /**
  * @brief          This function is used to enable/disable special listen mode
@@ -365,7 +365,7 @@ u8 tls_wifi_get_listen_mode(void);
  *
  * @note           This function used when special oneshot start.
  */
-void tls_wifi_set_special_mode(u8 enable);
+void tls_wifi_set_special_mode(uint8_t enable);
 
 /**
  * @brief          This function is used to get special listen mode
@@ -377,7 +377,7 @@ void tls_wifi_set_special_mode(u8 enable);
  *
  * @note           None
  */
-u8 tls_wifi_get_special_mode(void);
+uint8_t tls_wifi_get_special_mode(void);
 
 
 /**
@@ -387,11 +387,11 @@ u8 tls_wifi_get_special_mode(void);
 * @param receive: 1, receive this multicast frame
 *                 0, filter this multicast frame
 * 
-* @note usage:    For example: u8 mac[6]={01, 00, 5e, 7f, ff, fa},if receive
+* @note usage:    For example: uint8_t mac[6]={01, 00, 5e, 7f, ff, fa},if receive
 *                 is set to 0,the 802.11 multicast frames whose hdr->addr1 is
 *                 [01 00 5e 7f ff fa] will be filtered.
 */
-u8 tls_filter_mcast_mac(u8 *mac, u8 receive);
+uint8_t tls_filter_mcast_mac(uint8_t *mac, uint8_t receive);
 
 /**
  * @brief         This function is used to set mac filter.
@@ -405,7 +405,7 @@ u8 tls_filter_mcast_mac(u8 *mac, u8 receive);
  * 
  * @note usage:    normally, it is used to oneshot config
  */ 
-void tls_wifi_set_bcast_mac_filter(u8 *mac, u8 receive, u8 clear);
+void tls_wifi_set_bcast_mac_filter(uint8_t *mac, uint8_t receive, uint8_t clear);
 
 /**
  * @brief		   This function is used to restore mac filter to normal mode.
@@ -451,7 +451,7 @@ void tls_wifi_data_ext_recv_cb_register(tls_wifi_data_ext_recv_callback callback
  *
  * @note           None
  */
-void   tls_wifi_set_oneshot_flag(u8 flag);
+void   tls_wifi_set_oneshot_flag(uint8_t flag);
 
 /**
  * @brief          This function is used to get one shot flag
@@ -487,7 +487,7 @@ void tls_wifi_oneshot_result_cb_register(tls_wifi_oneshot_result_callback callba
 *
 * Returns    : 	None
 **********************************************************************************************************/
-void tls_wifi_get_oneshot_ssidpwd(u8 *ssid, u8 *pwd);
+void tls_wifi_get_oneshot_ssidpwd(uint8_t *ssid, uint8_t *pwd);
 
 /**********************************************************************************************************
 * Description: 	This function is used to get one shot custom data
@@ -496,7 +496,7 @@ void tls_wifi_get_oneshot_ssidpwd(u8 *ssid, u8 *pwd);
 *
 * Returns    : 	None
 **********************************************************************************************************/
-void tls_wifi_get_oneshot_customdata(u8 *data);
+void tls_wifi_get_oneshot_customdata(uint8_t *data);
 
 /**
  * @brief          This function is used to change channel actively
@@ -507,7 +507,7 @@ void tls_wifi_get_oneshot_customdata(u8 *data);
  *
  * @note           Normally, it is just used in listen mode;
  */
-void tls_wifi_change_chanel(u32 chanid);
+void tls_wifi_change_chanel(uint32_t chanid);
 
 /**
  * @brief          This function is used to trigger scan AP
@@ -555,7 +555,7 @@ void tls_wifi_scan_result_cb_register(void (*callback)(void));
  *                 max_data_rate and wps_support fields were added, 
  *                 and the meaning of the privacy field was extended.
  */
-int tls_wifi_get_scan_rslt(u8* buf, u32 buffer_size);
+int tls_wifi_get_scan_rslt(uint8_t* buf, uint32_t buffer_size);
 
 
 /**
@@ -596,7 +596,7 @@ void tls_wifi_softap_destroy(void);
  */
 enum tls_wifi_states tls_wifi_softap_get_state(void);
 
-typedef void (*tls_wifi_client_event_callback)(u8 *mac, enum tls_wifi_client_event_type event);
+typedef void (*tls_wifi_client_event_callback)(uint8_t *mac, enum tls_wifi_client_event_type event);
 
 /**
  * @brief          This function is used to register client event
@@ -622,9 +622,9 @@ void tls_wifi_softap_client_event_register(tls_wifi_client_event_callback callba
  *
  * @note		   None
  */
-void tls_wifi_get_authed_sta_info(u32 *sta_num, u8 *buf, u32 buf_size);
+void tls_wifi_get_authed_sta_info(uint32_t *sta_num, uint8_t *buf, uint32_t buf_size);
 
-u8 *tls_wifi_softap_mac_get(void);
+uint8_t *tls_wifi_softap_mac_get(void);
 
 
 /**
@@ -672,7 +672,7 @@ void tls_wifi_disconnect(void);
  *				   User should register netif status callback
  *                 to get TCP/IP layer status;
  */
-int tls_wifi_connect(u8 *ssid, u8 ssid_len, u8 *pwd, u8 pwd_len);
+int tls_wifi_connect(uint8_t *ssid, uint8_t ssid_len, uint8_t *pwd, uint8_t pwd_len);
 
 /**
  * @brief          This function is used to connect AP by BSSID
@@ -691,7 +691,7 @@ int tls_wifi_connect(u8 *ssid, u8 ssid_len, u8 *pwd, u8 pwd_len);
  *				   User should register netif status callback
  *                 to get TCP/IP layer status;
  */
-int tls_wifi_connect_by_bssid(u8 *bssid, u8 *pwd, u8 pwd_len);
+int tls_wifi_connect_by_bssid(uint8_t *bssid, uint8_t *pwd, uint8_t pwd_len);
 
 /**
  * @brief          This function is used to connect AP by SSID an BSSID
@@ -713,7 +713,7 @@ int tls_wifi_connect_by_bssid(u8 *bssid, u8 *pwd, u8 pwd_len);
  *				   User should register netif status callback
  *                 to get TCP/IP layer status;
  */
-int tls_wifi_connect_by_ssid_bssid(u8 *ssid, u8 ssid_len, u8 *bssid, u8 *pwd, u8 pwd_len );
+int tls_wifi_connect_by_ssid_bssid(uint8_t *ssid, uint8_t ssid_len, uint8_t *bssid, uint8_t *pwd, uint8_t pwd_len );
 
 
 /**
@@ -736,7 +736,7 @@ int tls_wifi_connect_by_ssid_bssid(u8 *ssid, u8 ssid_len, u8 *bssid, u8 *pwd, u8
  *                 for one time of "DISCONNECT";
  *                 After that or reboot, the FLAG will be set to the previous value;
  */
-int tls_wifi_auto_connect_flag(u8 opt, u8* mode);
+int tls_wifi_auto_connect_flag(uint8_t opt, uint8_t* mode);
 
 /**
  * @brief          This function is used to register wifi status changed callback function
@@ -754,7 +754,7 @@ int tls_wifi_auto_connect_flag(u8 opt, u8* mode);
  *                             such as wifi AP shut dow, Wi-Fi AP
  *                             changed password, and so on;
  */
-void tls_wifi_status_change_cb_register(void (*callback)(u8 status));
+void tls_wifi_status_change_cb_register(void (*callback)(uint8_t status));
 
 /**
  * @brief          This function is used to get AP's info
@@ -782,7 +782,7 @@ void tls_wifi_get_current_bss(struct tls_curr_bss_t* bss);
  *
  * @note           None
  */
-int tls_wps_get_pin(u8* pin);
+int tls_wps_get_pin(uint8_t* pin);
 
 /**
  * @brief          set PIN code into system
@@ -795,7 +795,7 @@ int tls_wps_get_pin(u8* pin);
  *
  * @note           normally, the @pin code will be hard coded during manufacturing. should not use this function;
  */
-int tls_wps_set_pin(u8* pin, u8 pin_len);
+int tls_wps_set_pin(uint8_t* pin, uint8_t pin_len);
 
 /**
  * @brief          Start WPS process via PIN mode
@@ -875,7 +875,7 @@ void tls_wifi_set_psflag(bool enable, bool alwaysflag);
  *
  * @note           None
  */
-u32 tls_wifi_get_psflag(void);
+uint32_t tls_wifi_get_psflag(void);
 
 /**
  * @brief          This function is used to send oneshot data to other sta
@@ -889,7 +889,7 @@ u32 tls_wifi_get_psflag(void);
  *
  * @note           None
  */
-void tls_wifi_send_oneshotdata(u8 *dst, const u8 *ssid, u8 ssid_len);
+void tls_wifi_send_oneshotdata(uint8_t *dst, const uint8_t *ssid, uint8_t ssid_len);
 
 /**
  * @brief          This function is used to get max gain by rate index
@@ -900,7 +900,7 @@ void tls_wifi_send_oneshotdata(u8 *dst, const u8 *ssid, u8 ssid_len);
  *
  * @note           None
  */
-u8 tls_wifi_get_tx_gain_max(enum tls_wifi_tx_rate tx_rate);
+uint8_t tls_wifi_get_tx_gain_max(enum tls_wifi_tx_rate tx_rate);
 
 /**
  * @brief          This function is used to send 802.11 management packet
@@ -916,7 +916,7 @@ u8 tls_wifi_get_tx_gain_max(enum tls_wifi_tx_rate tx_rate);
  *
  * @note           None
  */
-int tls_wifi_send_mgmt(enum tls_wifi_mgmt_type type, struct tls_wifi_hdr_mac_t *mac, u8 *ie, u16 ie_len, struct tls_wifi_tx_rate_t *tx);
+int tls_wifi_send_mgmt(enum tls_wifi_mgmt_type type, struct tls_wifi_hdr_mac_t *mac, uint8_t *ie, uint16_t ie_len, struct tls_wifi_tx_rate_t *tx);
 
 /**
  * @brief          This function is used to send an 802.11 frame
@@ -934,7 +934,7 @@ int tls_wifi_send_mgmt(enum tls_wifi_mgmt_type type, struct tls_wifi_hdr_mac_t *
  *           with @*mac as destination mac address and @*data as the data body.
  *           If the @*tx is NULL, the packet will be sent at 11B 1Mbps.
  */
-int tls_wifi_send_data(struct tls_wifi_hdr_mac_t *mac, u8 *data, u16 data_len, struct tls_wifi_tx_rate_t *tx);
+int tls_wifi_send_data(struct tls_wifi_hdr_mac_t *mac, uint8_t *data, uint16_t data_len, struct tls_wifi_tx_rate_t *tx);
 
 #if TLS_CONFIG_AP
 /**
@@ -948,7 +948,7 @@ int tls_wifi_send_data(struct tls_wifi_hdr_mac_t *mac, u8 *data, u16 data_len, s
  *
  * @note           None
  */
-void tls_wifi_get_authed_sta_info(u32 *sta_num, u8 *buf, u32 buf_size);
+void tls_wifi_get_authed_sta_info(uint32_t *sta_num, uint8_t *buf, uint32_t buf_size);
 
 #endif
 
@@ -1002,12 +1002,12 @@ const char *tls_wifi_get_errinfo(int eno);
 /**
  * @}
  */
-void tls_wifi_set_opmode(u8 mode);
+void tls_wifi_set_opmode(uint8_t mode);
 
 /**
  * @}
  */
-u8 tls_wifi_get_opmode(void);
+uint8_t tls_wifi_get_opmode(void);
 /**
  * @brief          This function is used to customize wifi tx&rx memory
  *
@@ -1022,7 +1022,7 @@ u8 tls_wifi_get_opmode(void);
  *
  * @note           None
  */
-int tls_wifi_mem_cfg(u32 startmem, u8 txcnt, u8 rxcnt);
+int tls_wifi_mem_cfg(uint32_t startmem, uint8_t txcnt, uint8_t rxcnt);
 
 /**
  * @}

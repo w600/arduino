@@ -92,10 +92,10 @@ struct task_msg {
     struct {
       start_routine function;
       void *ctx;
-      u8 cnt;
+      uint8_t cnt;
     } cbs;
     struct {
-      u32 msecs;
+      uint32_t msecs;
       tls_timeout_handler h;
       void *arg;
     } tmo;
@@ -104,13 +104,13 @@ struct task_msg {
 
 /** task parameters */
 struct task_parameter{
-	u8 task_id;             /**< task ID */
+	uint8_t task_id;             /**< task ID */
 	const char * name;      /**< task name */
-	u8 *stk_start;          /**< start address of task stack */
-	u32 stk_size;           /**< size of task stack */
-	u8 mbox_size;           /**< size of mailbox */
-    u8 mbox_id;             /**< mailbox ID */
-    u8 timeo_id;            /**< timer ID */
+	uint8_t *stk_start;          /**< start address of task stack */
+	uint32_t stk_size;           /**< size of task stack */
+	uint8_t mbox_size;           /**< size of mailbox */
+    uint8_t mbox_id;             /**< mailbox ID */
+    uint8_t timeo_id;            /**< timer ID */
 };
 
 /**
@@ -143,7 +143,7 @@ struct task_parameter{
  *
  * @note           None
  */
-s8 tls_wl_task_init(void);
+int8_t tls_wl_task_init(void);
 
 /**
  * @brief          Running the task
@@ -155,7 +155,7 @@ s8 tls_wl_task_init(void);
  *
  * @note           None
  */
-s8 tls_wl_task_run(struct task_parameter *task_param);
+int8_t tls_wl_task_run(struct task_parameter *task_param);
 
 /**
  * @brief          Running the callback function
@@ -171,8 +171,8 @@ s8 tls_wl_task_run(struct task_parameter *task_param);
  *
  * @note           None
  */
-s8 tls_wl_task_callback_static(struct task_parameter *task_param,
-                               start_routine function, void *ctx, u8 block, u8 msg_id);
+int8_t tls_wl_task_callback_static(struct task_parameter *task_param,
+                               start_routine function, void *ctx, uint8_t block, uint8_t msg_id);
 
 /**
  * @brief          Running the callback function
@@ -187,8 +187,8 @@ s8 tls_wl_task_callback_static(struct task_parameter *task_param,
  *
  * @note           None
  */
-s8 tls_wl_task_callback(struct task_parameter *task_param,
-                        start_routine function, void *ctx, u8 block);
+int8_t tls_wl_task_callback(struct task_parameter *task_param,
+                        start_routine function, void *ctx, uint8_t block);
 
 /**
  * @brief          Add a timer to the task
@@ -203,7 +203,7 @@ s8 tls_wl_task_callback(struct task_parameter *task_param,
  *
  * @note           None
  */
-s8 tls_wl_task_add_timeout(struct task_parameter *task_param, u32 msecs,
+int8_t tls_wl_task_add_timeout(struct task_parameter *task_param, uint32_t msecs,
                            tls_timeout_handler h, void *arg);
 
 /**
@@ -218,7 +218,7 @@ s8 tls_wl_task_add_timeout(struct task_parameter *task_param, u32 msecs,
  *
  * @note           None
  */
-s8 tls_wl_task_untimeout(struct task_parameter *task_param,
+int8_t tls_wl_task_untimeout(struct task_parameter *task_param,
                          tls_timeout_handler h, void *arg);
 
 /**

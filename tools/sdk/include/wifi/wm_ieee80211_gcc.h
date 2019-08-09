@@ -129,102 +129,102 @@
 
 /* Parsed Information Elements */
 struct ieee802_11_elems {
-	u8 *ie_start;
+	uint8_t *ie_start;
 	size_t total_len;
 
 	/* pointers to IEs */
-	u8 *ssid;
-	u8 *supp_rates;
-	u8 *fh_params;
-	u8 *ds_params;
-	u8 *cf_params;
-	u8 *tim;
-	u8 *ibss_params;
-	u8 *country_elem;    
-	u8 *challenge;
-	u8 *erp_info;
-	u8 *ext_supp_rates;
-	u8 *wpa_ie;
-	u8 *rsn_ie;
-	u8 *wmm; /* WMM Information or Parameter Element */
-    u8 *wmm_param;
+	uint8_t *ssid;
+	uint8_t *supp_rates;
+	uint8_t *fh_params;
+	uint8_t *ds_params;
+	uint8_t *cf_params;
+	uint8_t *tim;
+	uint8_t *ibss_params;
+	uint8_t *country_elem;    
+	uint8_t *challenge;
+	uint8_t *erp_info;
+	uint8_t *ext_supp_rates;
+	uint8_t *wpa_ie;
+	uint8_t *rsn_ie;
+	uint8_t *wmm; /* WMM Information or Parameter Element */
+    uint8_t *wmm_param;
 	struct ieee80211_ht_cap *ht_cap_elem;
 	struct ieee80211_ht_info *ht_info_elem;
-	u8 *wmm_tspec;
-	u8 *wps_ie;
-	u8 *power_cap;
-	u8 *supp_channels;
-	u8 *mdie;
-	u8 *ftie;
-	u8 *timeout_int;
-	u8 *ch_switch_elem;    
-	u8 *ht_capabilities;
-	u8 *ht_operation;
-	u8 *vendor_ht_cap;
-	u8 *p2p;
-	u8 *link_id;
-	u8 *pwr_constr_elem;    
-	u8 *interworking;
+	uint8_t *wmm_tspec;
+	uint8_t *wps_ie;
+	uint8_t *power_cap;
+	uint8_t *supp_channels;
+	uint8_t *mdie;
+	uint8_t *ftie;
+	uint8_t *timeout_int;
+	uint8_t *ch_switch_elem;    
+	uint8_t *ht_capabilities;
+	uint8_t *ht_operation;
+	uint8_t *vendor_ht_cap;
+	uint8_t *p2p;
+	uint8_t *link_id;
+	uint8_t *pwr_constr_elem;    
+	uint8_t *interworking;
 
-	u8 ssid_len;
-	u8 supp_rates_len;
-	u8 fh_params_len;
-	u8 ds_params_len;
-	u8 cf_params_len;
-	u8 tim_len;
-	u8 ibss_params_len;
-	u8 challenge_len;
-	u8 erp_info_len;
-	u8 ext_supp_rates_len;
-	u8 ch_switch_elem_len;    
-	u8 wpa_ie_len;
-	u8 rsn_ie_len;
-	u8 wmm_len; /* 7 = WMM Information; 24 = WMM Parameter */
-    u8 wmm_param_len;
-	u8 wmm_tspec_len;
-	u8 wps_ie_len;
-	u8 power_cap_len;
-	u8 supp_channels_len;
-	u8 mdie_len;
-	u8 ftie_len;
-	u8 timeout_int_len;
-	u8 ht_capabilities_len;
-	u8 pwr_constr_elem_len;    
-	u8 country_elem_len;    
-	u8 ht_operation_len;
-	u8 vendor_ht_cap_len;
-	u8 p2p_len;
-	u8 interworking_len;
+	uint8_t ssid_len;
+	uint8_t supp_rates_len;
+	uint8_t fh_params_len;
+	uint8_t ds_params_len;
+	uint8_t cf_params_len;
+	uint8_t tim_len;
+	uint8_t ibss_params_len;
+	uint8_t challenge_len;
+	uint8_t erp_info_len;
+	uint8_t ext_supp_rates_len;
+	uint8_t ch_switch_elem_len;    
+	uint8_t wpa_ie_len;
+	uint8_t rsn_ie_len;
+	uint8_t wmm_len; /* 7 = WMM Information; 24 = WMM Parameter */
+    uint8_t wmm_param_len;
+	uint8_t wmm_tspec_len;
+	uint8_t wps_ie_len;
+	uint8_t power_cap_len;
+	uint8_t supp_channels_len;
+	uint8_t mdie_len;
+	uint8_t ftie_len;
+	uint8_t timeout_int_len;
+	uint8_t ht_capabilities_len;
+	uint8_t pwr_constr_elem_len;    
+	uint8_t country_elem_len;    
+	uint8_t ht_operation_len;
+	uint8_t vendor_ht_cap_len;
+	uint8_t p2p_len;
+	uint8_t interworking_len;
     
 };
 
 struct ieee80211_hdr {
-	 u16 frame_control;
-	 u16 duration_id;
-	 u8 addr1[6];
-	 u8 addr2[6];
-	 u8 addr3[6];
-	 u16 seq_ctrl;
-	 u8 addr4[6];
+	 uint16_t frame_control;
+	 uint16_t duration_id;
+	 uint8_t addr1[6];
+	 uint8_t addr2[6];
+	 uint8_t addr3[6];
+	 uint16_t seq_ctrl;
+	 uint8_t addr4[6];
 }__attribute__((packed));
 
 struct ieee80211_hdr_3addr {
-	 u16 frame_control;
-	 u16 duration_id;
-	 u8 addr1[6];
-	 u8 addr2[6];
-	 u8 addr3[6];
-	 u16 seq_ctrl;
+	 uint16_t frame_control;
+	 uint16_t duration_id;
+	 uint8_t addr1[6];
+	 uint8_t addr2[6];
+	 uint8_t addr3[6];
+	 uint16_t seq_ctrl;
 }__attribute__((packed));
 
 struct ieee80211_qos_hdr {
-	 u16 frame_control;
-	 u16 duration_id;
-	 u8 addr1[6];
-	 u8 addr2[6];
-	 u8 addr3[6];
-	 u16 seq_ctrl;
-	 u16 qos_ctrl;
+	 uint16_t frame_control;
+	 uint16_t duration_id;
+	 uint8_t addr1[6];
+	 uint8_t addr2[6];
+	 uint8_t addr3[6];
+	 uint16_t seq_ctrl;
+	 uint16_t qos_ctrl;
 }__attribute__((packed));
 typedef enum _phy_type{
 	phy_80211_b,
@@ -241,7 +241,7 @@ typedef enum _phy_type{
  * ieee80211_has_tods - check if IEEE80211_FCTL_TODS is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_tods(u16 fc)
+static __inline int ieee80211_has_tods(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_TODS) != 0;
 }
@@ -250,7 +250,7 @@ static __inline int ieee80211_has_tods(u16 fc)
  * ieee80211_has_fromds - check if IEEE80211_FCTL_FROMDS is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_fromds(u16 fc)
+static __inline int ieee80211_has_fromds(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_FROMDS) != 0;
 }
@@ -259,9 +259,9 @@ static __inline int ieee80211_has_fromds(u16 fc)
  * ieee80211_has_a4 - check if IEEE80211_FCTL_TODS and IEEE80211_FCTL_FROMDS are set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_a4(u16 fc)
+static __inline int ieee80211_has_a4(uint16_t fc)
 {
-	u16 tmp = IEEE80211_FCTL_TODS | IEEE80211_FCTL_FROMDS;
+	uint16_t tmp = IEEE80211_FCTL_TODS | IEEE80211_FCTL_FROMDS;
 	return (fc & tmp) == tmp;
 }
 
@@ -269,7 +269,7 @@ static __inline int ieee80211_has_a4(u16 fc)
  * ieee80211_has_morefrags - check if IEEE80211_FCTL_MOREFRAGS is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_morefrags(u16 fc)
+static __inline int ieee80211_has_morefrags(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_MOREFRAGS) != 0;
 }
@@ -278,7 +278,7 @@ static __inline int ieee80211_has_morefrags(u16 fc)
  * ieee80211_has_retry - check if IEEE80211_FCTL_RETRY is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_retry(u16 fc)
+static __inline int ieee80211_has_retry(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_RETRY) != 0;
 }
@@ -287,7 +287,7 @@ static __inline int ieee80211_has_retry(u16 fc)
  * ieee80211_has_pm - check if IEEE80211_FCTL_PM is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_pm(u16 fc)
+static __inline int ieee80211_has_pm(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_PM) != 0;
 }
@@ -296,7 +296,7 @@ static __inline int ieee80211_has_pm(u16 fc)
  * ieee80211_has_moredata - check if IEEE80211_FCTL_MOREDATA is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_moredata(u16 fc)
+static __inline int ieee80211_has_moredata(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_MOREDATA) != 0;
 }
@@ -305,7 +305,7 @@ static __inline int ieee80211_has_moredata(u16 fc)
  * ieee80211_has_protected - check if IEEE80211_FCTL_PROTECTED is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_protected(u16 fc)
+static __inline int ieee80211_has_protected(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_PROTECTED) != 0;
 }
@@ -314,7 +314,7 @@ static __inline int ieee80211_has_protected(u16 fc)
  * ieee80211_has_order - check if IEEE80211_FCTL_ORDER is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_has_order(u16 fc)
+static __inline int ieee80211_has_order(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_ORDER) != 0;
 }
@@ -323,7 +323,7 @@ static __inline int ieee80211_has_order(u16 fc)
  * ieee80211_is_mgmt - check if type is IEEE80211_FTYPE_MGMT
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_mgmt(u16 fc)
+static __inline int ieee80211_is_mgmt(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_FTYPE) == IEEE80211_FTYPE_MGMT;
 }
@@ -332,7 +332,7 @@ static __inline int ieee80211_is_mgmt(u16 fc)
  * ieee80211_is_ctl - check if type is IEEE80211_FTYPE_CTL
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_ctl(u16 fc)
+static __inline int ieee80211_is_ctl(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_FTYPE) == IEEE80211_FTYPE_CTL;
 }
@@ -341,7 +341,7 @@ static __inline int ieee80211_is_ctl(u16 fc)
  * ieee80211_is_data - check if type is IEEE80211_FTYPE_DATA
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_data(u16 fc)
+static __inline int ieee80211_is_data(uint16_t fc)
 {
 	return (fc & IEEE80211_FCTL_FTYPE) == IEEE80211_FTYPE_DATA;
 }
@@ -350,7 +350,7 @@ static __inline int ieee80211_is_data(u16 fc)
  * ieee80211_is_data_qos - check if type is IEEE80211_FTYPE_DATA and IEEE80211_STYPE_QOS_DATA is set
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_data_qos(u16 fc)
+static __inline int ieee80211_is_data_qos(uint16_t fc)
 {
 	/*
 	 * mask with QOS_DATA rather than IEEE80211_FCTL_STYPE as we just need
@@ -364,7 +364,7 @@ static __inline int ieee80211_is_data_qos(u16 fc)
  * ieee80211_is_data_present - check if type is IEEE80211_FTYPE_DATA and has data
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_data_present(u16 fc)
+static __inline int ieee80211_is_data_present(uint16_t fc)
 {
 	/*
 	 * mask with 0x40 and test that that bit is clear to only return TRUE
@@ -377,7 +377,7 @@ static __inline int ieee80211_is_data_present(u16 fc)
  * ieee80211_is_assoc_req - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_ASSOC_REQ
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_assoc_req(u16 fc)
+static __inline int ieee80211_is_assoc_req(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_ASSOC_REQ);
@@ -387,7 +387,7 @@ static __inline int ieee80211_is_assoc_req(u16 fc)
  * ieee80211_is_assoc_resp - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_ASSOC_RESP
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_assoc_resp(u16 fc)
+static __inline int ieee80211_is_assoc_resp(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_ASSOC_RESP);
@@ -397,7 +397,7 @@ static __inline int ieee80211_is_assoc_resp(u16 fc)
  * ieee80211_is_reassoc_req - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_REASSOC_REQ
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_reassoc_req(u16 fc)
+static __inline int ieee80211_is_reassoc_req(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_REASSOC_REQ);
@@ -407,7 +407,7 @@ static __inline int ieee80211_is_reassoc_req(u16 fc)
  * ieee80211_is_reassoc_resp - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_REASSOC_RESP
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_reassoc_resp(u16 fc)
+static __inline int ieee80211_is_reassoc_resp(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_REASSOC_RESP);
@@ -417,7 +417,7 @@ static __inline int ieee80211_is_reassoc_resp(u16 fc)
  * ieee80211_is_probe_req - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_PROBE_REQ
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_probe_req(u16 fc)
+static __inline int ieee80211_is_probe_req(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_PROBE_REQ);
@@ -427,7 +427,7 @@ static __inline int ieee80211_is_probe_req(u16 fc)
  * ieee80211_is_probe_resp - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_PROBE_RESP
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_probe_resp(u16 fc)
+static __inline int ieee80211_is_probe_resp(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_PROBE_RESP);
@@ -437,7 +437,7 @@ static __inline int ieee80211_is_probe_resp(u16 fc)
  * ieee80211_is_beacon - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_BEACON
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_beacon(u16 fc)
+static __inline int ieee80211_is_beacon(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_BEACON);
@@ -447,7 +447,7 @@ static __inline int ieee80211_is_beacon(u16 fc)
  * ieee80211_is_atim - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_ATIM
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_atim(u16 fc)
+static __inline int ieee80211_is_atim(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_ATIM);
@@ -457,7 +457,7 @@ static __inline int ieee80211_is_atim(u16 fc)
  * ieee80211_is_disassoc - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_DISASSOC
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_disassoc(u16 fc)
+static __inline int ieee80211_is_disassoc(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_DISASSOC);
@@ -467,7 +467,7 @@ static __inline int ieee80211_is_disassoc(u16 fc)
  * ieee80211_is_auth - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_AUTH
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_auth(u16 fc)
+static __inline int ieee80211_is_auth(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_AUTH);
@@ -477,7 +477,7 @@ static __inline int ieee80211_is_auth(u16 fc)
  * ieee80211_is_deauth - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_DEAUTH
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_deauth(u16 fc)
+static __inline int ieee80211_is_deauth(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_DEAUTH);
@@ -487,7 +487,7 @@ static __inline int ieee80211_is_deauth(u16 fc)
  * ieee80211_is_action - check if IEEE80211_FTYPE_MGMT && IEEE80211_STYPE_ACTION
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_action(u16 fc)
+static __inline int ieee80211_is_action(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_MGMT | IEEE80211_STYPE_ACTION);
@@ -497,7 +497,7 @@ static __inline int ieee80211_is_action(u16 fc)
  * ieee80211_is_back_req - check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_BACK_REQ
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_back_req(u16 fc)
+static __inline int ieee80211_is_back_req(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_CTL | IEEE80211_STYPE_BACK_REQ);
@@ -507,7 +507,7 @@ static __inline int ieee80211_is_back_req(u16 fc)
  * ieee80211_is_back - check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_BACK
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_back(u16 fc)
+static __inline int ieee80211_is_back(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_CTL | IEEE80211_STYPE_BACK);
@@ -517,7 +517,7 @@ static __inline int ieee80211_is_back(u16 fc)
  * ieee80211_is_pspoll - check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_PSPOLL
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_pspoll(u16 fc)
+static __inline int ieee80211_is_pspoll(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_CTL | IEEE80211_STYPE_PSPOLL);
@@ -527,7 +527,7 @@ static __inline int ieee80211_is_pspoll(u16 fc)
  * ieee80211_is_rts - check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_RTS
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_rts(u16 fc)
+static __inline int ieee80211_is_rts(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_CTL | IEEE80211_STYPE_RTS);
@@ -537,7 +537,7 @@ static __inline int ieee80211_is_rts(u16 fc)
  * ieee80211_is_cts - check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_CTS
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_cts(u16 fc)
+static __inline int ieee80211_is_cts(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_CTL | IEEE80211_STYPE_CTS);
@@ -547,7 +547,7 @@ static __inline int ieee80211_is_cts(u16 fc)
  * ieee80211_is_ack - check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_ACK
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_ack(u16 fc)
+static __inline int ieee80211_is_ack(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_CTL | IEEE80211_STYPE_ACK);
@@ -557,7 +557,7 @@ static __inline int ieee80211_is_ack(u16 fc)
  * ieee80211_is_cfend - check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_CFEND
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_cfend(u16 fc)
+static __inline int ieee80211_is_cfend(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_CTL | IEEE80211_STYPE_CFEND);
@@ -567,7 +567,7 @@ static __inline int ieee80211_is_cfend(u16 fc)
  * ieee80211_is_cfendack - check if IEEE80211_FTYPE_CTL && IEEE80211_STYPE_CFENDACK
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_cfendack(u16 fc)
+static __inline int ieee80211_is_cfendack(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_CTL | IEEE80211_STYPE_CFENDACK);
@@ -577,7 +577,7 @@ static __inline int ieee80211_is_cfendack(u16 fc)
  * ieee80211_is_nullfunc - check if frame is a regular (non-QoS) nullfunc frame
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_nullfunc(u16 fc)
+static __inline int ieee80211_is_nullfunc(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_DATA | IEEE80211_STYPE_NULLFUNC);
@@ -587,7 +587,7 @@ static __inline int ieee80211_is_nullfunc(u16 fc)
  * ieee80211_is_qos_nullfunc - check if frame is a QoS nullfunc frame
  * @fc: frame control bytes in little-endian byteorder
  */
-static __inline int ieee80211_is_qos_nullfunc(u16 fc)
+static __inline int ieee80211_is_qos_nullfunc(uint16_t fc)
 {
 	return (fc & (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE)) ==
 	       (IEEE80211_FTYPE_DATA | IEEE80211_STYPE_QOS_NULLFUNC);
@@ -599,10 +599,10 @@ static __inline int ieee80211_is_qos_nullfunc(u16 fc)
  * This structure refers to "Quiet information element"
  */
 struct ieee80211_quiet_ie {
-	 u8 count;
-	 u8 period;
-	 u16 duration;
-	 u16 offset;
+	 uint8_t count;
+	 uint8_t period;
+	 uint16_t duration;
+	 uint16_t offset;
 }__attribute__((packed));
 
 /**
@@ -611,10 +611,10 @@ struct ieee80211_quiet_ie {
  * This structure refers to "Measurement Request/Report information element"
  */
 struct ieee80211_msrment_ie {
-	 u8 token;
-	 u8 mode;
-	 u8 type;
-	 u8 request[1];
+	 uint8_t token;
+	 uint8_t mode;
+	 uint8_t type;
+	 uint8_t request[1];
 }__attribute__((packed));
 
 /**
@@ -623,9 +623,9 @@ struct ieee80211_msrment_ie {
  * This structure refers to "Channel Switch Announcement information element"
  */
 struct ieee80211_channel_sw_ie {
-	 u8 mode;
-	 u8 new_ch_num;
-	 u8 count;
+	 uint8_t mode;
+	 uint8_t new_ch_num;
+	 uint8_t count;
 }__attribute__((packed));
 
 /**
@@ -634,11 +634,11 @@ struct ieee80211_channel_sw_ie {
  * This structure refers to "Traffic Indication Map information element"
  */
 struct ieee80211_tim_ie {
-	 u8 dtim_count;
-	 u8 dtim_period;
-	 u8 bitmap_ctrl;
+	 uint8_t dtim_count;
+	 uint8_t dtim_period;
+	 uint8_t bitmap_ctrl;
 	 /* variable size: 1 - 251 bytes */
-	 u8 virtual_map[1];
+	 uint8_t virtual_map[1];
 }__attribute__((packed));
 
 /**
@@ -647,146 +647,146 @@ struct ieee80211_tim_ie {
  * This structure refers to "Root Announcement information element"
  */
 struct ieee80211_rann_ie {
-	 u8 rann_flags;
-	 u8 rann_hopcount;
-	 u8 rann_ttl;
-	 u8 rann_addr[6];
-	 u32 rann_seq;
-	 u32 rann_metric;
+	 uint8_t rann_flags;
+	 uint8_t rann_hopcount;
+	 uint8_t rann_ttl;
+	 uint8_t rann_addr[6];
+	 uint32_t rann_seq;
+	 uint32_t rann_metric;
 }__attribute__((packed));
 
 #define WLAN_SA_QUERY_TR_ID_LEN 2
 
 struct ieee80211_mgmt {
-	u16 frame_control;
-	u16 duration;
-	u8 da[6];
-	u8 sa[6];
-	u8 bssid[6];
-	u16 seq_ctrl;
+	uint16_t frame_control;
+	uint16_t duration;
+	uint8_t da[6];
+	uint8_t sa[6];
+	uint8_t bssid[6];
+	uint16_t seq_ctrl;
 	union {
 		struct {
-			u16 auth_alg;
-			u16 auth_transaction;
-			u16 status_code;
+			uint16_t auth_alg;
+			uint16_t auth_transaction;
+			uint16_t status_code;
 			/* possibly followed by Challenge text */
-			u8 variable[0];
+			uint8_t variable[0];
 		} __attribute__ ((packed)) auth;
 		struct {
-			u16 reason_code;
+			uint16_t reason_code;
 		} __attribute__ ((packed)) deauth;
 		struct {
-			u16 capab_info;
-			u16 listen_interval;
+			uint16_t capab_info;
+			uint16_t listen_interval;
 			/* followed by SSID and Supported rates */
-			u8 variable[0];
+			uint8_t variable[0];
 		} assoc_req;
 		struct {
-			u16 capab_info;
-			u16 status_code;
-			u16 aid;
+			uint16_t capab_info;
+			uint16_t status_code;
+			uint16_t aid;
 			/* followed by Supported rates */
-			u8 variable[0];
+			uint8_t variable[0];
 		} __attribute__ ((packed)) assoc_resp, reassoc_resp;
 		struct {
-			u16 capab_info;
-			u16 listen_interval;
-			u8 current_ap[6];
+			uint16_t capab_info;
+			uint16_t listen_interval;
+			uint8_t current_ap[6];
 			/* followed by SSID and Supported rates */
-			u8 variable[0];
+			uint8_t variable[0];
 		} __attribute__ ((packed)) reassoc_req;
 		struct {
-			u16 reason_code;
+			uint16_t reason_code;
 		} __attribute__ ((packed)) disassoc;
 		struct {
-			u64 timestamp;
-			u16 beacon_int;
-			u16 capab_info;
+			uint64_t timestamp;
+			uint16_t beacon_int;
+			uint16_t capab_info;
 			/* followed by some of SSID, Supported rates,
 			 * FH Params, DS Params, CF Params, IBSS Params, TIM */
-			u8 variable[0];
+			uint8_t variable[0];
 		} __attribute__ ((packed)) beacon;
 		struct {
 			/* only variable items: SSID, Supported rates */
-			u8 variable[0];
+			uint8_t variable[0];
 		} __attribute__ ((packed)) probe_req;
 		struct {
-			u64 timestamp;
-			u16 beacon_int;
-			u16 capab_info;
+			uint64_t timestamp;
+			uint16_t beacon_int;
+			uint16_t capab_info;
 			/* followed by some of SSID, Supported rates,
 			 * FH Params, DS Params, CF Params, IBSS Params */
-			u8 variable[0];
+			uint8_t variable[0];
 		} __attribute__ ((packed)) probe_resp;
 		struct {
-			u8 category;
+			uint8_t category;
 			union {
 				struct {
-					u8 action_code;
-					u8 dialog_token;
-					u8 status_code;
-					u8 variable[0];
+					uint8_t action_code;
+					uint8_t dialog_token;
+					uint8_t status_code;
+					uint8_t variable[0];
 				} __attribute__ ((packed)) wme_action;
 				struct{
-					u8 action_code;
-					u8 element_id;
-					u8 length;
+					uint8_t action_code;
+					uint8_t element_id;
+					uint8_t length;
 					struct ieee80211_channel_sw_ie sw_elem;
 				} __attribute__ ((packed)) chan_switch;
 				struct{
-					u8 action_code;
-					u8 channel_width;
+					uint8_t action_code;
+					uint8_t channel_width;
 				} __attribute__ ((packed)) chan_width;
 				struct{
-					u8 action_code;
-					u8 dialog_token;
-					u8 element_id;
-					u8 length;
+					uint8_t action_code;
+					uint8_t dialog_token;
+					uint8_t element_id;
+					uint8_t length;
 					struct ieee80211_msrment_ie msr_elem;
 				} __attribute__ ((packed)) measurement;
 				struct{
-					u8 action_code;
-					u8 dialog_token;
-					u16 capab;
-					u16 timeout;
-					u16 start_seq_num;
+					uint8_t action_code;
+					uint8_t dialog_token;
+					uint16_t capab;
+					uint16_t timeout;
+					uint16_t start_seq_num;
 				} __attribute__ ((packed)) addba_req;
 				struct{
-					u8 action_code;
-					u8 dialog_token;
-					u16 status;
-					u16 capab;
-					u16 timeout;
+					uint8_t action_code;
+					uint8_t dialog_token;
+					uint16_t status;
+					uint16_t capab;
+					uint16_t timeout;
 				} __attribute__ ((packed)) addba_resp;
 				struct{
-					u8 action_code;
-					u16 params;
-					u16 reason_code;
+					uint8_t action_code;
+					uint16_t params;
+					uint16_t reason_code;
 				} __attribute__ ((packed)) delba;
 				struct{
-					u8 action_code;
+					uint8_t action_code;
 					/* capab_info for open and confirm,
 					 * reason for close
 					 */
-					u16 aux;
+					uint16_t aux;
 					/* Followed in plink_confirm by status
 					 * code, AID and supported rates,
 					 * and directly by supported rates in
 					 * plink_open and plink_close
 					 */
-					u8 variable[0];
+					uint8_t variable[0];
 				} __attribute__ ((packed)) plink_action;
 				struct{
-					u8 action_code;
-					u8 variable[0];
+					uint8_t action_code;
+					uint8_t variable[0];
 				} __attribute__ ((packed)) mesh_action;
 				struct {
-					u8 action;
-					u8 trans_id[WLAN_SA_QUERY_TR_ID_LEN];
+					uint8_t action;
+					uint8_t trans_id[WLAN_SA_QUERY_TR_ID_LEN];
 				} __attribute__ ((packed)) sa_query;
 				struct {
-					u8 action;
-					u8 smps_control;
+					uint8_t action;
+					uint8_t smps_control;
 				} __attribute__ ((packed)) ht_smps;
 			} u;
 		} __attribute__ ((packed)) action;
@@ -801,32 +801,32 @@ struct ieee80211_mgmt {
 
 /* Management MIC information element (IEEE 802.11w) */
 struct ieee80211_mmie {
-	u8 element_id;
-	u8 length;
-	u16 key_id;
-	u8 sequence_number[6];
-	u8 mic[8];
+	uint8_t element_id;
+	uint8_t length;
+	uint16_t key_id;
+	uint8_t sequence_number[6];
+	uint8_t mic[8];
 }__attribute__ ((packed)) ;
 
 /* Control frames */
 struct ieee80211_rts {
-	u16 frame_control;
-	u16 duration;
-	u8 ra[6];
-	u8 ta[6];
+	uint16_t frame_control;
+	uint16_t duration;
+	uint8_t ra[6];
+	uint8_t ta[6];
 }__attribute__ ((packed)) ;
 
 struct ieee80211_cts {
-	u16 frame_control;
-	u16 duration;
-	u8 ra[6];
+	uint16_t frame_control;
+	uint16_t duration;
+	uint8_t ra[6];
 }__attribute__ ((packed)) ;
 
  struct ieee80211_pspoll {
-	u16 frame_control;
-	u16 aid;
-	u8 bssid[6];
-	u8 ta[6];
+	uint16_t frame_control;
+	uint16_t aid;
+	uint8_t bssid[6];
+	uint8_t ta[6];
 }__attribute__ ((packed)) ;
 
 /**
@@ -836,12 +836,12 @@ struct ieee80211_cts {
  * described in 802.11n draft section 7.2.1.7.1
  */
 struct ieee80211_bar {
-	u16 frame_control;
-	u16 duration;
-	u8 ra[6];
-	u8 ta[6];
-	u16 control;
-	u16 start_seq_num;
+	uint16_t frame_control;
+	uint16_t duration;
+	uint8_t ra[6];
+	uint8_t ta[6];
+	uint16_t control;
+	uint16_t start_seq_num;
 }__attribute__ ((packed)) ;
 
 /* 802.11 BAR control masks */
@@ -861,10 +861,10 @@ struct ieee80211_bar {
  * @tx_params: TX parameters
  */
 struct ieee80211_mcs_info {
-	u8 rx_mask[IEEE80211_HT_MCS_MASK_LEN];
-	u16 rx_highest;		
-	u8 tx_params;
-	u8 reserved[3];
+	uint8_t rx_mask[IEEE80211_HT_MCS_MASK_LEN];
+	uint16_t rx_highest;		
+	uint8_t tx_params;
+	uint8_t reserved[3];
 }__attribute__ ((packed)) ;
 
 /* 802.11n HT capability MSC set */
@@ -895,15 +895,15 @@ struct ieee80211_mcs_info {
  * described in 802.11n D5.0 7.3.2.56
  */
 struct ieee80211_ht_cap {
-	u16 cap_info;
-	u8 ampdu_params_info;
+	uint16_t cap_info;
+	uint8_t ampdu_params_info;
 
 	/* 16 bytes MCS information */
 	struct ieee80211_mcs_info mcs;
 
-	u16 extended_ht_cap_info;	
-	u32 tx_BF_cap_info;		
-	u8 antenna_selection_info;
+	uint16_t extended_ht_cap_info;	
+	uint32_t tx_BF_cap_info;		
+	uint8_t antenna_selection_info;
 }__attribute__ ((packed)) ;
 
 /* 802.11n HT capabilities masks (for cap_info) */
@@ -980,11 +980,11 @@ enum ieee80211_min_mpdu_spacing {
 /* ELEMENTID = 61, HT Operation element in 11n7.3.5.57
 */
 struct ieee80211_ht_info {
-	 u8 control_chan;
-	 u8 ht_param;
-	 u16 operation_mode;
-	 u16 stbc_param;
-	 u8 basic_set[16];
+	 uint8_t control_chan;
+	 uint8_t ht_param;
+	 uint16_t operation_mode;
+	 uint16_t stbc_param;
+	 uint8_t basic_set[16];
 }__attribute__((packed));
 
 /* for ht_param */
@@ -1380,14 +1380,14 @@ enum ieee80211_key_len {
 struct ieee80211_country_ie_triplet {
 	union {
 		struct {
-			 u8 first_channel;
-			 u8 num_channels;
-			 s8 max_power;
+			 uint8_t first_channel;
+			 uint8_t num_channels;
+			 int8_t max_power;
 		}__attribute__((packed))chans;
 		struct {
-			 u8 reg_extension_id;
-			 u8 reg_class;
-			 u8 coverage_class;
+			 uint8_t reg_extension_id;
+			 uint8_t reg_class;
+			 uint8_t coverage_class;
 		}__attribute__((packed))ext;
 	}__attribute__((packed))u;
 }__attribute__((packed));
@@ -1448,12 +1448,12 @@ enum ieee80211_sa_query_action {
  * 3 addr: 2 + 2 + 2 + 3*6 = 24
  * 4 addr: 2 + 2 + 2 + 4*6 = 30
  */
-static __inline u8 *ieee80211_get_qos_ctl(struct ieee80211_hdr *hdr)
+static __inline uint8_t *ieee80211_get_qos_ctl(struct ieee80211_hdr *hdr)
 {
 	if (ieee80211_has_a4(hdr->frame_control))
-		return (u8 *)hdr + 30;
+		return (uint8_t *)hdr + 30;
 	else
-		return (u8 *)hdr + 24;
+		return (uint8_t *)hdr + 24;
 }
 
 /**
@@ -1466,7 +1466,7 @@ static __inline u8 *ieee80211_get_qos_ctl(struct ieee80211_hdr *hdr)
  * header must be long enough to contain the frame control
  * field.
  */
-static __inline u8 *ieee80211_get_SA(struct ieee80211_hdr *hdr)
+static __inline uint8_t *ieee80211_get_SA(struct ieee80211_hdr *hdr)
 {
 	if (ieee80211_has_a4(hdr->frame_control))
 		return hdr->addr4;
@@ -1485,7 +1485,7 @@ static __inline u8 *ieee80211_get_SA(struct ieee80211_hdr *hdr)
  * header must be long enough to contain the frame control
  * field.
  */
-static __inline u8 *ieee80211_get_DA(struct ieee80211_hdr *hdr)
+static __inline uint8_t *ieee80211_get_DA(struct ieee80211_hdr *hdr)
 {
 	if (ieee80211_has_tods(hdr->frame_control))
 		return hdr->addr3;
@@ -1504,7 +1504,7 @@ static __inline bool ieee80211_is_robust_mgmt_frame(struct ieee80211_hdr *hdr)
 		return TRUE;
 
 	if (ieee80211_is_action(hdr->frame_control)) {
-		u8 *category;
+		uint8_t *category;
 
 		/*
 		 * Action frames, excluding Public Action frames, are Robust
@@ -1515,7 +1515,7 @@ static __inline bool ieee80211_is_robust_mgmt_frame(struct ieee80211_hdr *hdr)
 		 */
 		if (ieee80211_has_protected(hdr->frame_control))
 			return TRUE;
-		category = ((u8 *) hdr) + 24;
+		category = ((uint8_t *) hdr) + 24;
 		return *category != WLAN_CATEGORY_PUBLIC &&
 			*category != WLAN_CATEGORY_HT &&
 			*category != WLAN_CATEGORY_VENDOR_SPECIFIC;
@@ -1656,10 +1656,10 @@ static __inline unsigned long ieee80211_tu_to_usec(unsigned long tu)
  * @aid: the AID to look for
  */
 static __inline bool ieee80211_check_tim(struct ieee80211_tim_ie *tim,
-				       u8 tim_len, u16 aid)
+				       uint8_t tim_len, uint16_t aid)
 {
-	u8 mask;
-	u8 index, indexn1, indexn2;
+	uint8_t mask;
+	uint8_t index, indexn1, indexn2;
 
 	if (!tim || tim_len < sizeof(*tim))
 		return FALSE;

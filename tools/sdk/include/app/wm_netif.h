@@ -36,7 +36,7 @@
 /** Structure for IP address */
 struct ip_addr
 {
-  u32 addr;
+  uint32_t addr;
 };
 
 /** Structure to save net info */
@@ -47,14 +47,14 @@ struct tls_ethif
     struct ip_addr gw;    		/**< gateway */
     struct ip_addr dns1;    	/**< first DNS */
     struct ip_addr dns2;    	/**< second DNS */
-    u8 status; 					/**< Net Status 0:net down,1:net up */
+    uint8_t status; 					/**< Net Status 0:net down,1:net up */
 };
 
 /** Type definition of struct ip_addr */
 typedef struct ip_addr ip_addr_t;
 
 /** Type definition of netif status changed callback */
-typedef void (*tls_netif_status_event_fn)(u8 status);
+typedef void (*tls_netif_status_event_fn)(uint8_t status);
 
 /**
  * @defgroup APP_APIs APP APIs
@@ -110,7 +110,7 @@ struct tls_ethif *tls_netif_get_ethif(void);
  *
  * @note           None
  */
-s8 tls_dhcp_start(void);
+int8_t tls_dhcp_start(void);
 
 /**
  * @brief          This function is used to stop DHCP client
@@ -122,7 +122,7 @@ s8 tls_dhcp_start(void);
  *
  * @note           None
  */
-s8 tls_dhcp_stop(void);
+int8_t tls_dhcp_stop(void);
 
 /**
  * @brief          This function is used to change IP address configuration
@@ -136,7 +136,7 @@ s8 tls_dhcp_stop(void);
  *
  * @note           None
  */
-s8 tls_netif_set_addr(ip_addr_t *ipaddr, ip_addr_t *netmask, ip_addr_t *gw);
+int8_t tls_netif_set_addr(ip_addr_t *ipaddr, ip_addr_t *netmask, ip_addr_t *gw);
 
 /**
  * @brief          This function is used to set dns servers
@@ -149,7 +149,7 @@ s8 tls_netif_set_addr(ip_addr_t *ipaddr, ip_addr_t *netmask, ip_addr_t *gw);
  *
  * @note           None
  */
-void tls_netif_dns_setserver(u8 numdns, ip_addr_t *dnsserver);
+void tls_netif_dns_setserver(uint8_t numdns, ip_addr_t *dnsserver);
 
 /**
  * @brief          This function is used to bring up an interface,available
@@ -162,7 +162,7 @@ void tls_netif_dns_setserver(u8 numdns, ip_addr_t *dnsserver);
  *
  * @note           None
  */
-s8 tls_netif_set_up(void);
+int8_t tls_netif_set_up(void);
 
 /**
  * @brief          This function is used to bring down an interface,disabling
@@ -175,7 +175,7 @@ s8 tls_netif_set_up(void);
  *
  * @note           None
  */
-s8 tls_netif_set_down(void);
+int8_t tls_netif_set_down(void);
 
 /**
  * @brief          This function is used to add netif status changed callback
@@ -188,7 +188,7 @@ s8 tls_netif_set_down(void);
  *
  * @note           None
  */
-s8 tls_netif_add_status_event(tls_netif_status_event_fn event_fn);
+int8_t tls_netif_add_status_event(tls_netif_status_event_fn event_fn);
 
 /**
  * @brief          This function is used to remove netif status changed
@@ -201,7 +201,7 @@ s8 tls_netif_add_status_event(tls_netif_status_event_fn event_fn);
  *
  * @note           None
  */
-s8 tls_netif_remove_status_event(tls_netif_status_event_fn event_fn);
+int8_t tls_netif_remove_status_event(tls_netif_status_event_fn event_fn);
 
 /**
  * @brief          This function is used to get default net device interface
@@ -239,7 +239,7 @@ struct tls_ethif * tls_netif_get_ethif2(void);
  *
  * @note           Only APSTA used
  */
-s8 tls_netif2_set_up(void);
+int8_t tls_netif2_set_up(void);
 
 /**
  * @brief          This is used to bring down an interface for APSTA, disab-
@@ -252,7 +252,7 @@ s8 tls_netif2_set_up(void);
  *
  * @note           Only APSTA used
  */
-s8 tls_netif2_set_down(void);
+int8_t tls_netif2_set_down(void);
 
 /**
  * @brief          This function is used to change IP configuration for
@@ -267,7 +267,7 @@ s8 tls_netif2_set_down(void);
  *
  * @note           Only APSTA used
  */
-s8 tls_netif2_set_addr(ip_addr_t *ipaddr, ip_addr_t *netmask, ip_addr_t *gw);
+int8_t tls_netif2_set_addr(ip_addr_t *ipaddr, ip_addr_t *netmask, ip_addr_t *gw);
 
 /**
  * @}

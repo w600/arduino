@@ -50,7 +50,7 @@ typedef tls_os_queue_t * tls_mbox_t;
  *
  * @note           None
  */
-s8 tls_mbox_new(tls_mbox_t *mbox, int size);
+int8_t tls_mbox_new(tls_mbox_t *mbox, int size);
 
 /**
  * @brief          Check if an mbox is valid/allocated
@@ -87,7 +87,7 @@ void tls_mbox_post(tls_mbox_t mbox, void *msg);
  *
  * @note           this function have to block until the "msg" is really posted.
  */
-s8 tls_mbox_trypost(tls_mbox_t mbox, void *msg);
+int8_t tls_mbox_trypost(tls_mbox_t mbox, void *msg);
 
 /**
  * @brief          Waits for a message within specified time
@@ -101,7 +101,7 @@ s8 tls_mbox_trypost(tls_mbox_t mbox, void *msg);
  *
  * @note           None
  */
-u32 tls_arch_mbox_fetch(tls_mbox_t mbox, void **msg, u32 timeout);
+uint32_t tls_arch_mbox_fetch(tls_mbox_t mbox, void **msg, uint32_t timeout);
 
 /**
  * @}

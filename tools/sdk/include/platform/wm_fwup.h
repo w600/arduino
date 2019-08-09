@@ -84,21 +84,21 @@ typedef struct __T_BOOTER
 
 /**   Structure for firmware image header   */
 struct tls_fwup_image_hdr {
-	u32 magic;
-	u8 crc8;
-	u8 dest_specific;
-	u16 dest_offset;  // unit: 4KB, valid when dest_specific is TRUE
-	u32 file_len;
+	uint32_t magic;
+	uint8_t crc8;
+	uint8_t dest_specific;
+	uint16_t dest_offset;  // unit: 4KB, valid when dest_specific is TRUE
+	uint32_t file_len;
 	char time[4];
 };
 
 /**   Structure for one packet data   */
 struct  tls_fwup_block {
-	u16 number;	//0~Sum-1
-	u16 sum;
-	u8 data[TLS_FWUP_BLK_SIZE];
-	u32 crc32;
-	u8 pad[8];
+	uint16_t number;	//0~Sum-1
+	uint16_t sum;
+	uint8_t data[TLS_FWUP_BLK_SIZE];
+	uint32_t crc32;
+	uint8_t pad[8];
 };
 
 /**   Enumeration for image soure when firmware update   */
@@ -112,8 +112,8 @@ enum tls_fwup_image_src {
 /**   Structure for firmware update request   */
 struct tls_fwup_request {
 	struct dl_list list;
-	u8 *data;
-	u32 data_len;
+	uint8_t *data;
+	uint32_t data_len;
 	int status;
 	void (*complete)(struct tls_fwup_request *request, void *arg);
 	void *arg;
@@ -126,15 +126,15 @@ struct tls_fwup {
 
 	bool busy;
 	enum tls_fwup_image_src current_image_src;
-	u16 current_state;
-	u32 current_session_id;
+	uint16_t current_state;
+	uint32_t current_session_id;
 
-	u32 received_len;
-	u32 total_len;
-	u32 updated_len;
-	u32 program_base;
-	u32 program_offset;
-	s32 received_number;
+	uint32_t received_len;
+	uint32_t total_len;
+	uint32_t updated_len;
+	uint32_t program_base;
+	uint32_t program_offset;
+	int32_t received_number;
 };
 
 /**
@@ -182,7 +182,7 @@ int tls_fwup_init(void);
  *
  * @note           None
  */
-u32 tls_fwup_enter(enum tls_fwup_image_src image_src);
+uint32_t tls_fwup_enter(enum tls_fwup_image_src image_src);
 
 /**
  * @brief          This function is used to exit firmware update progress.
@@ -196,7 +196,7 @@ u32 tls_fwup_enter(enum tls_fwup_image_src image_src);
  *
  * @note           None
  */
-int tls_fwup_exit(u32 session_id);
+int tls_fwup_exit(uint32_t session_id);
 
 /**
  * @brief          This function is used to start update progress
@@ -217,7 +217,7 @@ int tls_fwup_exit(u32 session_id);
  *
  * @note           None
  */
-int tls_fwup_request_sync(u32 session_id, u8 *data, u32 data_len);
+int tls_fwup_request_sync(uint32_t session_id, uint8_t *data, uint32_t data_len);
 
 /**
  * @brief          This function is used to get current update status
@@ -228,7 +228,7 @@ int tls_fwup_request_sync(u32 session_id, u8 *data, u32 data_len);
  *
  * @note           None
  */
-u16 tls_fwup_current_state(u32 session_id);
+uint16_t tls_fwup_current_state(uint32_t session_id);
 
 /**
  * @brief          This function is used to reset the update information
@@ -242,7 +242,7 @@ u16 tls_fwup_current_state(u32 session_id);
  *
  * @note           None
  */
-int tls_fwup_reset(u32 session_id);
+int tls_fwup_reset(uint32_t session_id);
 
 /**
  * @brief          This function is used to clear error update state
@@ -253,7 +253,7 @@ int tls_fwup_reset(u32 session_id);
  *
  * @note           None
  */
-int tls_fwup_clear_error(u32 session_id);
+int tls_fwup_clear_error(uint32_t session_id);
 
 /**
  * @brief          This function is used to set update state to
@@ -267,7 +267,7 @@ int tls_fwup_clear_error(u32 session_id);
  *
  * @note           None
  */
-int tls_fwup_set_crc_error(u32 session_id);
+int tls_fwup_set_crc_error(uint32_t session_id);
 
 /**
  * @brief          This function is used to get progress's status

@@ -89,7 +89,7 @@
 #define PRINTF_FORMAT(a,b) __attribute__ ((format (printf, (a), (b))))
 #define STRUCT_PACKED __attribute__ ((packed))
 
-#define broadcast_ether_addr (const u8 *) "\xff\xff\xff\xff\xff\xff"
+#define broadcast_ether_addr (const uint8_t *) "\xff\xff\xff\xff\xff\xff"
 
 /**
  * compare_ether_addr - Compare two Ethernet addresses
@@ -98,23 +98,23 @@
  *
  * Compare two ethernet addresses, returns 0 if equal
  */
-static __inline unsigned compare_ether_addr(const u8 *addr1, const u8 *addr2)
+static __inline unsigned compare_ether_addr(const uint8_t *addr1, const uint8_t *addr2)
 {
 	return !((addr1[0] == addr2[0]) && (addr1[1] == addr2[1]) && (addr1[2] == addr2[2]) &&   \
 		(addr1[3] == addr2[3]) && (addr1[4] == addr2[4]) && (addr1[5] == addr2[5]));
 }
 
-static __inline int is_zero_ether_addr(const u8 *a)
+static __inline int is_zero_ether_addr(const uint8_t *a)
 {
 	return !(a[0] | a[1] | a[2] | a[3] | a[4] | a[5]);
 }
 
-static __inline int is_broadcast_ether_addr(const u8 *a)
+static __inline int is_broadcast_ether_addr(const uint8_t *a)
 {
 	return (a[0] & a[1] & a[2] & a[3] & a[4] & a[5]) == 0xff;
 }
 
-static __inline int is_multicast_ether_addr(const u8 *addr)
+static __inline int is_multicast_ether_addr(const uint8_t *addr)
 {
 	return (0x01 & addr[0]);
 }
@@ -139,45 +139,45 @@ static __inline unsigned int swap_32(unsigned int v)
 #define be_to_host32(n) swap_32(n)
 #define host_to_be32(n) swap_32(n)
 
-static __inline u16 get_unaligned_le16(const u8 *p)
+static __inline uint16_t get_unaligned_le16(const uint8_t *p)
 {
 	return p[0] | p[1] << 8;    
 }
 
-static __inline u32 get_unaligned_le32(const u8 *p)
+static __inline uint32_t get_unaligned_le32(const uint8_t *p)
 {
 	return p[0] | p[1] << 8 | p[2] << 16 | p[3] << 24;    
 }
 
-static __inline void put_unaligned_le16(u16 val, u8 *p)
+static __inline void put_unaligned_le16(uint16_t val, uint8_t *p)
 {
 	*p++ = val;
 	*p++ = val >> 8; 
 }
 
-static __inline void put_unaligned_le32(u32 val, u8 *p)
+static __inline void put_unaligned_le32(uint32_t val, uint8_t *p)
 {
 	put_unaligned_le16(val >> 16, p + 2);
 	put_unaligned_le16(val, p); 
 }
 
-static __inline u16 get_unaligned_be16(const u8 *p)
+static __inline uint16_t get_unaligned_be16(const uint8_t *p)
 {
 	return be_to_host16(get_unaligned_le16(p));
 }
 
-static __inline u32 get_unaligned_be32(const u8 *p)
+static __inline uint32_t get_unaligned_be32(const uint8_t *p)
 {
 	return be_to_host32(get_unaligned_le32(p));
 }
 
-static __inline void put_unaligned_be16(u16 val, u8 *p)
+static __inline void put_unaligned_be16(uint16_t val, uint8_t *p)
 {
 	*p++ = val >> 8;
 	*p++ = val;
 }
 
-static __inline void put_unaligned_be32(u32 val, u8 *p)
+static __inline void put_unaligned_be32(uint32_t val, uint8_t *p)
 {
 	put_unaligned_be16(val >> 16, p);
 	put_unaligned_be16(val, p + 2); 
@@ -192,12 +192,12 @@ static __inline void put_unaligned_be32(u32 val, u8 *p)
 #define __bitwise
 #endif
 
-typedef u16 __bitwise be16;
-typedef u16 __bitwise le16;
-typedef u32 __bitwise be32;
-typedef u32 __bitwise le32;
-typedef u64 __bitwise be64;
-typedef u64 __bitwise le64;
+typedef uint16_t __bitwise be16;
+typedef uint16_t __bitwise le16;
+typedef uint32_t __bitwise be32;
+typedef uint32_t __bitwise le32;
+typedef uint64_t __bitwise be64;
+typedef uint64_t __bitwise le64;
 
 /*
  *	This is an Ethernet frame header.
@@ -220,7 +220,7 @@ struct kref {
 
 static __inline int atomic_sub_return(int i, atomic_t *v)
 {
-	u32  cpu_sr;
+	uint32_t  cpu_sr;
 	int val;
 
     cpu_sr = tls_os_set_critical();
@@ -233,7 +233,7 @@ static __inline int atomic_sub_return(int i, atomic_t *v)
 
 static __inline int atomic_add_return(int i, atomic_t *v)
 {
-	u32  cpu_sr;
+	uint32_t  cpu_sr;
 	int val;
 
     cpu_sr = tls_os_set_critical();

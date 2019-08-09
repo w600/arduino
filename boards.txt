@@ -6,6 +6,7 @@
 
 menu.BoardModel=Model
 menu.UploadSpeed=Upload Speed
+menu.stack=Network Stack
 menu.demo=Demo
 menu.demo.console=Console Demo
 menu.UploadFiles=Upload Files

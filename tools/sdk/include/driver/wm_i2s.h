@@ -210,9 +210,9 @@ typedef struct _tls_i2s_port
     /** instance of tls_i2s_buf struct for data receive */
     tls_i2s_buf  tx_buf;
     /** function pointer for data receiver when in interrupt mode */
-    void 	(*rx_callback)(u16 len);
+    void 	(*rx_callback)(uint16_t len);
     /** function pointer for data transmit when in interrupt mode */
-    void 	(*tx_callback)(u16 len);
+    void 	(*tx_callback)(uint16_t len);
 
 } tls_i2s_port_t;
 
@@ -297,7 +297,7 @@ int tls_i2s_tx_block(uint32_t *buf, uint16_t len);
  *      this function only submit the data
  *      when the data transfer finished the tx_callback function will be called
  */
-int tls_i2s_tx_nonblock(uint32_t *buf, uint16_t len, void (*tx_callback)(u16 len));
+int tls_i2s_tx_nonblock(uint32_t *buf, uint16_t len, void (*tx_callback)(uint16_t len));
 
 /**
  * @brief	This function is used to receive data in non-blocking mode.
@@ -311,7 +311,7 @@ int tls_i2s_tx_nonblock(uint32_t *buf, uint16_t len, void (*tx_callback)(u16 len
  *  @note
  *
  */
-int tls_i2s_rx_nonblock(uint32_t *buf, uint16_t len, void (*rx_callback)(u16 len));
+int tls_i2s_rx_nonblock(uint32_t *buf, uint16_t len, void (*rx_callback)(uint16_t len));
 
 /**
  * @brief	This function is used to receive data in DMA mode.

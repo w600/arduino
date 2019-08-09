@@ -42,7 +42,7 @@
  *
  * @note           None
  */
-s8 tls_dhcps_start(void);
+int8_t tls_dhcps_start(void);
 
 /**
  * @brief          This function is used to stop DHCP server
@@ -66,7 +66,7 @@ void tls_dhcps_stop(void);
  *
  * @note           None
  */
-ip_addr_t *tls_dhcps_getip(const u8 *mac);
+ip_addr_t *tls_dhcps_getip(const uint8_t *mac);
 
 /**
  * @brief          This function is used to set DHCP server's DNS address
@@ -77,7 +77,7 @@ ip_addr_t *tls_dhcps_getip(const u8 *mac);
  *
  * @note           None
  */
-void tls_dhcps_setdns(u8 numdns);
+void tls_dhcps_setdns(uint8_t numdns);
 
 /**
  * @}

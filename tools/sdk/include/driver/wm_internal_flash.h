@@ -198,7 +198,7 @@ int tls_fls_init(void);
  *
  * @note           None
  */
-int tls_fls_read(u32 addr, u8 * buf, u32 len);
+int tls_fls_read(uint32_t addr, uint8_t * buf, uint32_t len);
 
 
 /**
@@ -216,7 +216,7 @@ int tls_fls_read(u32 addr, u8 * buf, u32 len);
  *
  * @note           None
  */
-int tls_fls_write(u32 addr, u8 * buf, u32 len);
+int tls_fls_write(uint32_t addr, uint8_t * buf, uint32_t len);
 
 
 /**
@@ -229,6 +229,6 @@ int tls_fls_write(u32 addr, u8 * buf, u32 len);
  *
  * @note           	None
  */
-int tls_fls_erase(u32 sector);
+int tls_fls_erase(uint32_t sector);
 
 #endif /* WM_INTERNAL_FLASH_H */

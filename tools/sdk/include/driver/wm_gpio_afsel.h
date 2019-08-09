@@ -453,7 +453,7 @@ void wm_swd_config(bool enable);
  *				
  * @return None
  */
-void wm_adc_config(u8 Channel);
+void wm_adc_config(uint8_t Channel);
 
 /**
  * @brief  disable all the gpio af

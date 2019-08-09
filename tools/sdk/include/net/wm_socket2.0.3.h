@@ -76,7 +76,7 @@ struct pbuf {
 *                                                      callback functions
 *                        ERR_RST: the connection was reset by the remote host
 */
-typedef void  (*socket_err_fn)(u8 skt_num, err_t err);
+typedef void  (*socket_err_fn)(uint8_t skt_num, err_t err);
 
 /**
 * @brief This Function prototype for socket receive callback functions. Called when data has
@@ -94,7 +94,7 @@ typedef void  (*socket_err_fn)(u8 skt_num, err_t err);
 *                   ERR_ABRT:  Only return ERR_ABRT if you want to abort the socket from within the
 *                                      callback function!
 */
-typedef err_t  (*socket_recv_fn)(u8 skt_num, struct pbuf *p, err_t err);
+typedef err_t  (*socket_recv_fn)(uint8_t skt_num, struct pbuf *p, err_t err);
 
 /** 
 * @brief This Function prototype for socket srce ip callback functions. Called when data has
@@ -116,7 +116,7 @@ typedef err_t  (*socket_recv_fn)(u8 skt_num, struct pbuf *p, err_t err);
 *                   ERR_ABRT:  Only return ERR_ABRT if you want to abort the socket from within the
 *                                      callback function!
 */
-typedef err_t  (*socket_recv_ip_rpt_fn)(u8 skt_num, u16 datalen, u8 *ipsrc, u16 port, err_t err);
+typedef err_t  (*socket_recv_ip_rpt_fn)(uint8_t skt_num, uint16_t datalen, uint8_t *ipsrc, uint16_t port, err_t err);
 
 /**
 * @brief This Function prototype for tcp connected callback functions. Called when 
@@ -130,7 +130,7 @@ typedef err_t  (*socket_recv_ip_rpt_fn)(u8 skt_num, u16 datalen, u8 *ipsrc, u16 
 * @retval  ERR_ABRT:  Only return ERR_ABRT if you want to abort the socket from within the
 *                                      callback function!
 */
-typedef err_t (*socket_connected_fn)(u8 skt_num,  err_t err);
+typedef err_t (*socket_connected_fn)(uint8_t skt_num,  err_t err);
 
 /**
 * @brief This Function prototype for tcp poll callback functions. Called periodically.
@@ -141,7 +141,7 @@ typedef err_t (*socket_connected_fn)(u8 skt_num,  err_t err);
 * @retval  ERR_ABRT:  Only return ERR_ABRT if you want to abort the socket from within the
 *                                      callback function!
 */
-typedef err_t (*socket_poll_fn)(u8 skt_num);
+typedef err_t (*socket_poll_fn)(uint8_t skt_num);
 
 /**
 * @brief This Function prototype for tcp accept callback functions. Called when a new
@@ -155,7 +155,7 @@ typedef err_t (*socket_poll_fn)(u8 skt_num);
 * @retval  ERR_ABRT:  Only return ERR_ABRT if you want to abort the socket from within the
 *                                      callback function!
 */
-typedef err_t (*socket_accept_fn)(u8 skt_num, err_t err);
+typedef err_t (*socket_accept_fn)(uint8_t skt_num, err_t err);
 
 /**
 * @brief This Function prototype for socket state changed callback functions. Called when socket
@@ -167,7 +167,7 @@ typedef err_t (*socket_accept_fn)(u8 skt_num, err_t err);
 *
 * @param[in] state     Is the socket state, see socket state defination.
 */
-typedef void(*socket_state_changed_fn)(u8 skt_num, u8 event, u8 state);
+typedef void(*socket_state_changed_fn)(uint8_t skt_num, uint8_t event, uint8_t state);
 
 /** Definitions for error constants. */
 typedef enum {
@@ -223,12 +223,12 @@ struct tls_socket_desc {
     enum tls_socket_protocol protocol;                /* TCP Protocol or UDP Protocol  */
     ip_addr_t  ip_addr;                                              /* Remote ip address, for tcp client mode is remote server's ip address; for tcp server mode can be any address. */
 	                                                                    /*          for udp is remote server's ip address */
-    u16 port;                                                       /* port, for tcp client mode is remote server's port; for tcp server mode is local listen port . 
+    uint16_t port;                                                       /* port, for tcp client mode is remote server's port; for tcp server mode is local listen port . 
 	                                                                              for udp is remote server's port */
-    u16 localport;                                               /* local port, for udp and tcp client is local listen port, for tcp server means nothing, tcp server always listen at port */
+    uint16_t localport;                                               /* local port, for udp and tcp client is local listen port, for tcp server means nothing, tcp server always listen at port */
     char host_name[32];                                     /* remote host name, not support for now  */
-    u8  host_len;                                                 /* the length of host name   */
-    u32 timeout;                                                  /* poll timeout, not implemented for now   */
+    uint8_t  host_len;                                                 /* the length of host name   */
+    uint32_t timeout;                                                  /* poll timeout, not implemented for now   */
     socket_err_fn errf;                                          /* a pointer to socket_err_fn   */
     socket_recv_fn recvf;                                      /* a pointer to socket_recv_fn  */
     socket_connected_fn connf;                             /* a pointer to socket_connected_fn  */
@@ -260,7 +260,7 @@ int tls_socket_create(struct tls_socket_desc * skd);
 * @retval	 ERR_OK    If send data successfully.
 *              negative number   If an error was detected.
 */
-int tls_socket_send(u8 skt_num, void *pdata, u16 len);
+int tls_socket_send(uint8_t skt_num, void *pdata, uint16_t len);
 
 /**
 * @brief This function is called by your application code to close the socket, and the related resources would be released.
@@ -270,19 +270,19 @@ int tls_socket_send(u8 skt_num, void *pdata, u16 len);
 * @retval	 ERR_OK    If close socket successfully.
 *              negative number   If an error was detected.
 */
-int tls_socket_close(u8 skt_num);
+int tls_socket_close(uint8_t skt_num);
 
 struct tls_skt_status_ext_t {
-    u8 socket;
-    u8 status;
+    uint8_t socket;
+    uint8_t status;
     enum tls_socket_protocol protocol;
-    u8 host_ipaddr[4];
-    u16 remote_port;
-    u16 local_port;
+    uint8_t host_ipaddr[4];
+    uint16_t remote_port;
+    uint16_t local_port;
 };
 
 struct tls_skt_status_t {
-    u32 socket_cnt;
+    uint32_t socket_cnt;
     struct tls_skt_status_ext_t skts_ext[1];
 };
 /**
@@ -297,7 +297,7 @@ struct tls_skt_status_t {
 * @retval	 	ERR_OK    If send data successfully.
 *              negative number   If an error was detected.
 */
-int tls_socket_get_status(u8 skt_num, u8 *buf, u32 bufsize);
+int tls_socket_get_status(uint8_t skt_num, uint8_t *buf, uint32_t bufsize);
 
 /**
 * @brief This function is called by your application code to send data by udp socket.
@@ -315,7 +315,7 @@ int tls_socket_get_status(u8 skt_num, u8 *buf, u32 bufsize);
 * @retval	 	ERR_OK    If send data successfully.
 *              negative number   If an error was detected.
 */
-int tls_socket_udp_sendto(u16 localport, u8  *ip_addr, u16 port, void *pdata, u16 len);
+int tls_socket_udp_sendto(uint16_t localport, uint8_t  *ip_addr, uint16_t port, void *pdata, uint16_t len);
 
 /**
  * @ingroup pbuf
@@ -401,7 +401,7 @@ struct pbuf *pbuf_alloc(pbuf_layer l, u16_t length, pbuf_type type);
 *
 * @retval  The number of de-allocated pbufs
 */
-u8 pbuf_free(struct pbuf *p);
+uint8_t pbuf_free(struct pbuf *p);
 
 /**
 * @brief This Function for copy (part of) the contents of a packet buffer to an application supplied buffer.
