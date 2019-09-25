@@ -8,14 +8,6 @@
 #define USER_BUTTON_PAx_PBx_MACRO   0
 #define USER_BUTTON_SW_MACRO        0
 
-#ifdef WIO_W600
-int power_output_startup()
-{
-    pinMode(6, OUTPUT);
-    digitalWrite(6, HIGH);
-}
-#endif
-
 #if USE_LED_MACRO
     int led_red_pin = LED_RED;
     int led_green_pin = LED_GREEN;
@@ -152,9 +144,6 @@ void w600_arduino_loop()
 }
 
 void setup() {
-#ifdef WIO_W600
-    power_output_startup();
-#endif
     printf("setup()\n");
     // put your setup code here, to run once:
     w600_arduino_setup();

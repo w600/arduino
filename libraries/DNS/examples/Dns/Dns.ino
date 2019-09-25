@@ -2,14 +2,6 @@
 #include <W600WiFi.h>
 #include <Dns.h>
 
-#ifdef WIO_W600
-int power_output_startup()
-{
-    pinMode(6, OUTPUT);
-    digitalWrite(6, HIGH);
-}
-#endif
-
 int wifi_connect_as_sta()
 {
     printf("WiFi.mac: %s\n", WiFi.macAddressStr());
@@ -43,9 +35,6 @@ int wifi_connect_as_sta()
 
 void w600_arduino_setup()
 {
-#ifdef WIO_W600
-    power_output_startup();
-#endif
     printf("[%s %s %d]\n", __FILE__, __func__, __LINE__);
     Serial.println("xxxxxxxxxxxx");
     //Serial1.begin();

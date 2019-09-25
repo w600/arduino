@@ -1,17 +1,6 @@
 #include "SPI.h"
 
-#ifdef WIO_W600
-int power_output_startup()
-{
-    pinMode(6, OUTPUT);
-    digitalWrite(6, HIGH);
-}
-#endif
-
 void setup() {
-#ifdef WIO_W600
-    power_output_startup();
-#endif
     SPI.begin();
 }
 

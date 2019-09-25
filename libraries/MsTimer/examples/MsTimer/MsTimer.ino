@@ -4,13 +4,6 @@
 #include "string.h"
 #include "stdio.h"
 
-#ifdef WIO_W600
-int power_output_startup()
-{
-    pinMode(6, OUTPUT);
-    digitalWrite(6, HIGH);
-}
-#endif
 
 void time_test_f(void)
 {
@@ -18,9 +11,6 @@ void time_test_f(void)
 }
 
 void setup() {
-#ifdef WIO_W600
-    power_output_startup();
-#endif
   // put your setup code here, to run once:
 
   /*Timers 测试*/

@@ -17,10 +17,20 @@ void SystemInit()
 }
 #endif
 
+#ifdef WIO_W600
+void power_output_startup()
+{
+    pinMode(PB_7, OUTPUT);
+    digitalWrite(PB_7, HIGH);
+}
+#endif
+
 int user_main_task()
 {
     wm_swd_config(1);
-    
+#ifdef WIO_W600
+	 power_output_startup();
+#endif    
     setup();
     
     while (1)

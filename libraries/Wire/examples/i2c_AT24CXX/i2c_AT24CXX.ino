@@ -1,13 +1,6 @@
 #include <Arduino.h>
 #include "Wire.h"
 
-#ifdef WIO_W600
-int power_output_startup()
-{
-    pinMode(6, OUTPUT);
-    digitalWrite(6, HIGH);
-}
-#endif
 
 static unsigned char AT24CXX_ReadOneByte(unsigned short addr)
 {          
@@ -43,9 +36,6 @@ unsigned char AT24CXX_Check(void)
 }
 
 void setup() {
-#ifdef WIO_W600
-    power_output_startup();
-#endif
     // put your setup code here, to run once:
     Wire.setClock(100000);
     Wire.begin(WM_IO_PB_14, WM_IO_PB_13);
